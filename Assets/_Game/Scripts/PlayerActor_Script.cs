@@ -8,13 +8,22 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject _gameObjectBottom;
 	[SerializeField] private GameObject _gameObjectPlayer;
 
-	public Rigidbody _rigidbodyTop { get; private set; }
-	public Rigidbody _rigidbodyBottom { get; private set; }
+	public Rigidbody RigidbodyTop { get; private set; }
+	public Rigidbody RigidbodyBottom { get; private set; }
+	public Collider ColliderTop { get; private set; }
+	public Collider ColliderBottom { get; private set; }
+
+
+
+
+	private PlayerInputProvider _playerInputProvider;
 
 	private void Awake()
 	{
-		_rigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
-		_rigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
+		RigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
+		ColliderTop = _gameObjectTop.GetComponent<Collider>();
+		ColliderBottom = _gameObjectBottom.GetComponent<Collider>();
+		RigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
 	}
 
 	// Start is called before the first frame update
@@ -25,6 +34,17 @@ public class PlayerActor_Script : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
+    {
+		processInput();
+    }
+
+    void processInput()
+    {
+	    Debug.Log(_playerInputProvider.Direction());
+	    RigidbodyBottom.MovePosition(_playerInputProvider.Direction());
+    }
+
+    void processGravity()
     {
 
     }
