@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3559724828339287372}
   - component: {fileID: 6421288060038790084}
   - component: {fileID: 2271501069006168006}
+  - component: {fileID: 4751706438187994163}
   m_Layer: 0
   m_Name: Ventilator
   m_TagString: Untagged
@@ -91,3 +92,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.6266756, y: 1, z: 1}
   m_Center: {x: 2.813338, y: 0, z: 0}
+--- !u!114 &4751706438187994163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136462028837768363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b412b2cf6ec1d1242b7a706f7ee8195c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 3

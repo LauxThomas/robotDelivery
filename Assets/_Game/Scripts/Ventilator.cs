@@ -6,26 +6,27 @@ public class Ventilator : MonoBehaviour
 {
 
 	[SerializeField] private float force;			//Force of the  Ventilator
-	private Vector3 vecForce;
 
 
 	private void Awake()
 	{
-		vecForce = new Vector3(force, 0, 0);
 	}
 
 	private void OnCollisionEnter(Collision other)
     {
-	    other.rigidbody.AddForce(vecForce);
+	    other.transform.LookAt(-transform.position);
+	    Debug.Log("Enter");
     }
 
     private void OnCollisionStay(Collision other)
     {
-	    other.rigidbody.AddForce(vecForce);
+	    other.transform.Translate(-transform.position);
+	    Debug.Log("Stay");
     }
 
     private void OnCollisionExit(Collision other)
     {
-	    other.rigidbody.AddForce(Vector3.zero);
+	    other.transform.Translate(0,0,0);
+	    Debug.Log("Exit");
     }
 }
