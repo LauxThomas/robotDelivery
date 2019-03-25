@@ -8,10 +8,13 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject _gameObjectBottom;
 	[SerializeField] private GameObject _gameObjectPlayer;
 
+	[SerializeField] [Range(1,10)] private int height;
+
 	public Rigidbody RigidbodyTop { get; private set; }
 	public Rigidbody RigidbodyBottom { get; private set; }
 	public Collider ColliderTop { get; private set; }
 	public Collider ColliderBottom { get; private set; }
+
 
 	private IInputProvider _playerInputProvider;
 
