@@ -13,13 +13,11 @@ public class PlayerActor_Script : MonoBehaviour
 	public Collider ColliderTop { get; private set; }
 	public Collider ColliderBottom { get; private set; }
 
-
-
-
-	private PlayerInputProvider _playerInputProvider;
+	private IInputProvider _playerInputProvider;
 
 	private void Awake()
 	{
+		_playerInputProvider = GetComponent<IInputProvider>();
 		RigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
 		ColliderTop = _gameObjectTop.GetComponent<Collider>();
 		ColliderBottom = _gameObjectBottom.GetComponent<Collider>();
