@@ -37,12 +37,19 @@ public class PlayerActor_Script : MonoBehaviour
     void FixedUpdate()
     {
 		processInput();
+		processGravity();
+		calculatePlayerPosition();
     }
 
     void processInput()
     {
-	    Debug.Log(_playerInputProvider.Direction());
-	    RigidbodyBottom.MovePosition(_playerInputProvider.Direction());
+	    // Debug.Log(_playerInputProvider.Direction());
+	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + (Vector3) _playerInputProvider.Direction());
+    }
+
+    void calculatePlayerPosition()
+    {
+	    Vector2 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
     }
 
     void processGravity()
