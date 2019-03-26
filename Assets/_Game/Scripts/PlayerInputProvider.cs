@@ -8,4 +8,14 @@ public class PlayerInputProvider : MonoBehaviour, IInputProvider
 	{
 		return new Vector3(Input.GetAxis("Horizontal"), 0);
 	}
+
+	public float ForceFromJet()
+	{
+		return Input.GetAxis("Jet");
+	}
+
+	public float JumpPower()
+	{
+		return 0f;
+	}
 }
