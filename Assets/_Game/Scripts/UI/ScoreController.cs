@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -33,5 +34,14 @@ public class ScoreController : MonoBehaviour
 	{
 		score += val;
 		updateScoreText();
+	}
+
+	public void savePlayerScore(String playerName)
+	{
+		//Ein Spieler kann nur einen Wert haben. Wenn sich der Spieler verbessert, wird sein Highscore geupdated.
+		if (PlayerPrefs.GetFloat(playerName,0)>score)
+		{
+		PlayerPrefs.SetFloat(playerName,score);
+		}
 	}
 }
