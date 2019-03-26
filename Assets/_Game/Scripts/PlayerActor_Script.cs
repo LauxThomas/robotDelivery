@@ -11,7 +11,9 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject _gameObjectPlayer;
 
 	[SerializeField] [Range(1,10)] private int height = 1;
+	private float totalHeight = 1;
 	[SerializeField] private int speed = 1;
+	[SerializeField] private int gravityForce = 1;
 
 	public Rigidbody RigidbodyTop { get; private set; }
 	public Rigidbody RigidbodyBottom { get; private set; }
@@ -32,6 +34,11 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
 
 		PlayerTransform = _gameObjectPlayer.GetComponent<Transform>();
+	}
+
+	private void Start()
+	{
+		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
 	}
 
 
@@ -57,20 +64,26 @@ public class PlayerActor_Script : MonoBehaviour
     {
 	    Vector3 bottomPosition = RigidbodyBottom.position;
 	    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
+	    Vector3 newTopPosition = bottomPosition + vectorBetweenRigids.normalized * totalHeight;
+
 	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y - ColliderBottom.radius, bottomPosition.z);
+	    RigidbodyTop.position = newTopPosition;
+
 	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
 	    TurnPlayerToAngle(RadianToDegree(angleRadian));
     }
 
     void ProcessGravity()
     {
+		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForce);
+		RigidbodyBottom.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForce);
 
     }
 
     private void TurnPlayerToAngle(float angle)
     {
 	    Vector3 euler = PlayerTransform.eulerAngles;
-	    euler = new Vector3(0,0, angle - euler.z);
+	    euler = new Vector3(0,0, angle);
 		PlayerTransform.eulerAngles = euler;
     }
 

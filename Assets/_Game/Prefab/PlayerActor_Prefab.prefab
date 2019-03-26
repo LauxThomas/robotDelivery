@@ -173,7 +173,8 @@ MonoBehaviour:
   _gameObjectBottom: {fileID: 3112222110655753107}
   _gameObjectPlayer: {fileID: 7766955819910426590}
   height: 1
-  speed: 1
+  speed: 3
+  gravityForce: 5
 --- !u!114 &8453200868318724019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +195,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7766955819910426590}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.6
   m_Height: 5.45
