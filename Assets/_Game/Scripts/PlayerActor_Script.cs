@@ -55,7 +55,6 @@ public class PlayerActor_Script : MonoBehaviour
 	{
 		ProcessInput();
 		ProcessGravity();
-		CheckIfGrounded();
 		CalculatePlayerPosition();
 	}
 
