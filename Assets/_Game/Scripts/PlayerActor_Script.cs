@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class PlayerActor_Script : MonoBehaviour
@@ -49,12 +50,9 @@ public class PlayerActor_Script : MonoBehaviour
     void CalculatePlayerPosition()
     {
 	    Vector3 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
-	    // Debug.Log(vectorBetweenRigids);
 	    PlayerTransform.position = RigidbodyBottom.position + 0.5f * vectorBetweenRigids;
-	    float angle = 180f - 180f * Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
-	    Debug.Log(Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x));
-	    // Debug.Log(angle);
-	    TurnPlayerToAngle(0);
+	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
+	    TurnPlayerToAngle(RadianToDegree(angleRadian));
     }
 
     void ProcessGravity()
@@ -64,6 +62,13 @@ public class PlayerActor_Script : MonoBehaviour
 
     private void TurnPlayerToAngle(float angle)
     {
-	    PlayerTransform.RotateAround(PlayerTransform.position, Vector3.forward, angle - PlayerTransform.eulerAngles.z);
+	    Vector3 euler = PlayerTransform.eulerAngles;
+	    euler = new Vector3(0,0, angle - euler.z);
+		PlayerTransform.eulerAngles = euler;
+    }
+
+    private float RadianToDegree(float angle)
+    {
+	    return ((angle * (180f / Mathf.PI)) + 270) % 360;
     }
 }
