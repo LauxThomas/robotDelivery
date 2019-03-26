@@ -7,13 +7,8 @@ public class Ventilator : MonoBehaviour
 {
 
 	[SerializeField] private float force;			//Force of the  Ventilator
-	private Vector3 ventForce;
 
-	private void Awake()
-	{
-		Vector3 ventForce = new Vector3(force, 0, 0);
 
-	}
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -27,7 +22,7 @@ public class Ventilator : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-	    other.attachedRigidbody.AddForce(Vector3.right);
+	    other.attachedRigidbody.AddForce(Vector3.right*force * Time.fixedDeltaTime);
 	    Debug.Log(other.attachedRigidbody.gameObject.name);
     }
 
