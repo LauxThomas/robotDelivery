@@ -12,22 +12,27 @@ public class Ventilator : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+
+		other.attachedRigidbody.AddForce(Vector3.right*force * Time.fixedDeltaTime, ForceMode.Impulse);
 		if (other.tag == "player")
 		{
-			Debug.Log("Enter");
+
 		}
+
+		//Debug.Log("Enter");
+
 	}
 
 
 
     private void OnTriggerStay(Collider other)
     {
-	    other.attachedRigidbody.AddForce(Vector3.right*force * Time.fixedDeltaTime);
-	    Debug.Log(other.attachedRigidbody.gameObject.name);
+
+	    //Debug.Log(other.attachedRigidbody.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-	    other.attachedRigidbody.velocity = Vector3.zero;
+	    other.attachedRigidbody.AddForce(-(Vector3.right*force * Time.fixedDeltaTime), ForceMode.Impulse);
     }
 }
