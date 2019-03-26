@@ -11,26 +11,45 @@ public class MenuController : MonoBehaviour
 	public GameObject PauseMenu;
 	public GameObject OptionsMenu;
 	public GameObject CreditsMenu;
+	public GameObject TutorialMenu;
 
-	public List<GameObject> gos;
+	public List<GameObject> menus;
+
 	public void Start()
 	{
-		gos = new List<GameObject>();
-		gos.Add(MainMenu);
-		gos.Add(PauseMenu);
-		gos.Add(OptionsMenu);
-		gos.Add(CreditsMenu);
+		menus = new List<GameObject>();
+		menus.Add(MainMenu);
+		menus.Add(PauseMenu);
+		menus.Add(OptionsMenu);
+		menus.Add(CreditsMenu);
+		menus.Add(TutorialMenu);
+	}
+
+	private void Update()
+	{
+		if (Input.GetButton("Pause"))
+		{
+			foreach (GameObject menu in menus)
+			{
+				if (menu.activeInHierarchy)
+				{
+					return;
+				}
+			}
+			showPauseMenu();
+		}
 	}
 
 	public void showMainMenu()
 	{
+		//GameManager.resetGame();
 		enable(MainMenu);
 	}
 
 	public void showPauseMenu()
 	{
 		enable(PauseMenu);
-		//pauseGame();
+		pauseGame();
 	}
 
 	public void showOptionsMenu()
@@ -51,28 +70,28 @@ public class MenuController : MonoBehaviour
 
 	public void restartGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		//GameManager.startGame();
 	}
 
 	public void showCredits()
 	{
-		//enable(Credits);
+		enable(CreditsMenu);
 	}
 
 	public void showTutorial()
 	{
-		//enable(Tutorial);
+		enable(TutorialMenu);
 	}
 
 	public void back2Game()
 	{
 		enable(null);
-		//resumeGame();
+		continueGame();
 	}
 
 	public void enable(GameObject enabledObject)
 	{
-		foreach (GameObject go in gos)
+		foreach (GameObject go in menus)
 		{
 			if (go != enabledObject)
 			{
@@ -85,4 +104,18 @@ public class MenuController : MonoBehaviour
 		}
 	}
 
+	public void pauseGame()
+	{
+		Debug.Log("GAME PAUSED");
+		Time.timeScale = 0;
+		//Disable scripts that still work while timescale is set to 0
+	}
+
+	public void continueGame()
+	{
+
+		Debug.Log("GAME CONTINUED");
+		Time.timeScale = 1;
+		//enable the scripts again
+	}
 }
