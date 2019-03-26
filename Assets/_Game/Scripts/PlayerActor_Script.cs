@@ -16,7 +16,7 @@ public class PlayerActor_Script : MonoBehaviour
 	public Rigidbody RigidbodyTop { get; private set; }
 	public Rigidbody RigidbodyBottom { get; private set; }
 	public Collider ColliderTop { get; private set; }
-	public Collider ColliderBottom { get; private set; }
+	public SphereCollider ColliderBottom { get; private set; }
 	public Transform PlayerTransform { get; private set; }
 
 	private IInputProvider _playerInputProvider;
@@ -28,29 +28,36 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
 		ColliderTop = _gameObjectTop.GetComponent<Collider>();
 
-		ColliderBottom = _gameObjectBottom.GetComponent<Collider>();
+		ColliderBottom = _gameObjectBottom.GetComponent<SphereCollider>();
 		RigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
 
 		PlayerTransform = _gameObjectPlayer.GetComponent<Transform>();
 	}
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+
+	private void Update()
+	{
+
+	}
+
+	// Update is called once per frame
+	void FixedUpdate()
+	{
 		ProcessInput();
 		ProcessGravity();
 		CalculatePlayerPosition();
-    }
+	}
 
-    void ProcessInput()
+	void ProcessInput()
     {
 	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * (Vector3) _playerInputProvider.Direction());
     }
 
     void CalculatePlayerPosition()
     {
-	    Vector3 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
-	    PlayerTransform.position = RigidbodyBottom.position + 0.5f * vectorBetweenRigids;
+	    Vector3 bottomPosition = RigidbodyBottom.position;
+	    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
+	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y - ColliderBottom.radius, bottomPosition.z);
 	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
 	    TurnPlayerToAngle(RadianToDegree(angleRadian));
     }
