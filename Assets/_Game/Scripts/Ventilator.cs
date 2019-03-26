@@ -21,7 +21,6 @@ public class Ventilator : MonoBehaviour
 		if (other.tag == "player")
 		{
 			Rigidbody rbd = other.GetComponent<Rigidbody>();
-			rbd.AddForce(ventForce);
 			Debug.Log("Enter");
 		}
 	}
@@ -30,18 +29,12 @@ public class Ventilator : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
-
-	    Debug.Log("Stay");
+	    other.attachedRigidbody.AddForce(Vector3.up);
+	    Debug.Log(other.attachedRigidbody.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-	    if (other.tag == "player")
-	    {
-		    rbd.AddForce(ventForce);
-		    Debug.Log("Exit");
-	    }
 
     }
 }
