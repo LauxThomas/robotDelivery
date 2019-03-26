@@ -174,7 +174,8 @@ MonoBehaviour:
   _gameObjectPlayer: {fileID: 7766955819910426590}
   height: 1
   speed: 7
-  gravityForceTop: 150
+  forceJet: 1
+  gravityForceTop: 3
   gravityForceBottom: 3
 --- !u!114 &8453200868318724019
 MonoBehaviour:

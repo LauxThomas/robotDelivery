@@ -18,6 +18,10 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private int gravityForceBottom = 1;
 
 	private bool isGrounded = false;
+	private bool pushingJetToLeft = false;
+	private bool isJetActive = false;
+
+	private Vector3 directionalJetVector = Vector3.zero;
 
 	public Rigidbody RigidbodyTop { get; private set; }
 	public Rigidbody RigidbodyBottom { get; private set; }
@@ -60,17 +64,36 @@ public class PlayerActor_Script : MonoBehaviour
 		CalculatePlayerPosition();
 	}
 
+
+	/**
+	 *
+	 */
 	void ProcessInput()
     {
+	    // Takes input to change the rigidbody of the wheel and moves it around
 	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * (Vector3) _playerInputProvider.Direction());
 
-	    if (isTopRightOfBody())
+	    Debug.Log(directionalJetVector);
+	    if (_playerInputProvider.ForceFromJet() > 0)
 	    {
-		    // getAngleOfCharacter() + 90;
+		    if (isJetActive)
+		    {
+			    RigidbodyTop.AddForce(directionalJetVector * Time.fixedDeltaTime * forceJet, ForceMode.Impulse);
+
+			    Vector3 bottomPosition = RigidbodyBottom.position;
+			    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
+
+			    directionalJetVector = new Vector3(vectorBetweenRigids.y*(pushingJetToLeft?-1:1), vectorBetweenRigids.x*(pushingJetToLeft?1:-1));
+		    }
+		    else
+		    {
+			    pushingJetToLeft = isTopRightOfBody();
+			    isJetActive = true;
+		    }
 	    }
 	    else
 	    {
-		    // +getAngleOfCharacter() - 90;
+		    isJetActive = false;
 	    }
 
     }
