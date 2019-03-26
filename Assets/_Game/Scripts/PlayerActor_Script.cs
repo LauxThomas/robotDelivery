@@ -13,7 +13,10 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] [Range(1,10)] private int height = 1;
 	private float totalHeight = 1;
 	[SerializeField] private int speed = 1;
-	[SerializeField] private int gravityForce = 1;
+	[SerializeField] private int gravityForceTop = 1;
+	[SerializeField] private int gravityForceBottom = 1;
+
+	private bool isGrounded = false;
 
 	public Rigidbody RigidbodyTop { get; private set; }
 	public Rigidbody RigidbodyBottom { get; private set; }
@@ -52,6 +55,7 @@ public class PlayerActor_Script : MonoBehaviour
 	{
 		ProcessInput();
 		ProcessGravity();
+		CheckIfGrounded();
 		CalculatePlayerPosition();
 	}
 
@@ -75,9 +79,19 @@ public class PlayerActor_Script : MonoBehaviour
 
     void ProcessGravity()
     {
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForce);
-		RigidbodyBottom.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForce);
+		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
+		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+	    throw new System.NotImplementedException();
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+	    throw new System.NotImplementedException();
     }
 
     private void TurnPlayerToAngle(float angle)
@@ -91,4 +105,5 @@ public class PlayerActor_Script : MonoBehaviour
     {
 	    return ((angle * (180f / Mathf.PI)) + 270) % 360;
     }
+
 }
