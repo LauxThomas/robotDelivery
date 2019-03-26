@@ -8,7 +8,6 @@ public class Ventilator : MonoBehaviour
 
 	[SerializeField] private float force;			//Force of the  Ventilator
 	private Vector3 ventForce;
-	private Rigidbody rbd;
 
 	private void Awake()
 	{
@@ -20,8 +19,6 @@ public class Ventilator : MonoBehaviour
 	{
 		if (other.tag == "player")
 		{
-			Rigidbody rbd = other.GetComponent<Rigidbody>();
-			rbd.AddForce(ventForce);
 			Debug.Log("Enter");
 		}
 	}
@@ -30,18 +27,12 @@ public class Ventilator : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
-
-	    Debug.Log("Stay");
+	    other.attachedRigidbody.AddForce(Vector3.right);
+	    Debug.Log(other.attachedRigidbody.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-	    if (other.tag == "player")
-	    {
-		    rbd.AddForce(ventForce);
-		    Debug.Log("Exit");
-	    }
-
+	    other.attachedRigidbody.velocity = Vector3.zero;
     }
 }
