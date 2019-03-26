@@ -174,7 +174,8 @@ MonoBehaviour:
   _gameObjectPlayer: {fileID: 7766955819910426590}
   height: 1
   speed: 7
-  gravityForce: 50
+  gravityForceTop: 50
+  gravityForceBottom: 3
 --- !u!114 &8453200868318724019
 MonoBehaviour:
   m_ObjectHideFlags: 0
