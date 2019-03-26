@@ -13,6 +13,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] [Range(1,10)] private int height = 1;
 	private float totalHeight = 1;
 	[SerializeField] private int speed = 1;
+	[SerializeField] private int forceJet = 1;
 	[SerializeField] private int gravityForceTop = 1;
 	[SerializeField] private int gravityForceBottom = 1;
 
@@ -42,6 +43,7 @@ public class PlayerActor_Script : MonoBehaviour
 	private void Start()
 	{
 		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
+
 	}
 
 
@@ -61,6 +63,16 @@ public class PlayerActor_Script : MonoBehaviour
 	void ProcessInput()
     {
 	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * (Vector3) _playerInputProvider.Direction());
+
+	    if (isTopRightOfBody())
+	    {
+		    // getAngleOfCharacter() + 90;
+	    }
+	    else
+	    {
+		    // +getAngleOfCharacter() - 90;
+	    }
+
     }
 
     void CalculatePlayerPosition()
@@ -78,8 +90,8 @@ public class PlayerActor_Script : MonoBehaviour
 
     void ProcessGravity()
     {
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
+		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop, ForceMode.Impulse);
 
     }
 
@@ -103,6 +115,18 @@ public class PlayerActor_Script : MonoBehaviour
     private float RadianToDegree(float angle)
     {
 	    return ((angle * (180f / Mathf.PI)) + 270) % 360;
+    }
+
+    private float getAngleOfCharacter()
+    {
+	    Vector3 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
+	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
+	    return RadianToDegree(angleRadian);
+    }
+
+    private bool isTopRightOfBody()
+    {
+	    return (RigidbodyTop.position.x > RigidbodyBottom.position.x);
     }
 
 }
