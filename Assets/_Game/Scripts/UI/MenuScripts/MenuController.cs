@@ -42,6 +42,7 @@ public class MenuController : MonoBehaviour
 
 	public void showMainMenu()
 	{
+		//TODO:
 		//GameManager.resetGame();
 		enable(MainMenu);
 	}
@@ -70,7 +71,8 @@ public class MenuController : MonoBehaviour
 
 	public void restartGame()
 	{
-		//GameManager.startGame();
+		//TODO:
+		//GameManager.startGame(); //am besten mit Time.timeScale = 1;
 	}
 
 	public void showCredits()
@@ -107,7 +109,7 @@ public class MenuController : MonoBehaviour
 	public void pauseGame()
 	{
 		Debug.Log("GAME PAUSED");
-		Time.timeScale = 0;
+		Time.timeScale = 0; //oder GameManger.PauseGame();
 		//Disable scripts that still work while timescale is set to 0
 	}
 
@@ -115,7 +117,7 @@ public class MenuController : MonoBehaviour
 	{
 
 		Debug.Log("GAME CONTINUED");
-		Time.timeScale = 1;
+		Time.timeScale = 1; //oder GameManger.ResumeGame();
 		//enable the scripts again
 	}
 }
