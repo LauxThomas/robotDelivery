@@ -39,6 +39,7 @@ public class MenuController : MonoBehaviour
 	{
 		if (Input.GetButton("Pause"))
 		{
+			Debug.Log("PAUSE PREsSED");
 			foreach (GameObject menu in menus)
 			{
 				if (menu.activeInHierarchy)
