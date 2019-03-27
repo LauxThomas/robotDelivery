@@ -9,6 +9,15 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectTop;
 	[SerializeField] private GameObject gameObjectBottom;
 	[SerializeField] private GameObject gameObjectPlayer;
+	[SerializeField] private GameObject gameObjectTopModel;
+
+
+	[SerializeField] private Material robotHeadNeutral;
+	[SerializeField] private Material robotHeadLeft;
+	[SerializeField] private Material robotHeadRight;
+	[SerializeField] private Material robotHeadFail;
+
+
 
 	// For The Height of the PlayerModel
 	[SerializeField] [Range(1,10)] private int height = 1;
@@ -31,6 +40,7 @@ public class PlayerActor_Script : MonoBehaviour
 	public Collider ColliderTop { get; private set; }
 	public SphereCollider ColliderBottom { get; private set; }
 	public Transform PlayerTransform { get; private set; }
+	public SkinnedMeshRenderer TopSkinnedMeshRenderer { get; private set; }
 
 	private IInputProvider _playerInputProvider;
 
@@ -47,6 +57,7 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyBottom = gameObjectBottom.GetComponent<Rigidbody>();
 
 		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
+		TopSkinnedMeshRenderer = gameObjectTopModel.GetComponent<SkinnedMeshRenderer>();
 	}
 
 	private void Start()
@@ -67,6 +78,7 @@ public class PlayerActor_Script : MonoBehaviour
 		ProcessInput();
 		ProcessGravity();
 		CalculatePlayerPosition();
+		ChangeTopTexture();
 	}
 
 
@@ -79,11 +91,14 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    // Takes input to change the rigidbody of the wheel and moves it around
 	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+
+	    // If the position of the toppart is the same direction from the BottomPart as the Input
+	    // And if the Angle the character is pointing at is +/- stableAngle
 	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
 	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
 	    {
+		    // Take out the force of the Gravity
 		    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x,  0);
-		    Debug.Log("STABLE" + (isTopRightOfBody()?"Right":"Left"));
 	    }
 
 
@@ -103,7 +118,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
-			    // RigidbodyTop.velocity = Vector3.zero;
+			    RigidbodyTop.velocity = Vector3.zero;
 		    }
 	    }
 	    else
@@ -135,6 +150,24 @@ public class PlayerActor_Script : MonoBehaviour
 
     }
 
+    void ChangeTopTexture()
+    {
+		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
+	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
+	    {
+		    Debug.Log("stable");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
+	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() <= 180)
+	    {
+		    Debug.Log("left");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadLeft,robotHeadLeft,robotHeadLeft};
+	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() >= 180)
+	    {
+		    Debug.Log("right");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadRight,robotHeadRight,robotHeadRight};
+	    }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
 	    throw new System.NotImplementedException();
@@ -148,7 +181,7 @@ public class PlayerActor_Script : MonoBehaviour
     private void TurnPlayerToAngle(float angle)
     {
 	    Vector3 euler = PlayerTransform.eulerAngles;
-	    euler = new Vector3(0,0, angle);
+	    euler = new Vector3(euler.x, euler.y, angle);
 		PlayerTransform.eulerAngles = euler;
     }
 
