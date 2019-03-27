@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 910900bdb2ed32f4bb2b87a84db3619c
+guid: d4eff80fbdfbb91418fcef1f9e81d1f9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -31,7 +31,12 @@ ModelImporter:
     400022: UpperBody
     400024: Wheel
     400026: wheel
-    2100000: No Name
+    2100000: MetalParts
+    2100002: Spring
+    2100004: White
+    2100006: Face
+    2100008: Rubber
+    2100010: No Name
     4300000: LowerBody
     4300002: Spring
     4300004: UpperBody
@@ -45,6 +50,7 @@ ModelImporter:
     13700006: Spring
     13700008: UpperBody
     13700010: Wheel
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
