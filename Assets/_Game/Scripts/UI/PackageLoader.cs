@@ -18,11 +18,13 @@ public class PackageLoader : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI description;
     [SerializeField]
+    private TextMeshProUGUI packageName;
+    [SerializeField]
     private Package[] package;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Package p1 = new Package("Paket1", GameObject.Find("Sprite1").GetComponent<Sprite>(),10000,1, "Ich bin ein Paket");
     }
 
     public void onClickNext(){

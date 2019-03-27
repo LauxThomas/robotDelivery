@@ -7,6 +7,8 @@ public class Package : MonoBehaviour
 {
     
     [SerializeField]
+    private string name;
+    [SerializeField]
     private Sprite image;
     [SerializeField]
     private int scoreValue;
@@ -15,11 +17,20 @@ public class Package : MonoBehaviour
     [SerializeField]
     private string description;
 
-    public Package(Sprite image, int scoreValue, int slotsNeeded, string description){
+    public Package(string name, Sprite image, int scoreValue, int slotsNeeded, string description){
+        this.name = name;
         this.image = image;
         this.scoreValue = scoreValue;
         this.slotsNeeded = slotsNeeded;
         this.description = description;
+    }
+    
+    public string GetName(){
+        return name;
+    }
+
+    public string GetDescription(){
+        return description;
     }
     
     public int GetScoreValue(){
