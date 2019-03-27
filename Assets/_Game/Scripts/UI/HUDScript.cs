@@ -5,9 +5,6 @@ using UnityEngine;
 public class HUDScript : MonoBehaviour
 {
 
-	if(){
-
-}
     // Start is called before the first frame update
     void Start()
     {

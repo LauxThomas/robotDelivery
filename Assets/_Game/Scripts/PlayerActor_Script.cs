@@ -79,11 +79,14 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    // Takes input to change the rigidbody of the wheel and moves it around
 	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+
+	    // If the position of the toppart is the same direction from the BottomPart as the Input
+	    // And if the Angle the character is pointing at is +/- stableAngle
 	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
 	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
 	    {
+		    // Take out the force of the Gravity
 		    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x,  0);
-		    Debug.Log("STABLE" + (isTopRightOfBody()?"Right":"Left"));
 	    }
 
 
@@ -103,7 +106,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
-			    // RigidbodyTop.velocity = Vector3.zero;
+			    RigidbodyTop.velocity = Vector3.zero;
 		    }
 	    }
 	    else
@@ -148,7 +151,7 @@ public class PlayerActor_Script : MonoBehaviour
     private void TurnPlayerToAngle(float angle)
     {
 	    Vector3 euler = PlayerTransform.eulerAngles;
-	    euler = new Vector3(0,0, angle);
+	    euler = new Vector3(euler.x, euler.y, angle);
 		PlayerTransform.eulerAngles = euler;
     }
 
