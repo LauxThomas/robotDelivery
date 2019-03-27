@@ -9,6 +9,15 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectTop;
 	[SerializeField] private GameObject gameObjectBottom;
 	[SerializeField] private GameObject gameObjectPlayer;
+	[SerializeField] private GameObject gameObjectTopModel;
+
+
+	[SerializeField] private Material robotHeadNeutral;
+	[SerializeField] private Material robotHeadLeft;
+	[SerializeField] private Material robotHeadRight;
+	[SerializeField] private Material robotHeadFail;
+
+
 
 	// For The Height of the PlayerModel
 	[SerializeField] [Range(1,10)] private int height = 1;
@@ -31,6 +40,7 @@ public class PlayerActor_Script : MonoBehaviour
 	public Collider ColliderTop { get; private set; }
 	public SphereCollider ColliderBottom { get; private set; }
 	public Transform PlayerTransform { get; private set; }
+	public SkinnedMeshRenderer TopSkinnedMeshRenderer { get; private set; }
 
 	private IInputProvider _playerInputProvider;
 
@@ -47,6 +57,7 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyBottom = gameObjectBottom.GetComponent<Rigidbody>();
 
 		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
+		TopSkinnedMeshRenderer = gameObjectTopModel.GetComponent<SkinnedMeshRenderer>();
 	}
 
 	private void Start()
@@ -67,6 +78,7 @@ public class PlayerActor_Script : MonoBehaviour
 		ProcessInput();
 		ProcessGravity();
 		CalculatePlayerPosition();
+		ChangeTopTexture();
 	}
 
 
@@ -136,6 +148,24 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
 		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
 
+    }
+
+    void ChangeTopTexture()
+    {
+		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
+	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
+	    {
+		    Debug.Log("stable");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
+	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() <= 180)
+	    {
+		    Debug.Log("left");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadLeft,robotHeadLeft,robotHeadLeft};
+	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() >= 180)
+	    {
+		    Debug.Log("right");
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadRight,robotHeadRight,robotHeadRight};
+	    }
     }
 
     private void OnCollisionEnter(Collision other)

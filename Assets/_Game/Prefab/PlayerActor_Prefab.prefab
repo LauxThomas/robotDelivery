@@ -172,6 +172,11 @@ MonoBehaviour:
   gameObjectTop: {fileID: 182343309669138464}
   gameObjectBottom: {fileID: 3112222110655753107}
   gameObjectPlayer: {fileID: 630843237329406770}
+  gameObjectTopModel: {fileID: 630843237329406772}
+  robotHeadNeutral: {fileID: 2100000, guid: 55a644e7c6eaaf04f8dab928fe6201b1, type: 2}
+  robotHeadLeft: {fileID: 2100000, guid: 8f1a8da5b03c16d42882c53c6802317e, type: 2}
+  robotHeadRight: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
+  robotHeadFail: {fileID: 2100000, guid: faec0320de93bbe4289481f3e792dda7, type: 2}
   height: 1
   speed: 7
   forceJet: 3
@@ -322,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 13700008, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
+      objectReference: {fileID: 2100000, guid: 55a644e7c6eaaf04f8dab928fe6201b1, type: 2}
     - target: {fileID: 13700010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -346,6 +351,12 @@ GameObject:
 --- !u!4 &630843237329639186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: d4eff80fbdfbb91418fcef1f9e81d1f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 630843237329505666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &630843237329406772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100022, guid: d4eff80fbdfbb91418fcef1f9e81d1f9,
     type: 3}
   m_PrefabInstance: {fileID: 630843237329505666}
   m_PrefabAsset: {fileID: 0}
