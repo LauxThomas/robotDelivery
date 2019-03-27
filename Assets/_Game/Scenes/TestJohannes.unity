@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e48b4377e24b34d83317ce3cf88294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _door: {fileID: 2001654736}
+  door: {fileID: 2001654736}
 --- !u!1 &1083737669
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 9217358705731256698, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.83
+      value: 66.7
       objectReference: {fileID: 0}
     - target: {fileID: 9217358705731256698, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
@@ -806,22 +806,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &2001654736
-Rigidbody:
+--- !u!114 &2001654736
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001654731}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e04b05deebf44cb977973b887c4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button1: {fileID: 613938901}
+  Button2: {fileID: 613938901}
+  Button3: {fileID: 613938901}
+  heigth: 400
 --- !u!1001 &2644199387275470672
 PrefabInstance:
   m_ObjectHideFlags: 0
