@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HighscoreTable : MonoBehaviour
 {
+	/*
 	private Transform entryContainer;
 	private Transform entryTemplate;
 
@@ -23,4 +24,5 @@ public class HighscoreTable : MonoBehaviour
 			entryTransform.gameObject.SetActive(true);
 		}
 	}
+	*/
 }
