@@ -10,12 +10,15 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject _gameObjectBottom;
 	[SerializeField] private GameObject _gameObjectPlayer;
 
+	// For The Height of the PlayerModel
 	[SerializeField] [Range(1,10)] private int height = 1;
 	private float totalHeight = 1;
+
 	[SerializeField] private int speed = 1;
 	[SerializeField] private int forceJet = 1;
 	[SerializeField] private int gravityForceTop = 1;
 	[SerializeField] private int gravityForceBottom = 1;
+	[SerializeField] private int stableAngle = 10;
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
@@ -30,6 +33,8 @@ public class PlayerActor_Script : MonoBehaviour
 	public Transform PlayerTransform { get; private set; }
 
 	private IInputProvider _playerInputProvider;
+
+	public AnimationCurve plot = new AnimationCurve();
 
 	private void Awake()
 	{
@@ -46,6 +51,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private void Start()
 	{
+		// Calculating the Height of the Player to keep the Rigidbodys close together
 		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
 
 	}
@@ -56,7 +62,6 @@ public class PlayerActor_Script : MonoBehaviour
 
 	}
 
-	// Update is called once per frame
 	void FixedUpdate()
 	{
 		ProcessInput();
@@ -69,16 +74,25 @@ public class PlayerActor_Script : MonoBehaviour
 	 *
 	 */
 	void ProcessInput()
-    {
-	    // Takes input to change the rigidbody of the wheel and moves it around
-	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * (Vector3) _playerInputProvider.Direction());
+	{
+		Vector3 direction = _playerInputProvider.Direction();
 
-	    Debug.Log(directionalJetVector);
+	    // Takes input to change the rigidbody of the wheel and moves it around
+	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
+	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
+	    {
+		    RigidbodyTop.velocity = Vector3.zero;
+		    Debug.Log("STABLE" + (isTopRightOfBody()?"Right":"Left"));
+	    }
+
+
+	    //Debug.Log(directionalJetVector);
 	    if (_playerInputProvider.ForceFromJet() > 0)
 	    {
 		    if (isJetActive)
 		    {
-			    RigidbodyTop.AddForce(directionalJetVector * Time.fixedDeltaTime * forceJet, ForceMode.Impulse);
+			    RigidbodyTop.MovePosition(RigidbodyTop.position + directionalJetVector * Time.fixedDeltaTime * forceJet);
 
 			    Vector3 bottomPosition = RigidbodyBottom.position;
 			    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
@@ -89,11 +103,13 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
+			    RigidbodyTop.velocity = Vector3.zero;
 		    }
 	    }
 	    else
 	    {
 		    isJetActive = false;
+		    directionalJetVector = Vector3.zero;
 	    }
 
     }
@@ -105,7 +121,8 @@ public class PlayerActor_Script : MonoBehaviour
 	    Vector3 newTopPosition = bottomPosition + vectorBetweenRigids.normalized * totalHeight;
 
 	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y - ColliderBottom.radius, bottomPosition.z);
-	    RigidbodyTop.position = newTopPosition;
+	    RigidbodyTop.MovePosition(newTopPosition);
+	    // RigidbodyTop.velocity = Vector3.zero;
 
 	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
 	    TurnPlayerToAngle(RadianToDegree(angleRadian));
@@ -114,7 +131,7 @@ public class PlayerActor_Script : MonoBehaviour
     void ProcessGravity()
     {
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop, ForceMode.Impulse);
+		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
 
     }
 
