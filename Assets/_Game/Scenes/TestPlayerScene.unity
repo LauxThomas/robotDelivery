@@ -280,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 1141110969}
   m_LocalRotation: {x: 0, y: 0, z: 0.1338997, w: 0.9909949}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 1000, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -530,6 +530,21 @@ PrefabInstance:
         type: 3}
       propertyPath: gravityForce
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: gravityForceTop
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: forceJet
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb, type: 3}
