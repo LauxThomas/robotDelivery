@@ -8,10 +8,11 @@ public class Switch : MonoBehaviour
 {
 
 	[SerializeField] private Door door;
-	private Boolean activated = false;
+	private Boolean activated;
 
 	private void Awake()
 	{
+
 	}
 
 	private void OnTriggerEnter(Collider other)
