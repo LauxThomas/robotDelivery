@@ -1,31 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Boo.Lang;
 using UnityEngine;
 
 public class Ventilator : MonoBehaviour
 {
 
 	[SerializeField] private float force;			//Force of the  Ventilator
-	private Vector3 vecForce;
 
 
-	private void Awake()
+
+	private void OnTriggerEnter(Collider other)
 	{
-		vecForce = new Vector3(force, 0, 0);
+
+		other.attachedRigidbody.AddForce(Vector3.right*force * Time.fixedDeltaTime, ForceMode.Impulse);
+		if (other.tag == "player")
+		{
+
+		}
+
+		//Debug.Log("Enter");
+
 	}
 
-	private void OnCollisionEnter(Collision other)
+
+
+    private void OnTriggerStay(Collider other)
     {
-	    other.rigidbody.AddForce(vecForce);
+
+	    //Debug.Log(other.attachedRigidbody.gameObject.name);
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnTriggerExit(Collider other)
     {
-	    other.rigidbody.AddForce(vecForce);
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-	    other.rigidbody.AddForce(Vector3.zero);
+	    other.attachedRigidbody.AddForce(-(Vector3.right*force * Time.fixedDeltaTime), ForceMode.Impulse);
     }
 }

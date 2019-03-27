@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerInputProvider : MonoBehaviour, IInputProvider
 {
-	public Vector2 Direction()
+	public Vector3 Direction()
 	{
-		return new Vector2(Input.GetAxis("Horizontal"), 0);
+		return new Vector3(Input.GetAxis("Horizontal"), 0);
 	}
 }

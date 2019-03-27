@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IInputProvider
 {
-	Vector2 Direction();
+	Vector3 Direction();
 }
