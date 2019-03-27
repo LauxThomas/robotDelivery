@@ -207,6 +207,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.5
