@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d48b7a782dc59c4e872052da881bb97
+guid: 3b810190e5bf8ea4cb39d3a794afb724
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,8 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: floor_low
-    4300002: floor_01_low
+    4300000: wall_corner_low
   externalObjects: {}
   materials:
     importMaterials: 1
