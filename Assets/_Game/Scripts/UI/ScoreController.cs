@@ -9,7 +9,6 @@ public class ScoreController : MonoBehaviour
 	public float score;
 	public float slowingFactor=5;
 
-	//public Transform scoreText;
 
 	// Start is called before the first frame update
 	void Start()
@@ -27,7 +26,6 @@ public class ScoreController : MonoBehaviour
 	private void updateScoreText()
 	{
 		gameObject.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString("F2");
-		//scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + (int) score;
 	}
 
 	public void addScore(int val)
@@ -44,4 +42,6 @@ public class ScoreController : MonoBehaviour
 		PlayerPrefs.SetFloat(playerName,score);
 		}
 	}
+
+
 }

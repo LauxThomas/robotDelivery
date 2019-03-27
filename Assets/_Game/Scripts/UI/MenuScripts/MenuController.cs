@@ -12,8 +12,12 @@ public class MenuController : MonoBehaviour
 	public GameObject OptionsMenu;
 	public GameObject CreditsMenu;
 	public GameObject TutorialMenu;
+	public GameObject highScoreMenu;
 
 	public List<GameObject> menus;
+
+	public GameObject HUD;
+
 
 	public void Start()
 	{
@@ -23,6 +27,12 @@ public class MenuController : MonoBehaviour
 		menus.Add(OptionsMenu);
 		menus.Add(CreditsMenu);
 		menus.Add(TutorialMenu);
+		menus.Add(highScoreMenu);
+
+
+
+
+
 	}
 
 	private void Update()
@@ -84,6 +94,10 @@ public class MenuController : MonoBehaviour
 	{
 		enable(TutorialMenu);
 	}
+	public void showHighscore()
+	{
+		enable(highScoreMenu);
+	}
 
 	public void back2Game()
 	{
@@ -109,6 +123,7 @@ public class MenuController : MonoBehaviour
 	public void pauseGame()
 	{
 		Debug.Log("GAME PAUSED");
+		HUD.GetComponent<HUDScript>().toggleHUD(false);
 		Time.timeScale = 0; //oder GameManger.PauseGame();
 		//Disable scripts that still work while timescale is set to 0
 	}
@@ -117,7 +132,9 @@ public class MenuController : MonoBehaviour
 	{
 
 		Debug.Log("GAME CONTINUED");
+		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
+
 		//enable the scripts again
 	}
 }
