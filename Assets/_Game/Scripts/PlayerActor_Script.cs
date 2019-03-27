@@ -6,19 +6,19 @@ using UnityEngine;
 
 public class PlayerActor_Script : MonoBehaviour
 {
-	[SerializeField] private GameObject _gameObjectTop;
-	[SerializeField] private GameObject _gameObjectBottom;
-	[SerializeField] private GameObject _gameObjectPlayer;
+	[SerializeField] private GameObject gameObjectTop;
+	[SerializeField] private GameObject gameObjectBottom;
+	[SerializeField] private GameObject gameObjectPlayer;
 
 	// For The Height of the PlayerModel
 	[SerializeField] [Range(1,10)] private int height = 1;
 	private float totalHeight = 1;
 
-	[SerializeField] private int speed = 1;
-	[SerializeField] private int forceJet = 1;
-	[SerializeField] private int gravityForceTop = 1;
-	[SerializeField] private int gravityForceBottom = 1;
-	[SerializeField] private int stableAngle = 10;
+	[SerializeField] private float speed = 1;
+	[SerializeField] private float forceJet = 1;
+	[SerializeField] private float gravityForceTop = 1;
+	[SerializeField] private float gravityForceBottom = 1;
+	[SerializeField] private float stableAngle = 10;
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
@@ -40,13 +40,13 @@ public class PlayerActor_Script : MonoBehaviour
 	{
 		_playerInputProvider = GetComponent<IInputProvider>();
 
-		RigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
-		ColliderTop = _gameObjectTop.GetComponent<Collider>();
+		RigidbodyTop = gameObjectTop.GetComponent<Rigidbody>();
+		ColliderTop = gameObjectTop.GetComponent<Collider>();
 
-		ColliderBottom = _gameObjectBottom.GetComponent<SphereCollider>();
-		RigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
+		ColliderBottom = gameObjectBottom.GetComponent<SphereCollider>();
+		RigidbodyBottom = gameObjectBottom.GetComponent<Rigidbody>();
 
-		PlayerTransform = _gameObjectPlayer.GetComponent<Transform>();
+		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
 	}
 
 	private void Start()
@@ -82,7 +82,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
 	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
 	    {
-		    RigidbodyTop.velocity = Vector3.zero;
+		    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x,  0);
 		    Debug.Log("STABLE" + (isTopRightOfBody()?"Right":"Left"));
 	    }
 
@@ -92,7 +92,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    {
 		    if (isJetActive)
 		    {
-			    RigidbodyTop.MovePosition(RigidbodyTop.position + directionalJetVector * Time.fixedDeltaTime * forceJet);
+			    RigidbodyTop.AddForce(directionalJetVector * Time.fixedDeltaTime * forceJet, ForceMode.Impulse);
 
 			    Vector3 bottomPosition = RigidbodyBottom.position;
 			    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
@@ -103,7 +103,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
-			    RigidbodyTop.velocity = Vector3.zero;
+			    // RigidbodyTop.velocity = Vector3.zero;
 		    }
 	    }
 	    else
