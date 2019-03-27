@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Package : MonoBehaviour
+[CreateAssetMenu(fileName = "New Package", menuName = "Package")]
+public class Package : ScriptableObject
 {
-    
-    [SerializeField]
-    private string name;
-    [SerializeField]
-    private Sprite image;
-    [SerializeField]
-    private int scoreValue;
-    [SerializeField]
-    private int slotsNeeded;
-    [SerializeField]
-    private string description;
 
-    public Package(string name, Sprite image, int scoreValue, int slotsNeeded, string description){
+    public new string name;
+
+     public string description;
+   
+    public Sprite image;
+ 
+    public int scoreValue;
+   
+    public int slotsNeeded;
+ 
+   
+   /* public Package(string name, Sprite image, int scoreValue, int slotsNeeded, string description){
         this.name = name;
         this.image = image;
         this.scoreValue = scoreValue;
@@ -39,5 +39,5 @@ public class Package : MonoBehaviour
 
     public int GetSlotsNeeded(){
         return slotsNeeded;
-    }
+    } */
 }
