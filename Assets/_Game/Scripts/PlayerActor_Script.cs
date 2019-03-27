@@ -6,16 +6,19 @@ using UnityEngine;
 
 public class PlayerActor_Script : MonoBehaviour
 {
-	[SerializeField] private GameObject _gameObjectTop;
-	[SerializeField] private GameObject _gameObjectBottom;
-	[SerializeField] private GameObject _gameObjectPlayer;
+	[SerializeField] private GameObject gameObjectTop;
+	[SerializeField] private GameObject gameObjectBottom;
+	[SerializeField] private GameObject gameObjectPlayer;
 
+	// For The Height of the PlayerModel
 	[SerializeField] [Range(1,10)] private int height = 1;
 	private float totalHeight = 1;
-	[SerializeField] private int speed = 1;
-	[SerializeField] private int forceJet = 1;
-	[SerializeField] private int gravityForceTop = 1;
-	[SerializeField] private int gravityForceBottom = 1;
+
+	[SerializeField] private float speed = 1;
+	[SerializeField] private float forceJet = 1;
+	[SerializeField] private float gravityForceTop = 1;
+	[SerializeField] private float gravityForceBottom = 1;
+	[SerializeField] private float stableAngle = 10;
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
@@ -31,21 +34,24 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private IInputProvider _playerInputProvider;
 
+	public AnimationCurve plot = new AnimationCurve();
+
 	private void Awake()
 	{
 		_playerInputProvider = GetComponent<IInputProvider>();
 
-		RigidbodyTop = _gameObjectTop.GetComponent<Rigidbody>();
-		ColliderTop = _gameObjectTop.GetComponent<Collider>();
+		RigidbodyTop = gameObjectTop.GetComponent<Rigidbody>();
+		ColliderTop = gameObjectTop.GetComponent<Collider>();
 
-		ColliderBottom = _gameObjectBottom.GetComponent<SphereCollider>();
-		RigidbodyBottom = _gameObjectBottom.GetComponent<Rigidbody>();
+		ColliderBottom = gameObjectBottom.GetComponent<SphereCollider>();
+		RigidbodyBottom = gameObjectBottom.GetComponent<Rigidbody>();
 
-		PlayerTransform = _gameObjectPlayer.GetComponent<Transform>();
+		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
 	}
 
 	private void Start()
 	{
+		// Calculating the Height of the Player to keep the Rigidbodys close together
 		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
 
 	}
@@ -56,7 +62,6 @@ public class PlayerActor_Script : MonoBehaviour
 
 	}
 
-	// Update is called once per frame
 	void FixedUpdate()
 	{
 		ProcessInput();
@@ -69,11 +74,20 @@ public class PlayerActor_Script : MonoBehaviour
 	 *
 	 */
 	void ProcessInput()
-    {
-	    // Takes input to change the rigidbody of the wheel and moves it around
-	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * (Vector3) _playerInputProvider.Direction());
+	{
+		Vector3 direction = _playerInputProvider.Direction();
 
-	    Debug.Log(directionalJetVector);
+	    // Takes input to change the rigidbody of the wheel and moves it around
+	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
+	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
+	    {
+		    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x,  0);
+		    Debug.Log("STABLE" + (isTopRightOfBody()?"Right":"Left"));
+	    }
+
+
+	    //Debug.Log(directionalJetVector);
 	    if (_playerInputProvider.ForceFromJet() > 0)
 	    {
 		    if (isJetActive)
@@ -89,11 +103,13 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
+			    // RigidbodyTop.velocity = Vector3.zero;
 		    }
 	    }
 	    else
 	    {
 		    isJetActive = false;
+		    directionalJetVector = Vector3.zero;
 	    }
 
     }
@@ -105,7 +121,8 @@ public class PlayerActor_Script : MonoBehaviour
 	    Vector3 newTopPosition = bottomPosition + vectorBetweenRigids.normalized * totalHeight;
 
 	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y - ColliderBottom.radius, bottomPosition.z);
-	    RigidbodyTop.position = newTopPosition;
+	    RigidbodyTop.MovePosition(newTopPosition);
+	    // RigidbodyTop.velocity = Vector3.zero;
 
 	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
 	    TurnPlayerToAngle(RadianToDegree(angleRadian));
@@ -114,7 +131,7 @@ public class PlayerActor_Script : MonoBehaviour
     void ProcessGravity()
     {
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop, ForceMode.Impulse);
+		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
 
     }
 

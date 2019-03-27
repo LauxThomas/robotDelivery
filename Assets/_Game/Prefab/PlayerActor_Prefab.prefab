@@ -169,14 +169,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fee26ebaa4244488b5ad109d836437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameObjectTop: {fileID: 182343309669138464}
-  _gameObjectBottom: {fileID: 3112222110655753107}
-  _gameObjectPlayer: {fileID: 7766955819910426590}
+  gameObjectTop: {fileID: 182343309669138464}
+  gameObjectBottom: {fileID: 3112222110655753107}
+  gameObjectPlayer: {fileID: 7766955819910426590}
   height: 1
   speed: 7
-  forceJet: 1
-  gravityForceTop: 3
+  forceJet: 3
+  gravityForceTop: 200
   gravityForceBottom: 3
+  stableAngle: 20
+  plot:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8453200868318724019
 MonoBehaviour:
   m_ObjectHideFlags: 0
