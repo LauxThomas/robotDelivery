@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
 	public GameObject OptionsMenu;
 	public GameObject CreditsMenu;
 	public GameObject TutorialMenu;
+	public GameObject PauseTutorialMenu;
 	public GameObject highScoreMenu;
 
 	public List<GameObject> menus;
@@ -27,6 +28,7 @@ public class MenuController : MonoBehaviour
 		menus.Add(OptionsMenu);
 		menus.Add(CreditsMenu);
 		menus.Add(TutorialMenu);
+		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
 
 
@@ -94,6 +96,11 @@ public class MenuController : MonoBehaviour
 	public void showTutorial()
 	{
 		enable(TutorialMenu);
+	}
+
+	public void showPauseTutorial()
+	{
+		enable(PauseTutorialMenu);
 	}
 	public void showHighscore()
 	{
