@@ -5,12 +5,6 @@ using UnityEngine;
 public class PackageStack
 {
 	private int maxSize;
-	private Stack<>
 
-
-	PackageStack(int maxSize)
-	{
-
-	}
 
 }
