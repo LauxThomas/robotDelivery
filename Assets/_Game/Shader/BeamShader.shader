@@ -69,7 +69,7 @@ Shader "FX/BeamShader"
             fixed4 frag (v2f i) : SV_Target
             {
 
-				i.uv *= float2(1,1);
+				i.uv *= float2(3,1);
 				float2 upUV = i.uv + _Panning.xy * _Time.y * _Panning.z * _Panning.w;
 				float2 downUV = i.uv - _Panning.xy * _Time.y * _Panning.z;
 				fixed4 detailSampleMicro = tex2D(_Detail, downUV * float2(1, 4));
@@ -83,7 +83,7 @@ Shader "FX/BeamShader"
 				finalColor.a = (col.r + detailSample.r) * (finalColor.a);
 
 				float G = (i.uv.y);
-				finalColor.a = ( G* (1-G) ) * finalColor.a;
+				finalColor.a = -( G * (1-G) ) * finalColor.a;
                 return finalColor;
             }
             ENDCG
