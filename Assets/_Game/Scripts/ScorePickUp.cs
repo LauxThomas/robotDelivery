@@ -5,13 +5,12 @@ using UnityEngine;
 public class ScorePickUp : MonoBehaviour
 {
 
-	[SerializeField] private int _score;
-	[SerializeField] private ScoreController _scoreController;
+	[SerializeField] private int score;
+	[SerializeField] private UseRuntimeScore scoreController;
 
 	private void OnTriggerEnter(Collider other)
 	{
-		_scoreController.addScore(_score);
-		Debug.Log("_score");
+		scoreController.AddScore(score);
 	}
 
 
@@ -26,4 +25,5 @@ public class ScorePickUp : MonoBehaviour
     {
 
     }
+
 }

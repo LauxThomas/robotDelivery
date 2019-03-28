@@ -79,6 +79,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Panning: {r: 0, g: 0.05, b: 1, a: 1.1}
+    - _Panning: {r: 0, g: 0.05, b: 2, a: 1.4}
     - _Primary: {r: 0, g: 6.1026144, b: 7.3772106, a: 0.8392157}
-    - _Secondary: {r: 220.26176, g: 0, b: 198.651, a: 0.88235295}
+    - _Secondary: {r: 8.07242, g: 0, b: 220.26176, a: 0.88235295}
