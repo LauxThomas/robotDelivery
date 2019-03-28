@@ -21,9 +21,6 @@ public class ScorePickUp : MonoBehaviour
 		scoreController.AddScore(score);
 		col.enabled = false;
 		mr.enabled = false;
-
-
-
 	}
 
 }
