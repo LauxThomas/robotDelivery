@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: LoadedPackages
   m_EditorClassIdentifier: 
   loadedPackages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
+  - {fileID: 11400000, guid: 00f97d713a129ba42a269173514e3174, type: 2}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

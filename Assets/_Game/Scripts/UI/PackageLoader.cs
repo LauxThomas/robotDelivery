@@ -85,7 +85,7 @@ public class PackageLoader : MonoBehaviour
     }
 
     public void onClickAdd(){
-        if(package.Length > 0 && currentPackageSlot < 10){
+        if(package.Length > 0 && currentPackageSlot < 8){
             loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
             loadedPackagesList.Add(packageList[currentChoice]);
             currentPackageSlot += packageList[currentChoice].slotsNeeded;
@@ -93,8 +93,10 @@ public class PackageLoader : MonoBehaviour
     }
 
     public void onClickDelete(){
-         if(package.Length > 0 && currentPackageSlot < 10 && loadedPackagesList.Count > 0){
+         if(package.Length > 0 && currentPackageSlot <= 8 && loadedPackagesList.Count > 0){
              currentPackageSlot -= loadedPackagesList[loadedPackagesList.Count -1].slotsNeeded;
+             if(currentPackageSlot < 0)
+                currentPackageSlot = 0;
              loadedPackagesList.RemoveAt(loadedPackagesList.Count-1);
              loadedPackages[currentPackageSlot].sprite = null;
          }

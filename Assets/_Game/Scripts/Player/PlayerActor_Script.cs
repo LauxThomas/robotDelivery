@@ -10,17 +10,19 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectBottom;
 	[SerializeField] private GameObject gameObjectPlayer;
 	[SerializeField] private GameObject gameObjectTopModel;
-
+	[SerializeField] private GameObject gameObjectUpperPart;
+	[SerializeField] private GameObject gameObjectHeadPart;
 
 	[SerializeField] private Material robotHeadNeutral;
 	[SerializeField] private Material robotHeadLeft;
 	[SerializeField] private Material robotHeadRight;
 	[SerializeField] private Material robotHeadFail;
 
+	[SerializeField] private PackageList packageObject;
 
 
 	// For The Height of the PlayerModel
-	[SerializeField] [Range(1,10)] private int height = 1;
+	private int height = 1;
 	private float totalHeight = 1;
 
 	[SerializeField] private float speed = 1;
@@ -28,10 +30,15 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float gravityForceTop = 1;
 	[SerializeField] private float gravityForceBottom = 1;
 	[SerializeField] private float stableAngle = 10;
+	[SerializeField] private float unstableAngle = 50;
+	[SerializeField] private float packageHeight = 1;
+
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
 	private bool isJetActive = false;
+
+	private ArrayList packageList = new ArrayList();
 
 	private Vector3 directionalJetVector = Vector3.zero;
 
@@ -62,9 +69,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private void Start()
 	{
-		// Calculating the Height of the Player to keep the Rigidbodys close together
-		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
-
+		setPackagesFromScriptableObjects();
 	}
 
 
@@ -152,19 +157,18 @@ public class PlayerActor_Script : MonoBehaviour
 
     void ChangeTopTexture()
     {
-		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
 	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
 	    {
-		    Debug.Log("stable");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
-	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() <= 180)
+	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() < unstableAngle)
 	    {
-		    Debug.Log("left");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadLeft,robotHeadLeft,robotHeadLeft};
-	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() >= 180)
+	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() > 360 - unstableAngle)
 	    {
-		    Debug.Log("right");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadRight,robotHeadRight,robotHeadRight};
+	    }else if (getAngleOfCharacter() >= unstableAngle || getAngleOfCharacter() <= 360 - stableAngle)
+	    {
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadFail,robotHeadFail,robotHeadFail};
 	    }
     }
 
@@ -202,4 +206,36 @@ public class PlayerActor_Script : MonoBehaviour
 	    return (RigidbodyTop.position.x > RigidbodyBottom.position.x);
     }
 
+
+    public void setPackagesFromScriptableObjects()
+    {
+	    packageList.Clear();
+	    foreach (Package package in packageObject.loadedPackages)
+	    {
+		    if (package != null)
+		    {
+			    packageList.Add(package);
+		    }
+	    }
+	    setHeight((packageList.Count>0?packageList.Count:1));
+
+	    for (int i = 0; i<packageList.Count; i++)
+	    {
+		    GameObject packageObjectInstantiate = Instantiate(((Package) packageList[i]).packageMesh, Vector3.zero, new Quaternion());
+		    packageObjectInstantiate.transform.parent = gameObjectPlayer.transform;
+			packageObjectInstantiate.transform.position = gameObjectPlayer.transform.position + new Vector3(0, 1.3f + packageHeight * (0.5f + i) ,0);
+	    }
+
+
+
+    }
+
+    // Calculating the Height of the Player to keep the Rigidbodys close together
+    private void setHeight(int newHeight)
+    {
+	    height = newHeight;
+	    totalHeight = 1.3f + packageHeight * height;
+	    gameObjectUpperPart.transform.localScale = new Vector3(1,0.3f * height * packageHeight,1);
+	    gameObjectHeadPart.transform.localScale = new Vector3(1, 1 / (0.3f * height * packageHeight), 1);
+    }
 }
