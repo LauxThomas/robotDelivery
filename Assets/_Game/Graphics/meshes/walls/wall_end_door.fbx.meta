@@ -1,28 +1,15 @@
 fileFormatVersion: 2
-guid: 269fc77237a60444890a403ff7362fa3
+guid: 8607deaa35736ed4b9ed23df0bded84e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
-    2100002: wall_corner_mid_MAT
-    2100004: wall_corner_side_MAT
     2300000: //RootNode
     3300000: //RootNode
-    4300000: wall_corner_top
-    4300002: wall_corner_top_low
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wall_corner_mid_MAT
-    second: {fileID: 2100000, guid: 31ace8ac23259b84395abae074d832d2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wall_corner_side_MAT
-    second: {fileID: 2100000, guid: 31ace8ac23259b84395abae074d832d2, type: 2}
+    4300000: wall_end_door_low
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

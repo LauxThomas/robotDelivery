@@ -1,14 +1,17 @@
 fileFormatVersion: 2
-guid: bc1dab112b1054f4fa125c10d3df0c62
+guid: 0c00281f4801822418cfb8da3ca433e1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: floor_side_MAT
+    2100002: floor_mid_MAT
+    2100004: floor_side_02_MAT
+    2100006: floor_mid_02_MAT
     2300000: //RootNode
     3300000: //RootNode
-    4300000: wall_end_door_top_low
+    4300000: floor_01_low
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -49,7 +52,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

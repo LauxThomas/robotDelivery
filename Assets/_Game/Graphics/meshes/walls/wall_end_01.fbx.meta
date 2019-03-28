@@ -1,20 +1,16 @@
 fileFormatVersion: 2
-guid: f7447f5666bf03644bc39793d90fcdff
+guid: 21f9ab3249438af42aa6fae7f3943fc7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: wall_side_MAT
+    2100002: wall_mid_MAT
     2300000: //RootNode
     3300000: //RootNode
-    4300000: wall_front_low
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: c544a740fae3f064aaebc0d0b52a4000, type: 2}
+    4300000: wall_end_01_low
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
