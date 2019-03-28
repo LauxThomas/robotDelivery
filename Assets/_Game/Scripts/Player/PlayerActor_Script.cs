@@ -18,7 +18,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private Material robotHeadRight;
 	[SerializeField] private Material robotHeadFail;
 
-	[SerializeField] private ScriptableObject packageArrayObject;
+	[SerializeField] private PackageList packageObject;
 
 
 	// For The Height of the PlayerModel
@@ -30,12 +30,15 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float gravityForceTop = 1;
 	[SerializeField] private float gravityForceBottom = 1;
 	[SerializeField] private float stableAngle = 10;
+	[SerializeField] private float unstableAngle = 50;
 	[SerializeField] private float packageHeight = 1;
 
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
 	private bool isJetActive = false;
+
+	private ArrayList packageList = new ArrayList();
 
 	private Vector3 directionalJetVector = Vector3.zero;
 
@@ -66,9 +69,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private void Start()
 	{
-
-		setHeight(height);
-
+		setPackagesFromScriptableObjects();
 	}
 
 
@@ -159,16 +160,16 @@ public class PlayerActor_Script : MonoBehaviour
 		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
 	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
 	    {
-		    Debug.Log("stable");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
-	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() <= 180)
+	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() < unstableAngle)
 	    {
-		    Debug.Log("left");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadLeft,robotHeadLeft,robotHeadLeft};
-	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() >= 180)
+	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() > 360 - unstableAngle)
 	    {
-		    Debug.Log("right");
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadRight,robotHeadRight,robotHeadRight};
+	    }else if (getAngleOfCharacter() >= unstableAngle || getAngleOfCharacter() <= 360 - stableAngle)
+	    {
+		    TopSkinnedMeshRenderer.materials = new []{robotHeadFail,robotHeadFail,robotHeadFail};
 	    }
     }
 
@@ -204,6 +205,20 @@ public class PlayerActor_Script : MonoBehaviour
     private bool isTopRightOfBody()
     {
 	    return (RigidbodyTop.position.x > RigidbodyBottom.position.x);
+    }
+
+
+    private void setPackagesFromScriptableObjects()
+    {
+	    packageList.Clear();
+	    foreach (Package package in packageObject.loadedPackages)
+	    {
+		    if (package != null)
+		    {
+			    packageList.Add(package);
+		    }
+	    }
+	    setHeight((packageList.Count>0?packageList.Count:1));
     }
 
     // Calculating the Height of the Player to keep the Rigidbodys close together
