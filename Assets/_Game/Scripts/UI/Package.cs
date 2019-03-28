@@ -15,6 +15,8 @@ public class Package : ScriptableObject
     public int scoreValue;
    
     public int slotsNeeded;
+
+    public GameObject packageMesh;
  
    
    /* public Package(string name, Sprite image, int scoreValue, int slotsNeeded, string description){
