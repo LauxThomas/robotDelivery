@@ -6,24 +6,24 @@ public class ScorePickUp : MonoBehaviour
 {
 
 	[SerializeField] private int score;
-	[SerializeField] private UseRuntimeScore scoreController;
+	[SerializeField] private RuntimeScore scoreController;
+	private Collider col;
+	private MeshRenderer mr;
+
+	private void Awake()
+	{
+		col  = GetComponent<Collider>();
+		mr = GetComponent<MeshRenderer>();
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		scoreController.AddScore(score);
+		col.enabled = false;
+		mr.enabled = false;
+
+
+
 	}
-
-
-	// Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 }
