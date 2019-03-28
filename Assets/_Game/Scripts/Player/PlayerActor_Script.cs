@@ -10,7 +10,8 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectBottom;
 	[SerializeField] private GameObject gameObjectPlayer;
 	[SerializeField] private GameObject gameObjectTopModel;
-
+	[SerializeField] private GameObject gameObjectUpperPart;
+	[SerializeField] private GameObject gameObjectHeadPart;
 
 	[SerializeField] private Material robotHeadNeutral;
 	[SerializeField] private Material robotHeadLeft;
@@ -20,7 +21,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 
 	// For The Height of the PlayerModel
-	[SerializeField] [Range(1,10)] private int height = 1;
+	[SerializeField] [Range(1,8)] private int height = 1;
 	private float totalHeight = 1;
 
 	[SerializeField] private float speed = 1;
@@ -28,6 +29,8 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float gravityForceTop = 1;
 	[SerializeField] private float gravityForceBottom = 1;
 	[SerializeField] private float stableAngle = 10;
+	[SerializeField] private float packageHeight = 1;
+
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
@@ -62,8 +65,8 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private void Start()
 	{
-		// Calculating the Height of the Player to keep the Rigidbodys close together
-		totalHeight = RigidbodyTop.position.y - RigidbodyBottom.position.y;
+
+		setHeight(height);
 
 	}
 
@@ -202,4 +205,12 @@ public class PlayerActor_Script : MonoBehaviour
 	    return (RigidbodyTop.position.x > RigidbodyBottom.position.x);
     }
 
+    // Calculating the Height of the Player to keep the Rigidbodys close together
+    private void setHeight(int newHeight)
+    {
+	    height = newHeight;
+	    totalHeight = 1.3f + packageHeight * height;
+	    gameObjectUpperPart.transform.localScale = new Vector3(1,0.3f * height * packageHeight,1);;
+	    gameObjectHeadPart.transform.localScale = new Vector3(1, 1 / (0.3f * height * packageHeight), 1);
+    }
 }

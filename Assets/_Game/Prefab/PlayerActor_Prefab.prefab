@@ -173,6 +173,8 @@ MonoBehaviour:
   gameObjectBottom: {fileID: 3112222110655753107}
   gameObjectPlayer: {fileID: 630843237329406770}
   gameObjectTopModel: {fileID: 630843237329406772}
+  gameObjectUpperPart: {fileID: 630843237329406758}
+  gameObjectHeadPart: {fileID: 630843237329406756}
   robotHeadNeutral: {fileID: 2100000, guid: 55a644e7c6eaaf04f8dab928fe6201b1, type: 2}
   robotHeadLeft: {fileID: 2100000, guid: 8f1a8da5b03c16d42882c53c6802317e, type: 2}
   robotHeadRight: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
@@ -183,6 +185,7 @@ MonoBehaviour:
   gravityForceTop: 200
   gravityForceBottom: 3
   stableAngle: 20
+  packageHeight: 0.5
   plot:
     serializedVersion: 2
     m_Curve: []
@@ -355,6 +358,18 @@ GameObject:
 --- !u!4 &630843237329639186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: d4eff80fbdfbb91418fcef1f9e81d1f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 630843237329505666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &630843237329406758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: d4eff80fbdfbb91418fcef1f9e81d1f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 630843237329505666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &630843237329406756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: d4eff80fbdfbb91418fcef1f9e81d1f9,
     type: 3}
   m_PrefabInstance: {fileID: 630843237329505666}
   m_PrefabAsset: {fileID: 0}
