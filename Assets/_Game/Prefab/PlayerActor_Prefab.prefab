@@ -194,13 +194,13 @@ MonoBehaviour:
   robotHeadRight: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
   robotHeadFail: {fileID: 2100000, guid: faec0320de93bbe4289481f3e792dda7, type: 2}
   packageObject: {fileID: 11400000, guid: 5deba1fb31324e241af2dd3eeca4db02, type: 2}
-  height: 1
   speed: 7
   forceJet: 3
   gravityForceTop: 200
   gravityForceBottom: 3
   stableAngle: 20
-  packageHeight: 0.5
+  unstableAngle: 50
+  packageHeight: 0.55
   plot:
     serializedVersion: 2
     m_Curve: []
