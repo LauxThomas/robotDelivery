@@ -25,7 +25,7 @@ public class ScoreController : MonoBehaviour
 
 	private void updateScoreText()
 	{
-		gameObject.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString("F2");
+	//	gameObject.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString("F2");
 	}
 
 	public void addScore(int val)

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="Data", menuName="Scores/RuntimeScore", order = 1)]
+[CreateAssetMenu(fileName="Scriptable Objects", menuName="Scores/RuntimeScore", order = 1)]
 public class RuntimeScore : ScriptableObject
 {
 	public String player;
@@ -23,6 +23,7 @@ public class RuntimeScore : ScriptableObject
 	public void AddScore(int _addScore)
 	{
 		score += _addScore;
+		//Debug.Log(score);
 	}
 
 	public void SubScore(int _subScore)
