@@ -1,39 +1,16 @@
 fileFormatVersion: 2
-guid: 223812be216d1a5499433dcda2a808fa
+guid: 23e8989f78041b644a1c6cf2782b5561
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
-    2100002: floor_side_MAT
-    2100004: floor_mid_MAT
-    2100006: floor_side_02_MAT
-    2100008: floor_mid_02_MAT
+    2100000: wall_side_MAT
+    2100002: wall_mid_MAT
     2300000: //RootNode
     3300000: //RootNode
-    4300000: floor_end_low
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_mid_02_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_mid_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_side_02_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_side_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
+    4300000: wall_01_low
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
