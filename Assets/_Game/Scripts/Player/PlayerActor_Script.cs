@@ -22,7 +22,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 
 	// For The Height of the PlayerModel
-	[SerializeField] [Range(1,8)] private int height = 1;
+	private int height = 1;
 	private float totalHeight = 1;
 
 	[SerializeField] private float speed = 1;
