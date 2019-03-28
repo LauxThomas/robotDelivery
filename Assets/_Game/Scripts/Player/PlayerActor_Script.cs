@@ -18,6 +18,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private Material robotHeadRight;
 	[SerializeField] private Material robotHeadFail;
 
+	[SerializeField] private ScriptableObject packageArrayObject;
 
 
 	// For The Height of the PlayerModel
