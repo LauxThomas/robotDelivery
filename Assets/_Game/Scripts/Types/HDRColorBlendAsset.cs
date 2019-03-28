@@ -7,9 +7,9 @@ public class HDRColorBlendAsset : ScriptableObject
 {
 	public AnimationCurveAsset BlendCurve;
 	[ColorUsage(true, true)]
-	public Color A;
+	public Color A = Color.white;
 	[ColorUsage(true, true)]
-	public Color B;
+	public Color B = Color.white;
 
 	public Color Lerp(float InTime)
 	{
