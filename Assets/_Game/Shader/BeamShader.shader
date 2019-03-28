@@ -11,6 +11,7 @@ Shader "FX/BeamShader"
 		// HDR: 8,2
 		[HDR] _Secondary("Secondary Color", Color) = (.7,.7,.7,1)
 		_Panning("Panning", Vector) = (0,0,1,0)
+		_Opacity("Opacity", Range(0,1)) = 1.0
 	}
 		SubShader
 	{
@@ -50,6 +51,7 @@ Shader "FX/BeamShader"
 		float4 _Panning;
 		float4 _Primary;
 		float4 _Secondary;
+		float _Opacity;
 
 					v2f vert(appdata v)
 					{
@@ -77,13 +79,15 @@ Shader "FX/BeamShader"
 			// sample the texture
 			fixed4 col = tex2D(_MainTex, upUV);
 
-fixed4 detailSample = (detailSampleMicro + detailSampleMacro) * 0.5;
+			fixed4 detailSample = (detailSampleMicro + detailSampleMacro) * 0.5;
 
-fixed4 finalColor = lerp(_Primary, _Secondary, detailSample.r);
-finalColor.a = (col.r + detailSample.r) * (finalColor.a);
+			fixed4 finalColor = lerp(_Primary, _Secondary, detailSample.r);
+			finalColor.a = (col.r + detailSample.r) * (finalColor.a);
 
-float G = (i.uv.y);
-finalColor.a = -(G * (1 - G)) * finalColor.a;
+			float G = (i.uv.y);
+			finalColor.a = -(G * (1 - G)) * finalColor.a;
+			finalColor.a *= _Opacity;
+
 				return finalColor;
 		}
 		ENDCG
