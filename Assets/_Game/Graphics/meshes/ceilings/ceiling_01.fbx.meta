@@ -1,20 +1,15 @@
 fileFormatVersion: 2
-guid: f6fd914b0fdd57a40a14476b7e2e11bd
+guid: e88efc1328561dc4993e7d4abaed6f35
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Magnet
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 9b93d3123fd1c48459e09d781e70991b, type: 2}
+    4300000: ceiling_01_low
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
