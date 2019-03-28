@@ -69,7 +69,7 @@ public class MenuController : MonoBehaviour
 
 	public void startGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		//GameManager.startLevel(1);
 	}
 
 	public void quitGame()
@@ -78,10 +78,13 @@ public class MenuController : MonoBehaviour
 		Application.Quit();
 	}
 
-	public void restartGame()
+	public void restartLevel()
 	{
-		//TODO:
-		//GameManager.startGame(); //am besten mit Time.timeScale = 1;
+		//GameManager.startLevel(GameManager.getCurrentLevel); //am besten mit Time.timeScale = 1;
+	}
+	public void startNextLevel()
+	{
+		//GameManager.startLevel(GameManager.getCurrentLevel+1);
 	}
 
 	public void showCredits()
