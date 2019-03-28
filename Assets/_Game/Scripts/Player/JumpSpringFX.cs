@@ -20,7 +20,7 @@ public class JumpSpringFX : MonoBehaviour
 		PropertyId = Shader.PropertyToID(PropertyName);
 	}
 
-	 
+
 	/// <summary>
 	/// Determinates color of supplied tension argument.
 	/// </summary>
@@ -33,23 +33,5 @@ public class JumpSpringFX : MonoBehaviour
 		emissionMaterial.SetColor(PropertyId, resultingColor);
 
 		return resultingColor;
-	}
-
-	float X = 0.0F;
-	float Y = -1.0F;
-	private void Update()
-	{
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			Y = 1F;
-		}
-		if (Input.GetKeyUp(KeyCode.Space))
-		{
-			Y = -1F;
-		}
-
-		X = Mathf.Clamp01(X + Time.deltaTime * Y);
-		ApplyTension(X);
-
 	}
 }
