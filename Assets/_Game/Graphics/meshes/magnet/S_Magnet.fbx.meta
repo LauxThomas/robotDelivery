@@ -1,20 +1,15 @@
 fileFormatVersion: 2
-guid: c75b4cfcdd65bfd45982e3ad1113ed0d
+guid: f6fd914b0fdd57a40a14476b7e2e11bd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ceiling_end_low
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: a185b4bd222a70b48a91f7e00f9e16de, type: 2}
+    4300000: Magnet
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -54,7 +49,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

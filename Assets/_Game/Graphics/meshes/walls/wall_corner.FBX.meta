@@ -6,10 +6,22 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
+    2100002: wall_corner_side_MAT
+    2100004: wall_corner_mid_MAT
     2300000: //RootNode
     3300000: //RootNode
     4300000: wall_corner_low
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_corner_mid_MAT
+    second: {fileID: 2100000, guid: 31ace8ac23259b84395abae074d832d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_corner_side_MAT
+    second: {fileID: 2100000, guid: 31ace8ac23259b84395abae074d832d2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -49,7 +61,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
