@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 242bd9927e4d9e9459f10f69c855413c, type: 3}
-  m_Name: LoadedPackages
+  m_Name: LoadedPackages_full
   m_EditorClassIdentifier: 
   loadedPackages:
   - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
   - {fileID: 11400000, guid: 00f97d713a129ba42a269173514e3174, type: 2}
   - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
   - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 80197cc96deb150498b46383d379dedf, type: 2}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
+  - {fileID: 11400000, guid: d8e71cda160945e4ab6149524ee293ae, type: 2}
