@@ -86,9 +86,13 @@ public class PackageLoader : MonoBehaviour
 
     public void onClickAdd(){
         if(package.Length > 0 && currentPackageSlot < 8){
-            loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
-            loadedPackagesList.Add(packageList[currentChoice]);
-            currentPackageSlot += packageList[currentChoice].slotsNeeded;
+           
+            if(currentPackageSlot + packageList[currentChoice].slotsNeeded <= 8){
+                loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
+                loadedPackagesList.Add(packageList[currentChoice]);
+                currentPackageSlot += packageList[currentChoice].slotsNeeded;
+            }
+            
         }
     }
 
@@ -110,8 +114,14 @@ public class PackageLoader : MonoBehaviour
     }
 
     public void onClickMenu(){
+       //Scene wechseln
+    }
+
+    public void onClickStart(){
         for(int i = 0; i < loadedPackagesList.Count; i++){
             finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
         }
+        //To DO:
+        //Scene wechseln
     }
 }
