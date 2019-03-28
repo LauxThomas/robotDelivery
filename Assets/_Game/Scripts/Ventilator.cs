@@ -29,7 +29,7 @@ public class Ventilator : MonoBehaviour
 			}
 			else
 			{
-				other.attachedRigidbody.AddForce(-(Vector3.left*force *force/40), ForceMode.Impulse);
+				other.attachedRigidbody.AddForce((Vector3.left*force/40), ForceMode.Impulse);
 			}
 
 		}
