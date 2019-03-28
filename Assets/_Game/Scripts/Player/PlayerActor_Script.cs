@@ -157,7 +157,6 @@ public class PlayerActor_Script : MonoBehaviour
 
     void ChangeTopTexture()
     {
-		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
 	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
@@ -219,6 +218,16 @@ public class PlayerActor_Script : MonoBehaviour
 		    }
 	    }
 	    setHeight((packageList.Count>0?packageList.Count:1));
+
+	    foreach (Package package in packageList)
+	    {
+		    GameObject packageObjectInstantiate = Instantiate(package.packageMesh, Vector3.zero, new Quaternion());
+		    packageObjectInstantiate.transform.parent = gameObjectPlayer.transform;
+			packageObjectInstantiate.transform.position = new Vector3(1, 1.3f + packageHeight * 1,1);
+	    }
+
+
+
     }
 
     // Calculating the Height of the Player to keep the Rigidbodys close together
@@ -226,7 +235,7 @@ public class PlayerActor_Script : MonoBehaviour
     {
 	    height = newHeight;
 	    totalHeight = 1.3f + packageHeight * height;
-	    gameObjectUpperPart.transform.localScale = new Vector3(1,0.3f * height * packageHeight,1);;
+	    gameObjectUpperPart.transform.localScale = new Vector3(1,0.3f * height * packageHeight,1);
 	    gameObjectHeadPart.transform.localScale = new Vector3(1, 1 / (0.3f * height * packageHeight), 1);
     }
 }
