@@ -43,11 +43,3 @@ ProjectSettings/ProjectVersion.txt
 # Unity Log files
 [Ll]og/
 [Ll]ogs/
-
-Assets/_Game/Prefab/UI\.meta
-
-Assets/_Game/Prefab/UI/HUD\.prefab\.meta
-
-Assets/_Game/Prefab/UI/Menus\.prefab\.meta
-
-Assets/_Game/Prefab/UI/PlayerHighscore\.prefab\.meta
