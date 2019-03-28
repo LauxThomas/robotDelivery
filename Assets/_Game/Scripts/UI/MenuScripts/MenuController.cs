@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
 
 	public void Start()
 	{
+		//FUCKOFF
 		menus = new List<GameObject>();
 		menus.Add(MainMenu);
 		menus.Add(PauseMenu);
