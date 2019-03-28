@@ -9,4 +9,32 @@ public class RuntimeScore : ScriptableObject
 	public String player;
 	public int score;
 
+
+	public int GetScore()
+	{
+		return score;
+	}
+
+	public String GetPlayer()
+	{
+		return player;
+	}
+
+	public void AddScore(int _addScore)
+	{
+		score += _addScore;
+	}
+
+	public void SubScore(int _subScore)
+	{
+		if(score - _subScore >= 0)
+		{
+			score -= _subScore;
+		}
+		else
+		{
+			score = 0;
+		}
+
+	}
 }
