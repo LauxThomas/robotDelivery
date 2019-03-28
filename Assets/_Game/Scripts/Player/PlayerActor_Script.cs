@@ -207,7 +207,7 @@ public class PlayerActor_Script : MonoBehaviour
     }
 
 
-    private void setPackagesFromScriptableObjects()
+    public void setPackagesFromScriptableObjects()
     {
 	    packageList.Clear();
 	    foreach (Package package in packageObject.loadedPackages)
@@ -219,11 +219,11 @@ public class PlayerActor_Script : MonoBehaviour
 	    }
 	    setHeight((packageList.Count>0?packageList.Count:1));
 
-	    foreach (Package package in packageList)
+	    for (int i = 0; i<packageList.Count; i++)
 	    {
-		    GameObject packageObjectInstantiate = Instantiate(package.packageMesh, Vector3.zero, new Quaternion());
+		    GameObject packageObjectInstantiate = Instantiate(((Package) packageList[i]).packageMesh, Vector3.zero, new Quaternion());
 		    packageObjectInstantiate.transform.parent = gameObjectPlayer.transform;
-			packageObjectInstantiate.transform.position = new Vector3(1, 1.3f + packageHeight * 1,1);
+			packageObjectInstantiate.transform.position = gameObjectPlayer.transform.position + new Vector3(0, 1.3f + packageHeight * (0.5f + i) ,0);
 	    }
 
 
