@@ -30,11 +30,6 @@ public class MenuController : MonoBehaviour
 		menus.Add(TutorialMenu);
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
-
-
-
-
-
 	}
 
 	private void Update()
@@ -49,6 +44,7 @@ public class MenuController : MonoBehaviour
 					return;
 				}
 			}
+
 			showPauseMenu();
 		}
 	}
@@ -102,6 +98,7 @@ public class MenuController : MonoBehaviour
 	{
 		enable(PauseTutorialMenu);
 	}
+
 	public void showHighscore()
 	{
 		enable(highScoreMenu);
@@ -138,7 +135,6 @@ public class MenuController : MonoBehaviour
 
 	public void continueGame()
 	{
-
 		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
