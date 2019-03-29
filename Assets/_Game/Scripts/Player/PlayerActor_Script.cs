@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerActor_Script : MonoBehaviour
@@ -41,7 +42,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float jumpPower = 1;
 	[SerializeField] private float maxjumpMultiplier = 1;
 
-	private bool isGrounded = false;
+	public bool isGrounded = true;
 	private bool pushingJetToLeft = false;
 	private bool isJetActive = false;
 	private bool isJumping = false;
@@ -110,7 +111,7 @@ public class PlayerActor_Script : MonoBehaviour
 		Vector3 direction = _playerInputProvider.Direction();
 
 	    // Takes input to change the rigidbody of the wheel and moves it around
-	    RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+	    if(isGrounded) RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
 
 	    // If the position of the toppart is the same direction from the BottomPart as the Input
 	    // And if the Angle the character is pointing at is +/- stableAngle
@@ -154,28 +155,26 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    // Jumping Controll
 
-	    if (_playerInputProvider.JumpPower() > 0)
+	    if (_playerInputProvider.JumpPower() > 0 && isGrounded)
 	    {
 		    isJumping = true;
 		    if(collectedJumpPower < maxjumpMultiplier) collectedJumpPower += 1;
 		    _playerSpringScript.ApplyTension(collectedJumpPower/maxjumpMultiplier);
 
 	    }
-	    else
-	    {
-		    if (isJumping)
-		    {
-			    RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
-			    RigidbodyTop.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
-				isJumping = false;
-				collectedJumpPower = 0;
-				_playerSpringScript.ApplyTension(0);
-		    }
+	    else if (isJumping && isGrounded)
+		{
+			RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			RigidbodyTop.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			isJumping = false;
+			collectedJumpPower = 0;
+			_playerSpringScript.ApplyTension(0);
 	    }
 
 	}
 
-    void CalculatePlayerPosition()
+
+	void CalculatePlayerPosition()
     {
 	    Vector3 bottomPosition = RigidbodyBottom.position;
 	    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
@@ -221,16 +220,6 @@ public class PlayerActor_Script : MonoBehaviour
 		    }
 
 	    }
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-	    throw new System.NotImplementedException();
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-	    throw new System.NotImplementedException();
     }
 
     private void TurnPlayerToAngle(float angle)

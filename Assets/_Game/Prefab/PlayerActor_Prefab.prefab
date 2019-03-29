@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2088009321908135459}
   - component: {fileID: 1454531301325618383}
   - component: {fileID: 3215054155237652858}
+  - component: {fileID: 8629504793347724998}
   m_Layer: 9
   m_Name: BottomPart
   m_TagString: Untagged
@@ -150,6 +151,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &8629504793347724998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112222110655753107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f1135d25bd5c049afb3087e1382f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerActorPrefab: {fileID: 4534720461486490205}
 --- !u!1 &4534720461486490205
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,11 +230,13 @@ MonoBehaviour:
   speed: 7
   forceJet: 3
   gravityForceTop: 200
-  gravityForceBottom: 200
+  gravityForceBottom: 400
   stableAngle: 20
   unstableAngle: 50
   packageHeight: 0.3
-  jumpPower: 100
+  jumpPower: 7
+  maxjumpMultiplier: 100
+  isGrounded: 1
   plot:
     serializedVersion: 2
     m_Curve: []
