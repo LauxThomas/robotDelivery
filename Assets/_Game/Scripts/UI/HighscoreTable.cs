@@ -22,7 +22,7 @@ public class HighscoreTable : MonoBehaviour
 		string[,] playerNames = sb.GetPlayerNames();
 		int[,] playerScores = sb.GetScoreBoard();
 
-		sb.CheckAndInsertScore(rts.level,rts.score,"JohnDoe");
+		sb.CheckAndInsertScore(rts.level,rts.score,rts.player);
 
 
 
