@@ -11,7 +11,8 @@ public class PackageLoader : MonoBehaviour
     
     [SerializeField]
     private Button next;
-    public int levelID;
+    [SerializeField]
+    private RuntimeScore nextLevel;
     [SerializeField]
     private Button previous;
     [SerializeField]
