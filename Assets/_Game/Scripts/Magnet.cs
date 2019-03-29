@@ -73,6 +73,13 @@ public class Magnet : MonoBehaviour
 
 	}
 
+	private void OnTriggerExit(Collider other)
+	{
+
+
+		test = false;
+	}
+
 	private IEnumerator testPackage()
 	{
 		cor = true;
