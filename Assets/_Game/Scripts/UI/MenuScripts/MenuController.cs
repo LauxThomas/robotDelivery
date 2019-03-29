@@ -61,9 +61,9 @@ public class MenuController : MonoBehaviour
 
 	public void showMainMenu()
 	{
-		//TODO:
 		//GameManager.resetGame();
-		enable(MainMenu);
+		SceneManager.LoadScene("MainMenu");
+		//enable(MainMenu);
 	}
 
 	public void showPauseMenu()

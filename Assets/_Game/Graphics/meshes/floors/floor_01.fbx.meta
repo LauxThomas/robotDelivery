@@ -12,7 +12,27 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: floor_01_low
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor_mid_02_MAT
+    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor_mid_MAT
+    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor_side_02_MAT
+    second: {fileID: 2100000, guid: 226e22add54dfe34aba3f672e21e5d16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor_side_MAT
+    second: {fileID: 2100000, guid: 226e22add54dfe34aba3f672e21e5d16, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
