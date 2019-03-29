@@ -26,20 +26,16 @@ public class CheckOnGround : MonoBehaviour
 	}
 	*/
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.4f))
 		{
 			_playerActorScript.isGrounded = true;
-			Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
-			Debug.Log("Did Hit");
 		}
 		else
 		{
 			_playerActorScript.isGrounded = false;
-			Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
-			Debug.Log("Did not Hit");
 		}
 	}
 }
