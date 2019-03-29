@@ -8,7 +8,7 @@ public class RuntimeScore : ScriptableObject
 {
 	public String player;
 	public int score;
-
+	public int level;
 
 	public int GetScore()
 	{
@@ -18,6 +18,16 @@ public class RuntimeScore : ScriptableObject
 	public String GetPlayer()
 	{
 		return player;
+	}
+
+	public int getLevel()
+	{
+		return level;
+	}
+
+	public void setLevel(int i)
+	{
+		level = i;
 	}
 
 	public void AddScore(int _addScore)

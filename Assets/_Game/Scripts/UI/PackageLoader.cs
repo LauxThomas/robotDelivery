@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 
 
@@ -124,6 +125,19 @@ public class PackageLoader : MonoBehaviour
         if(loadedPackagesList.Count > 0 ){
             for(int i = 0; i < loadedPackagesList.Count; i++){
                 finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+            }
+            
+            switch(nextLevel.level){
+                case 0 : SceneManager.LoadScene("Blockout");
+                        break;
+                case 1 : SceneManager.LoadScene("Blockout Level 1");
+                        break;
+                case 2 : SceneManager.LoadScene("Blockout Level 2");
+                        break;
+                case 3 : SceneManager.LoadScene("Blockout Level 3");
+                        break;
+                default: break;
+
             }
         } else {
             Debug.Log("No packages loaded!!!");
