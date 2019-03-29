@@ -16,6 +16,6 @@ public class PlayerInputProvider : MonoBehaviour, IInputProvider
 
 	public float JumpPower()
 	{
-		return 0f;
+		return Input.GetAxis("Jump");
 	}
 }

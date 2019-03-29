@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Paket Nr. 3
   description: Und noch 1 Paket mehr
-  image: {fileID: 21300000, guid: fea3708466eb9674bb8f8ff31a9a6488, type: 3}
+  image: {fileID: 21300000, guid: a695ee8317d46fd4799570605f7115ad, type: 3}
   scoreValue: 30000
   slotsNeeded: 3
   packageMesh: {fileID: 100000, guid: 849ae9afe6d91654dbff7a7d6d90d52d, type: 3}
