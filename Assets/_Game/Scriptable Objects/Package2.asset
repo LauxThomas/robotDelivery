@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f06c96b4400f1419e9b7c0293626d8, type: 3}
   m_Name: Package2
   m_EditorClassIdentifier: 
-  name: Paket Nr. 2
-  description: Das ist 1 weiteres Paket
-  image: {fileID: 21300000, guid: 299c0169ec31c3f4d8c28fca072b18a9, type: 3}
-  scoreValue: 20000
-  slotsNeeded: 2
-  packageMesh: {fileID: 531943216265697670, guid: b77954e4afce38844973a22d51c4fe7b,
-    type: 3}
+  name: Goldbar
+  description: 'A very rare Package. Pure gold. Perfect for making teeth. '
+  image: {fileID: 21300000, guid: 2d7197818f641e24c9a067660c4f17e1, type: 3}
+  scoreValue: 50000
+  slotsNeeded: 1
+  packageMesh: {fileID: 100000, guid: 10b91db4bac2f934a8f6a5c545d971e3, type: 3}

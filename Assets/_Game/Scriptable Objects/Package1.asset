@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Paket Nr.1
   description: Das ist 1 Paket
-  image: {fileID: 21300000, guid: d4ae03ccda13b8846bfeb4171d2e98bf, type: 3}
+  image: {fileID: 21300000, guid: fea3708466eb9674bb8f8ff31a9a6488, type: 3}
   scoreValue: 10000
   slotsNeeded: 1
   packageMesh: {fileID: 531943216265697670, guid: b77954e4afce38844973a22d51c4fe7b,
