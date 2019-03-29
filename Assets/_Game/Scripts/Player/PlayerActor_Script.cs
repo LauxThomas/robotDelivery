@@ -12,6 +12,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectTopModel;
 	[SerializeField] private GameObject gameObjectUpperPart;
 	[SerializeField] private GameObject gameObjectHeadPart;
+	[SerializeField] private GameObject gameObjectSpringPart;
 
 	[SerializeField] private GameObject gameObjectThrusterLeft;
 	[SerializeField] private GameObject gameObjectThrusterRight;
@@ -38,6 +39,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float unstableAngle = 50;
 	[SerializeField] private float packageHeight = 1;
 	[SerializeField] private float jumpPower = 1;
+	[SerializeField] private float maxjumpMultiplier = 1;
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
@@ -60,12 +62,14 @@ public class PlayerActor_Script : MonoBehaviour
 	public SkinnedMeshRenderer TopSkinnedMeshRenderer { get; private set; }
 
 	private IInputProvider _playerInputProvider;
+	private JumpSpringFX _playerSpringScript;
 
 	public AnimationCurve plot = new AnimationCurve();
 
 	private void Awake()
 	{
 		_playerInputProvider = GetComponent<IInputProvider>();
+		_playerSpringScript = gameObjectSpringPart.GetComponent<JumpSpringFX>();
 
 		RigidbodyTop = gameObjectTop.GetComponent<Rigidbody>();
 		ColliderTop = gameObjectTop.GetComponent<Collider>();
@@ -75,6 +79,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
 		TopSkinnedMeshRenderer = gameObjectTopModel.GetComponent<SkinnedMeshRenderer>();
+
 	}
 
 	private void Start()
@@ -117,7 +122,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    }
 
 
-	    //Debug.Log(directionalJetVector);
+	    // Jet Controll
 	    if (_playerInputProvider.ForceFromJet() > 0)
 	    {
 		    if (isJetActive)
@@ -146,18 +151,25 @@ public class PlayerActor_Script : MonoBehaviour
 		    gameObjectThrusterLeft.SetActive(false);
 	    }
 
+
+	    // Jumping Controll
+
 	    if (_playerInputProvider.JumpPower() > 0)
 	    {
 		    isJumping = true;
-		    collectedJumpPower += 1;
+		    if(collectedJumpPower < maxjumpMultiplier) collectedJumpPower += 1;
+		    _playerSpringScript.ApplyTension(collectedJumpPower/maxjumpMultiplier);
 
 	    }
 	    else
 	    {
 		    if (isJumping)
 		    {
-				RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			    RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			    RigidbodyTop.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
 				isJumping = false;
+				collectedJumpPower = 0;
+				_playerSpringScript.ApplyTension(0);
 		    }
 	    }
 
@@ -179,10 +191,9 @@ public class PlayerActor_Script : MonoBehaviour
 
     void ProcessGravity()
     {
-		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
+		RigidbodyBottom.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
 		if (getAngleOfCharacter() < 360f && getAngleOfCharacter() > 0f)
 		{
-			Debug.Log(getAngleOfCharacter());
 			RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
 		}
     }

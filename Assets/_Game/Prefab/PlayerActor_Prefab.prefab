@@ -204,6 +204,7 @@ MonoBehaviour:
   gameObjectTopModel: {fileID: 630843237329406772}
   gameObjectUpperPart: {fileID: 630843237329406758}
   gameObjectHeadPart: {fileID: 630843237329406756}
+  gameObjectSpringPart: {fileID: 630843237329406768}
   gameObjectThrusterLeft: {fileID: 6888901451762045823}
   gameObjectThrusterRight: {fileID: 4965370057778234553}
   robotHeadNeutral: {fileID: 2100000, guid: 55a644e7c6eaaf04f8dab928fe6201b1, type: 2}
@@ -215,10 +216,11 @@ MonoBehaviour:
   speed: 7
   forceJet: 3
   gravityForceTop: 200
-  gravityForceBottom: 5
+  gravityForceBottom: 200
   stableAngle: 20
   unstableAngle: 50
   packageHeight: 0.3
+  jumpPower: 100
   plot:
     serializedVersion: 2
     m_Curve: []

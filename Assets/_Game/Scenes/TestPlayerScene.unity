@@ -531,6 +531,16 @@ PrefabInstance:
       propertyPath: gravityForce
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: gravityForceBottom
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: jumpPower
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7839030015713258696, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
