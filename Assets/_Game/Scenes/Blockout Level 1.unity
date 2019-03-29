@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1662,12 +1662,12 @@ PrefabInstance:
     - target: {fileID: 2644199387810206303, guid: 477c71c0dadd3df47a8b0b2b880925f1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 326.5196
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 2644199387810206303, guid: 477c71c0dadd3df47a8b0b2b880925f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.956995
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2644199387810206303, guid: 477c71c0dadd3df47a8b0b2b880925f1,
         type: 3}
@@ -6032,6 +6032,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button1
+      value: 
+      objectReference: {fileID: 1875294608}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button2
+      value: 
+      objectReference: {fileID: 1875294608}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button3
+      value: 
+      objectReference: {fileID: 1875294608}
     - target: {fileID: 5128561381208923652, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6092,21 +6107,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 6.5846376
       objectReference: {fileID: 0}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button1
-      value: 
-      objectReference: {fileID: 1875294608}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button2
-      value: 
-      objectReference: {fileID: 1875294608}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button3
-      value: 
-      objectReference: {fileID: 1875294608}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa, type: 3}
 --- !u!1001 &456604540
@@ -20656,6 +20656,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button1
+      value: 
+      objectReference: {fileID: 2013808726}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button2
+      value: 
+      objectReference: {fileID: 2013808726}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button3
+      value: 
+      objectReference: {fileID: 2013808726}
     - target: {fileID: 5128561381208923652, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20711,21 +20726,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button1
-      value: 
-      objectReference: {fileID: 2013808726}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button2
-      value: 
-      objectReference: {fileID: 2013808726}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button3
-      value: 
-      objectReference: {fileID: 2013808726}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa, type: 3}
 --- !u!114 &1420922375 stripped
@@ -26212,6 +26212,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button1
+      value: 
+      objectReference: {fileID: 2033641195024600589}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button2
+      value: 
+      objectReference: {fileID: 2033641195024600589}
+    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
+        type: 3}
+      propertyPath: Button3
+      value: 
+      objectReference: {fileID: 740906860}
     - target: {fileID: 5128561381208923652, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26267,21 +26282,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button1
-      value: 
-      objectReference: {fileID: 2033641195024600589}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button2
-      value: 
-      objectReference: {fileID: 2033641195024600589}
-    - target: {fileID: 5128561381208923675, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa,
-        type: 3}
-      propertyPath: Button3
-      value: 
-      objectReference: {fileID: 740906860}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9dbbbe5bf7a9e478aa7ca1b5762efa, type: 3}
 --- !u!114 &1854174200 stripped
@@ -55327,6 +55327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 7850045360054097012, guid: c563ad6323fe0094f828c8dacb5db74f,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1420922375}
     - target: {fileID: 7850045360054097013, guid: c563ad6323fe0094f828c8dacb5db74f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55412,11 +55417,6 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 12.949424
       objectReference: {fileID: 0}
-    - target: {fileID: 7850045360054097012, guid: c563ad6323fe0094f828c8dacb5db74f,
-        type: 3}
-      propertyPath: door
-      value: 
-      objectReference: {fileID: 1420922375}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c563ad6323fe0094f828c8dacb5db74f, type: 3}
 --- !u!114 &2013808726 stripped
@@ -55828,17 +55828,17 @@ PrefabInstance:
     - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.58
       objectReference: {fileID: 0}
     - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: 5.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb, type: 3}
