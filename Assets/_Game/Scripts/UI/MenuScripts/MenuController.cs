@@ -15,10 +15,16 @@ public class MenuController : MonoBehaviour
 	public GameObject PauseTutorialMenu;
 	public GameObject highScoreMenu;
 	public GameObject endScreen;
+	public GameObject highScoreTable;
+
+	[SerializeField]
+	private RuntimeScore runtimeScore;
+
 
 	public List<GameObject> menus;
 
 	public GameObject HUD;
+	private int level;
 
 
 	public void Start()
@@ -32,6 +38,8 @@ public class MenuController : MonoBehaviour
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
 		menus.Add(endScreen);
+
+
 	}
 
 	private void Update()
@@ -72,6 +80,10 @@ public class MenuController : MonoBehaviour
 	public void startGame()
 	{
 		//GameManager.startLevel(1);
+		runtimeScore.level = 1;
+		//SceneManager.LoadScene("Packageloader");
+		SceneManager.LoadScene("insertName");
+
 	}
 
 	public void quitGame()
@@ -82,11 +94,12 @@ public class MenuController : MonoBehaviour
 
 	public void restartLevel()
 	{
-		//GameManager.startLevel(GameManager.getCurrentLevel); //am besten mit Time.timeScale = 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 	public void startNextLevel()
 	{
-		//GameManager.startLevel(GameManager.getCurrentLevel+1);
+		runtimeScore.level += 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 
 	public void showCredits()
@@ -109,9 +122,13 @@ public class MenuController : MonoBehaviour
 		enable(highScoreMenu);
 	}
 
-	public void showEndScreen()
+	public void showEndScreen(int finishedLevel)
 	{
 		enable(endScreen);
+		highScoreTable.GetComponent<HighscoreTable>().setLevel(finishedLevel);
+		level = finishedLevel;
+
+
 	}
 
 	public void back2Game()
@@ -137,7 +154,6 @@ public class MenuController : MonoBehaviour
 
 	public void pauseGame()
 	{
-		Debug.Log("GAME PAUSED");
 		HUD.GetComponent<HUDScript>().toggleHUD(false);
 		Time.timeScale = 0; //oder GameManger.PauseGame();
 		//Disable scripts that still work while timescale is set to 0
@@ -145,7 +161,6 @@ public class MenuController : MonoBehaviour
 
 	public void continueGame()
 	{
-		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		FindObjectOfType<TutorialController>().disableAll();
 		//GetComponent<TutorialController>().disableAll();

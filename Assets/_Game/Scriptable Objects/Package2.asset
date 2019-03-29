@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Package2
   m_EditorClassIdentifier: 
   name: Goldbar
-  description: 'A very rare Package. Pure gold. Perfect for making teeth. '
+  description: 'Very rare. Pure gold. Perfect for making teeth. '
   image: {fileID: 21300000, guid: 2d7197818f641e24c9a067660c4f17e1, type: 3}
   scoreValue: 50000
   slotsNeeded: 1
