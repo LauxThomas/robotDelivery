@@ -531,12 +531,6 @@ PrefabInstance:
       propertyPath: gravityForce
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 699445893643452735, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
-        type: 3}
-      propertyPath: packageObject
-      value: 
-      objectReference: {fileID: 11400000, guid: 317f5e687eb215e4ca64efb55f07c1fa,
-        type: 2}
     - target: {fileID: 7839030015713258696, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -590,12 +584,12 @@ PrefabInstance:
     - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 594373260731492045, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
         type: 3}
