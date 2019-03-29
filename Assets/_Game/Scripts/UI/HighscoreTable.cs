@@ -14,15 +14,21 @@ public class HighscoreTable : MonoBehaviour
 	[SerializeField] private GameObject c4;
 	[SerializeField] private GameObject c5;
 	private int level;
+	private bool alreadyInserted = false;
 
 
-	private void Awake()
+	private void Start()
 	{
 		GameObject[] highscoreTemplates = {c1, c2, c3, c4, c5};
 		string[,] playerNames = sb.GetPlayerNames();
 		int[,] playerScores = sb.GetScoreBoard();
 
+		if (alreadyInserted)
+		{
 		sb.CheckAndInsertScore(rts.level,rts.score,rts.player);
+			alreadyInserted = true;
+		}
+
 
 
 
@@ -39,7 +45,7 @@ public class HighscoreTable : MonoBehaviour
 	public void setLevel(int i)
 	{
 		level = i;
-		Awake();
+		Start();
 	}
 
 
