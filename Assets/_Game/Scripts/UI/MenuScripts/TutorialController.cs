@@ -44,7 +44,7 @@ public class TutorialController : MonoBehaviour
 		showTut(ptr);
 	}
 
-	private void showTut(int ptr)
+	public void showTut(int ptr)
 	{
 		Debug.Log(ptr);
 		for (int i = 0; i < tuts.Count; i++)
@@ -60,5 +60,10 @@ public class TutorialController : MonoBehaviour
 				tuts[i].gameObject.SetActive(false);
 			}
 		}
+	}
+
+	public void disableAll()
+	{
+		gameObject.SetActive(false);
 	}
 }
