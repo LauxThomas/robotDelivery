@@ -10,6 +10,8 @@ public class LevelEnd : MonoBehaviour
 
 		Debug.Log("Ende");
 
+
+
 		SceneManager.LoadScene("TutorialLevelScene");		//Muss noch auf richtige Szene zeigen
 
 	}
