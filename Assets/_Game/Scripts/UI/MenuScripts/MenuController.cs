@@ -80,8 +80,7 @@ public class MenuController : MonoBehaviour
 	public void startGame()
 	{
 		//GameManager.startLevel(1);
-		runtimeScore.level += 1;
-		runtimeScore.level %= 3;
+		runtimeScore.level = 1;
 		SceneManager.LoadScene("Packageloader");
 
 	}
@@ -154,7 +153,6 @@ public class MenuController : MonoBehaviour
 
 	public void pauseGame()
 	{
-		Debug.Log("GAME PAUSED");
 		HUD.GetComponent<HUDScript>().toggleHUD(false);
 		Time.timeScale = 0; //oder GameManger.PauseGame();
 		//Disable scripts that still work while timescale is set to 0
@@ -162,7 +160,6 @@ public class MenuController : MonoBehaviour
 
 	public void continueGame()
 	{
-		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		FindObjectOfType<TutorialController>().disableAll();
 		//GetComponent<TutorialController>().disableAll();

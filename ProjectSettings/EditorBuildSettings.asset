@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Game/Scenes/Blockout.unity
+    path: Assets/_Game/Scenes/TutorialLevelScene.unity
     guid: ccca902fcb2f7bf41b285f12df527742
   - enabled: 1
     path: Assets/_Game/Scenes/TestJohannes.unity
     guid: ad5ed77727e11c849b7f049566c478bc
+  - enabled: 1
+    path: Assets/_Game/Scenes/Packageloader.unity
+    guid: f6d76372abd5e9c47aad047d912a182b
   m_configObjects: {}
