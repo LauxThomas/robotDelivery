@@ -22,7 +22,6 @@ public class MenuController : MonoBehaviour
 
 	public void Start()
 	{
-		//FUCKOFF
 		menus = new List<GameObject>();
 		menus.Add(MainMenu);
 		menus.Add(PauseMenu);
@@ -141,6 +140,8 @@ public class MenuController : MonoBehaviour
 	{
 		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
+		FindObjectOfType<TutorialController>().disableAll();
+		//GetComponent<TutorialController>().disableAll();
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
 
 		//enable the scripts again
