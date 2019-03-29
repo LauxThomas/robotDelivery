@@ -37,10 +37,14 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float stableAngle = 10;
 	[SerializeField] private float unstableAngle = 50;
 	[SerializeField] private float packageHeight = 1;
+	[SerializeField] private float jumpPower = 1;
 
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
 	private bool isJetActive = false;
+	private bool isJumping = false;
+
+	private int collectedJumpPower = 0;
 
 	private ArrayList packageList = new ArrayList();
 
@@ -129,7 +133,8 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
-			    RigidbodyTop.velocity = Vector3.zero;
+			    if (RigidbodyTop.velocity.y < 0f && ((RigidbodyTop.velocity.x > 0f && pushingJetToLeft) || (RigidbodyTop.velocity.x < 0f && !pushingJetToLeft)))
+				    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x, 0, RigidbodyTop.velocity.z);
 			    (isTopRightOfBody() ? gameObjectThrusterRight : gameObjectThrusterLeft).SetActive(true);
 		    }
 	    }
@@ -141,7 +146,22 @@ public class PlayerActor_Script : MonoBehaviour
 		    gameObjectThrusterLeft.SetActive(false);
 	    }
 
-    }
+	    if (_playerInputProvider.JumpPower() > 0)
+	    {
+		    isJumping = true;
+		    collectedJumpPower += 1;
+
+	    }
+	    else
+	    {
+		    if (isJumping)
+		    {
+				RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+				isJumping = false;
+		    }
+	    }
+
+	}
 
     void CalculatePlayerPosition()
     {
@@ -160,8 +180,11 @@ public class PlayerActor_Script : MonoBehaviour
     void ProcessGravity()
     {
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
-
+		if (getAngleOfCharacter() < 360f && getAngleOfCharacter() > 0f)
+		{
+			Debug.Log(getAngleOfCharacter());
+			RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
+		}
     }
 
     void ProcessCharacterAngle()
@@ -182,7 +205,8 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    GameObject lostPackage = popPackage();
 			    timeSinceLastPackageDropped = Time.time;
-			    if(lostPackage != null) lostPackage.GetComponent<Rigidbody>().isKinematic = false;
+			    if (lostPackage != null) lostPackage.GetComponent<Rigidbody>().isKinematic = false;
+			    setHeight(height-1);
 		    }
 
 	    }
@@ -250,10 +274,16 @@ public class PlayerActor_Script : MonoBehaviour
     // Calculating the Height of the Player to keep the Rigidbodys close together
     private void setHeight(int newHeight)
     {
-	    height = newHeight;
+	    height = (newHeight!=0?newHeight:1);
 	    totalHeight = 1.3f + packageHeight * height;
 	    gameObjectUpperPart.transform.localScale = new Vector3(2.75f,0.3f * height * packageHeight,2.75f);
 	    gameObjectHeadPart.transform.localScale = new Vector3(1f/2.75f, 1 / (0.3f * height * packageHeight), 1f/2.75f);
+
+	    Vector3 positionLeft = gameObjectThrusterLeft.transform.localPosition;
+	    Vector3 positionRight = gameObjectThrusterRight.transform.localPosition;
+	    gameObjectThrusterLeft.transform.localPosition = new Vector3(positionLeft.x, 0.7f + totalHeight , positionLeft.z);
+	    gameObjectThrusterRight.transform.localPosition = new Vector3(positionRight.x, 0.7f + totalHeight , positionRight.z);
+
     }
 
     public GameObject popPackage()
