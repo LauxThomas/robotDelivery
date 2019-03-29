@@ -111,6 +111,7 @@ public class PackageLoader : MonoBehaviour
             i.sprite = null;
         }
         currentPackageSlot = 0;
+        loadedPackagesList.Clear();
     }
 
     public void onClickMenu(){
@@ -118,8 +119,12 @@ public class PackageLoader : MonoBehaviour
     }
 
     public void onClickStart(){
-        for(int i = 0; i < loadedPackagesList.Count; i++){
-            finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+        if(loadedPackagesList.Count > 0 ){
+            for(int i = 0; i < loadedPackagesList.Count; i++){
+                finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+            }
+        } else {
+            Debug.Log("No packages loaded!!!");
         }
         //To DO:
         //Scene wechseln
