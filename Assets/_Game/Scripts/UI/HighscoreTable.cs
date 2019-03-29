@@ -18,6 +18,7 @@ public class HighscoreTable : MonoBehaviour
 
 	private void Awake()
 	{
+		Debug.Log("Level is:" + level);
 		GameObject[] highscoreTemplates = {c1, c2, c3, c4, c5};
 		string[,] playerNames = sb.GetPlayerNames();
 		int[,] playerScores = sb.GetScoreBoard();
@@ -34,6 +35,7 @@ public class HighscoreTable : MonoBehaviour
 	public void setLevel(int i)
 	{
 		level = i;
+		Debug.Log("Level set to: " +i);
 		Awake();
 	}
 

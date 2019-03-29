@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
 	public GameObject PauseTutorialMenu;
 	public GameObject highScoreMenu;
 	public GameObject endScreen;
+	public GameObject highScoreTable;
 
 	public List<GameObject> menus;
 
@@ -32,6 +33,8 @@ public class MenuController : MonoBehaviour
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
 		menus.Add(endScreen);
+
+
 	}
 
 	private void Update()
@@ -109,9 +112,11 @@ public class MenuController : MonoBehaviour
 		enable(highScoreMenu);
 	}
 
-	public void showEndScreen()
+	public void showEndScreen(int finishedLevel)
 	{
 		enable(endScreen);
+		highScoreTable.GetComponent<HighscoreTable>().setLevel(finishedLevel);
+
 	}
 
 	public void back2Game()
