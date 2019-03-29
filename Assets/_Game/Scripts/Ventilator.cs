@@ -9,33 +9,33 @@ public class Ventilator : MonoBehaviour
 	[Range( 0, 1)][SerializeField] private int direction;			//0 links / 1 rechts
 
 
-
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-
 		if (direction == 0)
 		{
-			other.attachedRigidbody.AddForce((Vector3.left*force * Time.fixedDeltaTime), ForceMode.Impulse);
+			if (other.name == "BottomPart")
+			{
+				other.attachedRigidbody.MovePosition(other.attachedRigidbody.position + Time.fixedDeltaTime * force * Vector3.left);
+			}
+			else
+			{
+				other.attachedRigidbody.AddForce((Vector3.left*force/40), ForceMode.Impulse);
+			}
+
 		}
 		else
 		{
-			other.attachedRigidbody.AddForce((Vector3.right*force * Time.fixedDeltaTime), ForceMode.Impulse);
+			if (other.name == "BottomPart")
+			{
+				other.attachedRigidbody.MovePosition(other.attachedRigidbody.position + Time.fixedDeltaTime * force * Vector3.right);
+			}
+			else
+			{
+				other.attachedRigidbody.AddForce((Vector3.right*force/40 ), ForceMode.Impulse);
+			}
 		}
-
-		//Debug.Log("Enter");
-
 	}
 
-    private void OnTriggerExit(Collider other)
-    {
-	    if (direction == 0)
-	    {
-		    other.attachedRigidbody.AddForce(-(Vector3.left*force * Time.fixedDeltaTime), ForceMode.Impulse);
-	    }
-	    else
-	    {
-		    other.attachedRigidbody.AddForce(-(Vector3.right*force * Time.fixedDeltaTime), ForceMode.Impulse);
-	    }
 
-    }
 }
+

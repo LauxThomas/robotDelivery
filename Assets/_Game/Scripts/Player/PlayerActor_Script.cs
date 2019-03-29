@@ -13,6 +13,9 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private GameObject gameObjectUpperPart;
 	[SerializeField] private GameObject gameObjectHeadPart;
 
+	[SerializeField] private GameObject gameObjectThrusterLeft;
+	[SerializeField] private GameObject gameObjectThrusterRight;
+
 	[SerializeField] private Material robotHeadNeutral;
 	[SerializeField] private Material robotHeadLeft;
 	[SerializeField] private Material robotHeadRight;
@@ -127,12 +130,15 @@ public class PlayerActor_Script : MonoBehaviour
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
 			    RigidbodyTop.velocity = Vector3.zero;
+			    (isTopRightOfBody() ? gameObjectThrusterRight : gameObjectThrusterLeft).SetActive(true);
 		    }
 	    }
 	    else
 	    {
 		    isJetActive = false;
 		    directionalJetVector = Vector3.zero;
+		    gameObjectThrusterRight.SetActive(false);
+		    gameObjectThrusterLeft.SetActive(false);
 	    }
 
     }

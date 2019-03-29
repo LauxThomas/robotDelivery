@@ -18,28 +18,4 @@ public class Package : ScriptableObject
 
     public GameObject packageMesh;
  
-   
-   /* public Package(string name, Sprite image, int scoreValue, int slotsNeeded, string description){
-        this.name = name;
-        this.image = image;
-        this.scoreValue = scoreValue;
-        this.slotsNeeded = slotsNeeded;
-        this.description = description;
-    }
-    
-    public string GetName(){
-        return name;
-    }
-
-    public string GetDescription(){
-        return description;
-    }
-    
-    public int GetScoreValue(){
-        return scoreValue;
-    }
-
-    public int GetSlotsNeeded(){
-        return slotsNeeded;
-    } */
 }
