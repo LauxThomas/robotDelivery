@@ -80,6 +80,10 @@ public class MenuController : MonoBehaviour
 	public void startGame()
 	{
 		//GameManager.startLevel(1);
+		runtimeScore.level += 1;
+		runtimeScore.level %= 3;
+		SceneManager.LoadScene("Packageloader");
+
 	}
 
 	public void quitGame()
@@ -90,11 +94,12 @@ public class MenuController : MonoBehaviour
 
 	public void restartLevel()
 	{
-		//GameManager.startLevel(GameManager.getCurrentLevel); //am besten mit Time.timeScale = 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 	public void startNextLevel()
 	{
-		//runtimeScore.level = level+1;
+		runtimeScore.level += 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 
 	public void showCredits()
