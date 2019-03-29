@@ -38,6 +38,7 @@ public class ScoreBoard : ScriptableObject
 
 	public void CheckAndInsertScore(int level, int score, String playerName)
 	{
+		Debug.Log("CheckAndInsert" + level + score + playerName);
 		int[,] tmpNumber = scoreList;
 		String[,] tmpName = playerNames;
 
