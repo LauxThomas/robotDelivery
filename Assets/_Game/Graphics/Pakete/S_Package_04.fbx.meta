@@ -1,38 +1,20 @@
 fileFormatVersion: 2
-guid: 0c00281f4801822418cfb8da3ca433e1
+guid: 927b50a7860064b41a9a7c03bffd0107
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: floor_side_MAT
-    2100002: floor_mid_MAT
-    2100004: floor_side_02_MAT
-    2100006: floor_mid_02_MAT
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: floor_01_low
+    4300000: Coffin
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: floor_mid_02_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_mid_MAT
-    second: {fileID: 2100000, guid: 2aed14b5ade65e14f8db2af4b5ea6ad9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_side_02_MAT
-    second: {fileID: 2100000, guid: 226e22add54dfe34aba3f672e21e5d16, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: floor_side_MAT
-    second: {fileID: 2100000, guid: 226e22add54dfe34aba3f672e21e5d16, type: 2}
+      name: No Name
+    second: {fileID: 2100000, guid: 06554a36256bb254188de62d5f66ff7d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -72,7 +54,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

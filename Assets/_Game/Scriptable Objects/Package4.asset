@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f06c96b4400f1419e9b7c0293626d8, type: 3}
-  m_Name: Package2
+  m_Name: Package4
   m_EditorClassIdentifier: 
-  name: Goldbar
-  description: 'Very rare. Pure gold. Perfect for making teeth. '
-  image: {fileID: 21300000, guid: 2d7197818f641e24c9a067660c4f17e1, type: 3}
-  scoreValue: 50000
+  name: Alpackafood
+  description: Delicios food for the loveliest animals on earth.
+  image: {fileID: 21300000, guid: 680a2b7d0425a4a4f8f184afdd1228a5, type: 3}
+  scoreValue: 40000
   slotsNeeded: 1
-  packageMesh: {fileID: 100000, guid: 10b91db4bac2f934a8f6a5c545d971e3, type: 3}
+  packageMesh: {fileID: 0}
