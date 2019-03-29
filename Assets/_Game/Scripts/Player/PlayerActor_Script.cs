@@ -160,8 +160,11 @@ public class PlayerActor_Script : MonoBehaviour
     void ProcessGravity()
     {
 		RigidbodyBottom.MovePosition(RigidbodyBottom.position + Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
-		RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
-
+		if (getAngleOfCharacter() < 360f && getAngleOfCharacter() > 0f)
+		{
+			Debug.Log(getAngleOfCharacter());
+			RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
+		}
     }
 
     void ProcessCharacterAngle()
@@ -254,6 +257,10 @@ public class PlayerActor_Script : MonoBehaviour
 	    totalHeight = 1.3f + packageHeight * height;
 	    gameObjectUpperPart.transform.localScale = new Vector3(2.75f,0.3f * height * packageHeight,2.75f);
 	    gameObjectHeadPart.transform.localScale = new Vector3(1f/2.75f, 1 / (0.3f * height * packageHeight), 1f/2.75f);
+
+	    gameObjectThrusterLeft.transform.position = new Vector3(gameObjectThrusterLeft.transform.position.x, 1.3f + totalHeight , gameObjectThrusterLeft.transform.position.z);
+	    gameObjectThrusterRight.transform.position = new Vector3(gameObjectThrusterRight.transform.position.x, 1.3f + totalHeight , gameObjectThrusterRight.transform.position.z);
+
     }
 
     public GameObject popPackage()

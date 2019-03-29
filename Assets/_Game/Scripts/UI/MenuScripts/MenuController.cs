@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
 
 	public void Start()
 	{
+		//FUCKOFF
 		menus = new List<GameObject>();
 		menus.Add(MainMenu);
 		menus.Add(PauseMenu);
@@ -30,11 +31,6 @@ public class MenuController : MonoBehaviour
 		menus.Add(TutorialMenu);
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
-
-
-
-
-
 	}
 
 	private void Update()
@@ -49,6 +45,7 @@ public class MenuController : MonoBehaviour
 					return;
 				}
 			}
+
 			showPauseMenu();
 		}
 	}
@@ -73,7 +70,7 @@ public class MenuController : MonoBehaviour
 
 	public void startGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		//GameManager.startLevel(1);
 	}
 
 	public void quitGame()
@@ -82,10 +79,13 @@ public class MenuController : MonoBehaviour
 		Application.Quit();
 	}
 
-	public void restartGame()
+	public void restartLevel()
 	{
-		//TODO:
-		//GameManager.startGame(); //am besten mit Time.timeScale = 1;
+		//GameManager.startLevel(GameManager.getCurrentLevel); //am besten mit Time.timeScale = 1;
+	}
+	public void startNextLevel()
+	{
+		//GameManager.startLevel(GameManager.getCurrentLevel+1);
 	}
 
 	public void showCredits()
@@ -102,6 +102,7 @@ public class MenuController : MonoBehaviour
 	{
 		enable(PauseTutorialMenu);
 	}
+
 	public void showHighscore()
 	{
 		enable(highScoreMenu);
@@ -138,7 +139,6 @@ public class MenuController : MonoBehaviour
 
 	public void continueGame()
 	{
-
 		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
