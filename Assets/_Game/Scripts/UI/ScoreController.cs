@@ -39,7 +39,7 @@ public class ScoreController : MonoBehaviour
 		//Ein Spieler kann nur einen Wert haben. Wenn sich der Spieler verbessert, wird sein Highscore geupdated.
 		if (PlayerPrefs.GetFloat(playerName,0)>score)
 		{
-		PlayerPrefs.SetFloat(playerName,score);
+			PlayerPrefs.SetFloat(playerName,score);
 		}
 	}
 
