@@ -86,9 +86,13 @@ public class PackageLoader : MonoBehaviour
 
     public void onClickAdd(){
         if(package.Length > 0 && currentPackageSlot < 8){
-            loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
-            loadedPackagesList.Add(packageList[currentChoice]);
-            currentPackageSlot += packageList[currentChoice].slotsNeeded;
+           
+            if(currentPackageSlot + packageList[currentChoice].slotsNeeded <= 8){
+                loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
+                loadedPackagesList.Add(packageList[currentChoice]);
+                currentPackageSlot += packageList[currentChoice].slotsNeeded;
+            }
+            
         }
     }
 
@@ -107,11 +111,22 @@ public class PackageLoader : MonoBehaviour
             i.sprite = null;
         }
         currentPackageSlot = 0;
+        loadedPackagesList.Clear();
     }
 
     public void onClickMenu(){
-        for(int i = 0; i < loadedPackagesList.Count; i++){
-            finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+       //Scene wechseln
+    }
+
+    public void onClickStart(){
+        if(loadedPackagesList.Count > 0 ){
+            for(int i = 0; i < loadedPackagesList.Count; i++){
+                finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+            }
+        } else {
+            Debug.Log("No packages loaded!!!");
         }
+        //To DO:
+        //Scene wechseln
     }
 }
