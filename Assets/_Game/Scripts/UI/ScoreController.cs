@@ -8,6 +8,9 @@ public class ScoreController : MonoBehaviour
 {
 
 	public RuntimeScore runtimeScore;
+	public Transform timeText;
+	public float timeFloat;
+
 
 
 	// Start is called before the first frame update
@@ -21,6 +24,8 @@ public class ScoreController : MonoBehaviour
 	void Update()
 	{
 		updateScoreText();
+		timeFloat += Time.deltaTime;
+		timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + timeFloat.ToString("F2");
 	}
 
 	private void updateScoreText()
