@@ -17,9 +17,12 @@ public class MenuController : MonoBehaviour
 	public GameObject endScreen;
 	public GameObject highScoreTable;
 
+	public PackageLoader packageLoader;
+
 	public List<GameObject> menus;
 
 	public GameObject HUD;
+	private int level;
 
 
 	public void Start()
@@ -90,6 +93,7 @@ public class MenuController : MonoBehaviour
 	public void startNextLevel()
 	{
 		//GameManager.startLevel(GameManager.getCurrentLevel+1);
+		packageLoader.levelID = level+1;
 	}
 
 	public void showCredits()
@@ -116,6 +120,8 @@ public class MenuController : MonoBehaviour
 	{
 		enable(endScreen);
 		highScoreTable.GetComponent<HighscoreTable>().setLevel(finishedLevel);
+		level = finishedLevel;
+
 
 	}
 
