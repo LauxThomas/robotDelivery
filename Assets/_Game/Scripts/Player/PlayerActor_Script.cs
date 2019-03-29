@@ -129,7 +129,8 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
 			    isJetActive = true;
-			    RigidbodyTop.velocity = Vector3.zero;
+			    if (RigidbodyTop.velocity.y < 0f && ((RigidbodyTop.velocity.x > 0f && pushingJetToLeft) || (RigidbodyTop.velocity.x < 0f && !pushingJetToLeft)))
+				    RigidbodyTop.velocity = Vector3.zero;
 			    (isTopRightOfBody() ? gameObjectThrusterRight : gameObjectThrusterLeft).SetActive(true);
 		    }
 	    }
