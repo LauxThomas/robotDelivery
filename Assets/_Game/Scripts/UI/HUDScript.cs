@@ -5,6 +5,8 @@ using UnityEngine;
 public class HUDScript : MonoBehaviour
 {
 
+	//public ScorePickUp scorePickUp;
+	//public ScoreController scoreController;
     // Update is called once per frame
     void Update()
     {
@@ -18,9 +20,10 @@ public class HUDScript : MonoBehaviour
 	    }
     }
 
+
 	public void toggleHUD(bool showHud)
 	{
 		gameObject.SetActive(showHud);
-		Debug.Log(showHud);
+		//Debug.Log(showHud);
 	}
 }
