@@ -20,6 +20,8 @@ public class PlayerActor_Script : MonoBehaviour
 
 	[SerializeField] private PackageList packageObject;
 
+	[SerializeField] private float timeInvulnerableToPackageLoss;
+	private float timeSinceLastPackageDropped = 0;
 
 	// For The Height of the PlayerModel
 	private int height = 1;
@@ -33,12 +35,13 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private float unstableAngle = 50;
 	[SerializeField] private float packageHeight = 1;
 
-
 	private bool isGrounded = false;
 	private bool pushingJetToLeft = false;
 	private bool isJetActive = false;
 
 	private ArrayList packageList = new ArrayList();
+
+	private ArrayList packageObjectList = new ArrayList();
 
 	private Vector3 directionalJetVector = Vector3.zero;
 
@@ -83,7 +86,7 @@ public class PlayerActor_Script : MonoBehaviour
 		ProcessInput();
 		ProcessGravity();
 		CalculatePlayerPosition();
-		ChangeTopTexture();
+		ProcessCharacterAngle();
 	}
 
 
@@ -155,9 +158,8 @@ public class PlayerActor_Script : MonoBehaviour
 
     }
 
-    void ChangeTopTexture()
+    void ProcessCharacterAngle()
     {
-		Debug.Log(TopSkinnedMeshRenderer.materials.Length);
 	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
@@ -170,6 +172,13 @@ public class PlayerActor_Script : MonoBehaviour
 	    }else if (getAngleOfCharacter() >= unstableAngle || getAngleOfCharacter() <= 360 - stableAngle)
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadFail,robotHeadFail,robotHeadFail};
+		    if (Time.time - timeSinceLastPackageDropped >= timeInvulnerableToPackageLoss)
+		    {
+			    GameObject lostPackage = popPackage();
+			    timeSinceLastPackageDropped = Time.time;
+			    if(lostPackage != null) lostPackage.GetComponent<Rigidbody>().isKinematic = false;
+		    }
+
 	    }
     }
 
@@ -208,7 +217,7 @@ public class PlayerActor_Script : MonoBehaviour
     }
 
 
-    private void setPackagesFromScriptableObjects()
+    public void setPackagesFromScriptableObjects()
     {
 	    packageList.Clear();
 	    foreach (Package package in packageObject.loadedPackages)
@@ -219,6 +228,17 @@ public class PlayerActor_Script : MonoBehaviour
 		    }
 	    }
 	    setHeight((packageList.Count>0?packageList.Count:1));
+
+	    for (int i = 0; i<packageList.Count; i++)
+	    {
+		    GameObject packageObjectInstantiate = Instantiate(((Package) packageList[i]).packageMesh, Vector3.zero, new Quaternion());
+		    packageObjectInstantiate.transform.parent = gameObjectPlayer.transform;
+		    packageObjectInstantiate.transform.eulerAngles = new Vector3(-90f, 90f, 0);
+			packageObjectInstantiate.transform.position = gameObjectPlayer.transform.position + new Vector3(0, 1.3f + packageHeight * (0.5f + i) ,0);
+
+			packageObjectList.Add(packageObjectInstantiate);
+	    }
+
     }
 
     // Calculating the Height of the Player to keep the Rigidbodys close together
@@ -226,7 +246,25 @@ public class PlayerActor_Script : MonoBehaviour
     {
 	    height = newHeight;
 	    totalHeight = 1.3f + packageHeight * height;
-	    gameObjectUpperPart.transform.localScale = new Vector3(1,0.3f * height * packageHeight,1);;
-	    gameObjectHeadPart.transform.localScale = new Vector3(1, 1 / (0.3f * height * packageHeight), 1);
+	    gameObjectUpperPart.transform.localScale = new Vector3(2.75f,0.3f * height * packageHeight,2.75f);
+	    gameObjectHeadPart.transform.localScale = new Vector3(1f/2.75f, 1 / (0.3f * height * packageHeight), 1f/2.75f);
+    }
+
+    public GameObject popPackage()
+    {
+	    if (packageList.Count > 0)
+	    {
+		    Package temp = (Package) packageList[packageList.Count - 1];
+		    packageList.Remove(temp);
+	    }
+
+	    GameObject result = null;
+	    if (packageObjectList.Count > 0)
+	    {
+		    result = (GameObject) packageObjectList[packageObjectList.Count - 1];
+		    packageObjectList.Remove(result);
+		    result.transform.parent = null;
+	    }
+	    return result;
     }
 }

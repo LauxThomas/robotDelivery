@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RuntimeScore
   m_EditorClassIdentifier: 
   player: 
-  score: 30
+  score: 2000
