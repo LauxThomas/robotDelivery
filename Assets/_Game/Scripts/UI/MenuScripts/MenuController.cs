@@ -93,7 +93,7 @@ public class MenuController : MonoBehaviour
 	public void startNextLevel()
 	{
 		//GameManager.startLevel(GameManager.getCurrentLevel+1);
-		packageLoader.levelId = level;
+		packageLoader.levelID = level+1;
 	}
 
 	public void showCredits()
