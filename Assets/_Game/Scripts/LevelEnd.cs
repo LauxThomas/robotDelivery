@@ -8,11 +8,11 @@ public class LevelEnd : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 
-		Debug.Log("Ende");
+		//Debug.Log("Ende");
 
 
 
-		SceneManager.LoadScene("TutorialLevelScene");		//Muss noch auf richtige Szene zeigen
+		SceneManager.LoadScene("EndLevel");
 
 	}
 }

@@ -61,9 +61,9 @@ public class MenuController : MonoBehaviour
 
 	public void showMainMenu()
 	{
-		//TODO:
 		//GameManager.resetGame();
-		enable(MainMenu);
+		SceneManager.LoadScene("MainMenu");
+		//enable(MainMenu);
 	}
 
 	public void showPauseMenu()
@@ -81,7 +81,8 @@ public class MenuController : MonoBehaviour
 	{
 		//GameManager.startLevel(1);
 		runtimeScore.level = 1;
-		SceneManager.LoadScene("Packageloader");
+		//SceneManager.LoadScene("Packageloader");
+		SceneManager.LoadScene("insertName");
 
 	}
 
