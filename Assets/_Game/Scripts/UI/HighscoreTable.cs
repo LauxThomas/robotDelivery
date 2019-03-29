@@ -21,6 +21,11 @@ public class HighscoreTable : MonoBehaviour
 		GameObject[] highscoreTemplates = {c1, c2, c3, c4, c5};
 		string[,] playerNames = sb.GetPlayerNames();
 		int[,] playerScores = sb.GetScoreBoard();
+
+		sb.CheckAndInsertScore(rts.level,rts.score,"JohnDoe");
+
+
+
 		for (int i = 0; i < 5; i++)
 		{
 
