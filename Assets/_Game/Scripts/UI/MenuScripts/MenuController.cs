@@ -14,15 +14,19 @@ public class MenuController : MonoBehaviour
 	public GameObject TutorialMenu;
 	public GameObject PauseTutorialMenu;
 	public GameObject highScoreMenu;
+	public GameObject endScreen;
+	public GameObject highScoreTable;
+
+	public PackageLoader packageLoader;
 
 	public List<GameObject> menus;
 
 	public GameObject HUD;
+	private int level;
 
 
 	public void Start()
 	{
-		//FUCKOFF
 		menus = new List<GameObject>();
 		menus.Add(MainMenu);
 		menus.Add(PauseMenu);
@@ -31,6 +35,9 @@ public class MenuController : MonoBehaviour
 		menus.Add(TutorialMenu);
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
+		menus.Add(endScreen);
+
+
 	}
 
 	private void Update()
@@ -86,6 +93,7 @@ public class MenuController : MonoBehaviour
 	public void startNextLevel()
 	{
 		//GameManager.startLevel(GameManager.getCurrentLevel+1);
+		packageLoader.levelID = level+1;
 	}
 
 	public void showCredits()
@@ -106,6 +114,15 @@ public class MenuController : MonoBehaviour
 	public void showHighscore()
 	{
 		enable(highScoreMenu);
+	}
+
+	public void showEndScreen(int finishedLevel)
+	{
+		enable(endScreen);
+		highScoreTable.GetComponent<HighscoreTable>().setLevel(finishedLevel);
+		level = finishedLevel;
+
+
 	}
 
 	public void back2Game()
@@ -141,6 +158,8 @@ public class MenuController : MonoBehaviour
 	{
 		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
+		FindObjectOfType<TutorialController>().disableAll();
+		//GetComponent<TutorialController>().disableAll();
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
 
 		//enable the scripts again
