@@ -8,18 +8,18 @@ public class ScoreBoard : ScriptableObject
 {
 	public int[,] scoreList = new int[5, 5]
 	{
-		{0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0},
+		{1337, 1336, 1335, 1338, 12356},
+		{345, 274, 853, 13, 12},
+		{124, 235, 364, 3574, 123},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 	};
 
 	public String[,] playerNames = new String[5, 5]
 	{
-		{ " ", " ", " ", " ", " "},
-		{ " ", " ", " ", " ", " "},
-		{ " ", " ", " ", " ", " "},
+		{ " Hanseins", " hanszwei", "dreierhans ", "vierervolker ", "fünferfrank "},
+		{ " erwineins", " zachariaszwei", "dieterdrei ", " volfgangvier", " frederik der 5."},
+		{ " dritteslevel", " asdg", " rdgjtz", "zukjhdf ", " sfgjdgh"},
 		{ " ", " ", " ", " ", " "},
 		{ " ", " ", " ", " ", " "},
 	};
