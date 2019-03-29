@@ -17,7 +17,8 @@ public class MenuController : MonoBehaviour
 	public GameObject endScreen;
 	public GameObject highScoreTable;
 
-	public RuntimeScore runtimeScore;
+	[SerializeField]
+	private RuntimeScore runtimeScore;
 
 
 	public List<GameObject> menus;
@@ -93,7 +94,7 @@ public class MenuController : MonoBehaviour
 	}
 	public void startNextLevel()
 	{
-		runtimeScore.levelID = level+1;
+		//runtimeScore.level = level+1;
 	}
 
 	public void showCredits()
