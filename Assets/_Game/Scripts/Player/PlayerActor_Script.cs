@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerSoundController))]
 public class PlayerActor_Script : MonoBehaviour
@@ -210,6 +211,11 @@ public class PlayerActor_Script : MonoBehaviour
 		    collectedJumpPower = 0;
 		    _playerSpringScript.ApplyTension(0);
 		    SoundCtrl.ReleaseJump();
+	    }
+
+	    if (_playerInputProvider.ResetButton() > 0)
+	    {
+		    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	    }
 	}
 
