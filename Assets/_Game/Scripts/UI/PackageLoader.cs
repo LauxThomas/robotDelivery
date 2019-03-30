@@ -161,12 +161,15 @@ public class PackageLoader : MonoBehaviour
                         break;
                 case 3 : SceneManager.LoadScene("Blockout Level 3");
                         break;
+                case 4 : SceneManager.LoadScene("EndLevel");
+                        break;
                 default: break;
             }
+            nextLevel.score = 0;
+
         } else {
             Debug.Log("No packages loaded!!!");
         }
-        //To DO:
-        //Scene wechseln
     }
+
 }
