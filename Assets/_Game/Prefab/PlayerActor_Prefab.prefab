@@ -440,7 +440,7 @@ MonoBehaviour:
   robotHeadLeft: {fileID: 2100000, guid: 8f1a8da5b03c16d42882c53c6802317e, type: 2}
   robotHeadRight: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
   robotHeadFail: {fileID: 2100000, guid: faec0320de93bbe4289481f3e792dda7, type: 2}
-  packageObject: {fileID: 11400000, guid: 84a4203ebe5d36a49aa2789fc9f54c29, type: 2}
+  packageObject: {fileID: 11400000, guid: 5deba1fb31324e241af2dd3eeca4db02, type: 2}
   runtimeScore: {fileID: 11400000, guid: 3e13ed7e2e4d68f4987824810fd03505, type: 2}
   difficultyCurve:
     serializedVersion: 2
@@ -466,17 +466,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeInvulnerableToPackageLoss: 300000
+  timeInvulnerableToPackageLoss: 2
   speed: 15
   maxSpeed: 15
   forceJet: 3
-  gravityForceTop: 5
+  gravityForceTop: 200
   gravityForceBottom: 400
-  stableAngle: 20
-  unstableAngle: 50
+  stableAngle: 45
+  unstableAngle: 90
   packageHeight: 0.3
   jumpPower: 10
-  maxjumpMultiplier: 35
+  maxjumpMultiplier: 38
   isGrounded: 1
   collectedJumpPower: 0
   currentScoreDifficulty: 0
@@ -604,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6684749262776580740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -20}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8119469999405117366}
@@ -1391,7 +1391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
         type: 3}
-      propertyPath: InitialModule.randomizeRotationDirection
+      propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
@@ -1401,7 +1401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
         type: 3}
-      propertyPath: moveWithTransform
+      propertyPath: InitialModule.randomizeRotationDirection
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
