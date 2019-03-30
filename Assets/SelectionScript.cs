@@ -7,6 +7,7 @@ public class SelectionScript : MonoBehaviour
 {
 	[SerializeField] private RuntimeScore rts;
 
+	public GameObject level0;
 	public GameObject level1;
 	public GameObject level2;
 	public GameObject level3;
@@ -18,6 +19,7 @@ public class SelectionScript : MonoBehaviour
 	private void Start()
 	{
 		levels = new List<GameObject>();
+		levels.Add(level0);
 		levels.Add(level1);
 		levels.Add(level2);
 		levels.Add(level3);
