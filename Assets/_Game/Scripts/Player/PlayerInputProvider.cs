@@ -18,4 +18,9 @@ public class PlayerInputProvider : MonoBehaviour, IInputProvider
 	{
 		return Input.GetAxis("Jump");
 	}
+
+	public float ResetButton()
+	{
+		return Input.GetAxis("Reset");
+	}
 }
