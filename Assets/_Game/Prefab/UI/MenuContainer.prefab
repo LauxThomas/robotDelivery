@@ -960,11 +960,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342849051788723466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2532,7 +2532,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2900,7 +2900,7 @@ Transform:
   - {fileID: 7087421363923025902}
   - {fileID: 7329118001461925294}
   - {fileID: 6046838574861494363}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120118333847500610
@@ -3368,7 +3368,7 @@ MonoBehaviour:
     lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -3810,7 +3810,7 @@ Transform:
   - {fileID: 1127824110498350231}
   - {fileID: 8121699487951761565}
   - {fileID: 2060911577983467392}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467658842189907854
@@ -5250,7 +5250,7 @@ Transform:
   - {fileID: 1144653140863319456}
   - {fileID: 555909248501798997}
   - {fileID: 3678833089334733261}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2195008705404005138
@@ -6608,7 +6608,7 @@ MonoBehaviour:
     lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -7142,7 +7142,7 @@ MonoBehaviour:
     lineCount: 7
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -7780,7 +7780,7 @@ RectTransform:
   m_LocalScale: {x: 0.28098, y: 0.28098, z: 0.28098}
   m_Children:
   - {fileID: 5501215637728328356}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7911,7 +7911,7 @@ RectTransform:
   m_LocalScale: {x: 0.28098, y: 0.28098, z: 0.28098}
   m_Children:
   - {fileID: 5294670554964724090}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8496,7 +8496,7 @@ MonoBehaviour:
     lineCount: 6
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -8514,6 +8514,48 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3839012254938232846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3833273362861422309}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3833273362861422309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839012254938232846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62, y: 56, z: 0}
+  m_LocalScale: {x: 2.085628, y: 2.085628, z: 2.085628}
+  m_Children:
+  - {fileID: 4824216326055513964}
+  - {fileID: 6158819676063868870}
+  - {fileID: 4847266529670606288}
+  - {fileID: 6562494825698448812}
+  - {fileID: 6978830986969849081}
+  - {fileID: 5110763101553404796}
+  - {fileID: 7961521934264531426}
+  - {fileID: 1258511629066979158}
+  - {fileID: 5014743416308523912}
+  - {fileID: 6161100911048366815}
+  - {fileID: 540930752147468775}
+  - {fileID: 8940925218546159462}
+  m_Father: {fileID: 8073067991108680570}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3879305166242388569
 GameObject:
   m_ObjectHideFlags: 0
@@ -8618,7 +8660,7 @@ Transform:
   - {fileID: 8648604694564235908}
   - {fileID: 2008852352806541539}
   - {fileID: 4092453842152749268}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3990943568308866922
@@ -8764,7 +8806,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -11379,7 +11421,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -12474,7 +12516,7 @@ RectTransform:
   m_Children:
   - {fileID: 240759739440044302}
   - {fileID: 2876485931715772266}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13152,7 +13194,7 @@ RectTransform:
   m_Children:
   - {fileID: 4802014094663016439}
   - {fileID: 7374812572389773178}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14095,10 +14137,10 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6776419085197095891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.0571637}
+  m_LocalPosition: {x: 0, y: 0, z: -1.0571632}
   m_LocalScale: {x: 0.47804242, y: 0.47804242, z: 0.47804242}
   m_Children: []
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -16252,7 +16294,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -17904,7 +17946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8073067991108680570
 Transform:
   m_ObjectHideFlags: 0
@@ -17916,18 +17958,7 @@ Transform:
   m_LocalPosition: {x: 47.59197, y: 58.339546, z: -8.60708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4824216326055513964}
-  - {fileID: 6158819676063868870}
-  - {fileID: 4847266529670606288}
-  - {fileID: 6562494825698448812}
-  - {fileID: 6978830986969849081}
-  - {fileID: 5110763101553404796}
-  - {fileID: 7961521934264531426}
-  - {fileID: 1258511629066979158}
-  - {fileID: 5014743416308523912}
-  - {fileID: 6161100911048366815}
-  - {fileID: 540930752147468775}
-  - {fileID: 8940925218546159462}
+  - {fileID: 3833273362861422309}
   m_Father: {fileID: 8073067990717454699}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20018,7 +20049,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -21187,7 +21218,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -21967,7 +21998,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -22868,7 +22899,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -23352,7 +23383,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -23934,7 +23965,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -24143,7 +24174,7 @@ Transform:
   - {fileID: 8180398584149010598}
   - {fileID: 40944273381732513}
   - {fileID: 5562337352918240534}
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8313747608991083653
@@ -24322,7 +24353,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -24371,7 +24402,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
-  m_Father: {fileID: 8073067991108680570}
+  m_Father: {fileID: 3833273362861422309}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 179.99998}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25514,7 +25545,7 @@ MonoBehaviour:
     lineCount: 7
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
