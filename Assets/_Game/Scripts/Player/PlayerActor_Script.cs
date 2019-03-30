@@ -316,8 +316,10 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    Vector3 positionLeft = gameObjectThrusterLeft.transform.localPosition;
 	    Vector3 positionRight = gameObjectThrusterRight.transform.localPosition;
-	    gameObjectThrusterLeft.transform.localPosition = new Vector3(positionLeft.x, 0.7f + totalHeight , positionLeft.z);
-	    gameObjectThrusterRight.transform.localPosition = new Vector3(positionRight.x, 0.7f + totalHeight , positionRight.z);
+
+	    //gameObjectThrusterLeft.GetComponent<ParticleSystem>().startRotation3D =
+	    //gameObjectThrusterLeft.transform.localPosition = new Vector3(positionLeft.x, 0.7f + totalHeight , positionLeft.z);
+	    //gameObjectThrusterRight.transform.localPosition = new Vector3(positionRight.x, 0.7f + totalHeight , positionRight.z);
 
     }
 
