@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0254d76ec35781b47bf6a2d105fab4a4, type: 3}
-  m_Name: RuntimeScore
+  m_Script: {fileID: 11500000, guid: f5c4cfe182a0db240bc93834de7ed5bc, type: 3}
+  m_Name: A_Thrusters_Cue
   m_EditorClassIdentifier: 
-  player: "nbm,\u200B"
-  score: 1692337
-  level: 0
+  SoundEffect: {fileID: 8300000, guid: ed1b9d7cbed51894a8b7e8426b178f46, type: 3}
+  Volume: {x: 1, y: 1}
+  Loops: 1
