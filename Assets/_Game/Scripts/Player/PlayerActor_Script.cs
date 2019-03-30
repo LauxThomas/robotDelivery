@@ -66,6 +66,9 @@ public class PlayerActor_Script : MonoBehaviour
 	public Transform PlayerTransform { get; private set; }
 	public SkinnedMeshRenderer TopSkinnedMeshRenderer { get; private set; }
 
+	public ParticleSystem ThrusterSystemLeft { get; private set; }
+	public ParticleSystem ThrusterSystemRight { get; private set; }
+
 	private IInputProvider _playerInputProvider;
 	private JumpSpringFX _playerSpringScript;
 
@@ -89,6 +92,8 @@ public class PlayerActor_Script : MonoBehaviour
 
 		PlayerTransform = gameObjectPlayer.GetComponent<Transform>();
 		TopSkinnedMeshRenderer = gameObjectTopModel.GetComponent<SkinnedMeshRenderer>();
+		ThrusterSystemLeft = gameObjectThrusterLeft.GetComponent<ParticleSystem>();
+		ThrusterSystemRight = gameObjectThrusterRight.GetComponent<ParticleSystem>();
 
 	}
 
@@ -209,12 +214,14 @@ public class PlayerActor_Script : MonoBehaviour
 	    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
 	    Vector3 newTopPosition = bottomPosition + vectorBetweenRigids.normalized * totalHeight;
 
-	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y - ColliderBottom.radius, bottomPosition.z);
+	    PlayerTransform.position = new Vector3(bottomPosition.x, bottomPosition.y, bottomPosition.z);
 	    RigidbodyTop.MovePosition(newTopPosition);
 	    // RigidbodyTop.velocity = Vector3.zero;
 
 	    float angleRadian = Mathf.Atan2(vectorBetweenRigids.y, vectorBetweenRigids.x);
 	    TurnPlayerToAngle(RadianToDegree(angleRadian));
+	    //ThrusterSystemLeft.startRotation3D = new Vector3(0,0,90 - getAngleOfCharacter());
+	    //ThrusterSystemRight.startRotation3D = new Vector3(0,0,90 + getAngleOfCharacter());
     }
 
     void ProcessGravity()
@@ -317,16 +324,11 @@ public class PlayerActor_Script : MonoBehaviour
 	    Vector3 positionLeft = gameObjectThrusterLeft.transform.localPosition;
 	    Vector3 positionRight = gameObjectThrusterRight.transform.localPosition;
 
-	    //gameObjectThrusterLeft.GetComponent<ParticleSystem>().startRotation3D =
-	    //gameObjectThrusterLeft.transform.localPosition = new Vector3(positionLeft.x, 0.7f + totalHeight , positionLeft.z);
-	    //gameObjectThrusterRight.transform.localPosition = new Vector3(positionRight.x, 0.7f + totalHeight , positionRight.z);
 
     }
 
     public GameObject popPackage()
     {
-
-
 	    if (packageList.Count > 0)
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];

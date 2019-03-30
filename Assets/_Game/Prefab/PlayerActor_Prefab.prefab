@@ -1304,6 +1304,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc920741ba2034f4eba78edb9e333577, type: 3}
 --- !u!1 &4965370057778234553 stripped
@@ -1387,6 +1392,16 @@ PrefabInstance:
     - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
         type: 3}
       propertyPath: InitialModule.randomizeRotationDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
+        type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 2.0734513
+      objectReference: {fileID: 0}
+    - target: {fileID: 439685124306860563, guid: dc920741ba2034f4eba78edb9e333577,
+        type: 3}
+      propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
