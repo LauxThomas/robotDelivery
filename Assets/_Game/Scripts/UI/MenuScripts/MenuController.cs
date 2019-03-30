@@ -17,8 +17,7 @@ public class MenuController : MonoBehaviour
 	public GameObject endScreen;
 	public GameObject highScoreTable;
 
-	[SerializeField]
-	private RuntimeScore runtimeScore;
+	[SerializeField] private RuntimeScore runtimeScore;
 
 
 	public List<GameObject> menus;
@@ -38,8 +37,6 @@ public class MenuController : MonoBehaviour
 		menus.Add(PauseTutorialMenu);
 		menus.Add(highScoreMenu);
 		menus.Add(endScreen);
-
-
 	}
 
 	private void Update()
@@ -80,10 +77,9 @@ public class MenuController : MonoBehaviour
 	public void startGame()
 	{
 		//GameManager.startLevel(1);
-		runtimeScore.level = 1;
+		runtimeScore.level = 0;
 		//SceneManager.LoadScene("Packageloader");
 		SceneManager.LoadScene("insertName");
-
 	}
 
 	public void quitGame()
@@ -96,6 +92,7 @@ public class MenuController : MonoBehaviour
 	{
 		SceneManager.LoadScene("Packageloader");
 	}
+
 	public void startNextLevel()
 	{
 		runtimeScore.level += 1;
@@ -127,8 +124,6 @@ public class MenuController : MonoBehaviour
 		enable(endScreen);
 		highScoreTable.GetComponent<HighscoreTable>().setLevel(finishedLevel);
 		level = finishedLevel;
-
-
 	}
 
 	public void back2Game()
@@ -163,9 +158,15 @@ public class MenuController : MonoBehaviour
 	{
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		FindObjectOfType<TutorialController>().disableAll();
-		//GetComponent<TutorialController>().disableAll();
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
-
 		//enable the scripts again
+	}
+
+	public void resumeGame()
+	{
+
+		enable(null);
+		HUD.GetComponent<HUDScript>().toggleHUD(true);
+		Time.timeScale = 1; //oder GameManger.ResumeGame();
 	}
 }
