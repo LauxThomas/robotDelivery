@@ -10,4 +10,6 @@ public interface IInputProvider
 	float ForceFromJet();
 
 	float JumpPower();
+
+	float ResetButton();
 }
