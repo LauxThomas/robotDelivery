@@ -164,8 +164,9 @@ public class PlayerActor_Script : MonoBehaviour
 	    }
 	    else if (isJumping && isGrounded)
 		{
-			RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
-			RigidbodyTop.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			Vector3 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
+			RigidbodyBottom.AddForce(vectorBetweenRigids.normalized * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			RigidbodyTop.AddForce(vectorBetweenRigids.normalized * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
 			isJumping = false;
 			collectedJumpPower = 0;
 			_playerSpringScript.ApplyTension(0);
