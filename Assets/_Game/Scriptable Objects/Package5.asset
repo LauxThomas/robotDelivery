@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f06c96b4400f1419e9b7c0293626d8, type: 3}
+  m_Name: Package5
+  m_EditorClassIdentifier: 
+  name: Coffin of a brave Lemming
+  description: A coffin with the corpse of the bravest Lemming.
+  image: {fileID: 21300000, guid: 3b2dac48d96b908409ce38204c781f6b, type: 3}
+  scoreValue: 75000
+  slotsNeeded: 1
+  packageMesh: {fileID: 4296958372071654282, guid: 61eb97589326b244a89fe9001ffff144,
+    type: 3}

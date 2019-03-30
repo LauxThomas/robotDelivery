@@ -17,7 +17,9 @@ public class MenuController : MonoBehaviour
 	public GameObject endScreen;
 	public GameObject highScoreTable;
 
-	public PackageLoader packageLoader;
+	[SerializeField]
+	private RuntimeScore runtimeScore;
+
 
 	public List<GameObject> menus;
 
@@ -59,9 +61,9 @@ public class MenuController : MonoBehaviour
 
 	public void showMainMenu()
 	{
-		//TODO:
 		//GameManager.resetGame();
-		enable(MainMenu);
+		SceneManager.LoadScene("MainMenu");
+		//enable(MainMenu);
 	}
 
 	public void showPauseMenu()
@@ -78,6 +80,10 @@ public class MenuController : MonoBehaviour
 	public void startGame()
 	{
 		//GameManager.startLevel(1);
+		runtimeScore.level = 1;
+		//SceneManager.LoadScene("Packageloader");
+		SceneManager.LoadScene("insertName");
+
 	}
 
 	public void quitGame()
@@ -88,12 +94,12 @@ public class MenuController : MonoBehaviour
 
 	public void restartLevel()
 	{
-		//GameManager.startLevel(GameManager.getCurrentLevel); //am besten mit Time.timeScale = 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 	public void startNextLevel()
 	{
-		//GameManager.startLevel(GameManager.getCurrentLevel+1);
-		packageLoader.levelID = level+1;
+		runtimeScore.level += 1;
+		SceneManager.LoadScene("Packageloader");
 	}
 
 	public void showCredits()
@@ -148,7 +154,6 @@ public class MenuController : MonoBehaviour
 
 	public void pauseGame()
 	{
-		Debug.Log("GAME PAUSED");
 		HUD.GetComponent<HUDScript>().toggleHUD(false);
 		Time.timeScale = 0; //oder GameManger.PauseGame();
 		//Disable scripts that still work while timescale is set to 0
@@ -156,7 +161,6 @@ public class MenuController : MonoBehaviour
 
 	public void continueGame()
 	{
-		Debug.Log("GAME CONTINUED");
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		FindObjectOfType<TutorialController>().disableAll();
 		//GetComponent<TutorialController>().disableAll();

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="Scriptable Objects", menuName="Scores/ScoreBoard", order = 2)]
+[CreateAssetMenu(fileName = "Scriptable Objects", menuName = "Scores/ScoreBoard", order = 2)]
 public class ScoreBoard : ScriptableObject
 {
 	public int[,] scoreList = new int[5, 5]
@@ -17,13 +17,12 @@ public class ScoreBoard : ScriptableObject
 
 	public String[,] playerNames = new String[5, 5]
 	{
-		{ " Hanseins", " hanszwei", "dreierhans ", "vierervolker ", "fünferfrank "},
-		{ " erwineins", " zachariaszwei", "dieterdrei ", " volfgangvier", " frederik der 5."},
-		{ " dritteslevel", " asdg", " rdgjtz", "zukjhdf ", " sfgjdgh"},
-		{ " ", " ", " ", " ", " "},
-		{ " ", " ", " ", " ", " "},
+		{" Hanseins", " hanszwei", "dreierhans ", "vierervolker ", "fünferfrank "},
+		{" erwineins", " zachariaszwei", "dieterdrei ", " volfgangvier", " frederik der 5."},
+		{" dritteslevel", " asdg", " rdgjtz", "zukjhdf ", " sfgjdgh"},
+		{" ", " ", " ", " ", " "},
+		{" ", " ", " ", " ", " "},
 	};
-
 
 
 	public int[,] GetScoreBoard()
@@ -38,25 +37,40 @@ public class ScoreBoard : ScriptableObject
 
 	public void CheckAndInsertScore(int level, int score, String playerName)
 	{
-		int[,] tmpNumber = scoreList;
-		String[,] tmpName = playerNames;
-
+		bool isInsert = false;
+		Debug.Log("CheckAndInsert" + level + score + playerName);
+		int saveNumber;
+		int writeNumber = 0;
+		String savePlayer;
+		String writePlayer = "";
 		for (int i = 0; i < 5; i++)
 		{
-			if (scoreList[level, i] < score)
+			if (isInsert)
 			{
-				for (int j = i+1; j < 5; j++)
-				{
-					tmpNumber[level, j] = scoreList[level, i];
-					tmpName[level, j] = playerNames[level, i];
-				}
+				saveNumber = scoreList[level, i];
+				savePlayer = playerNames[level, i];
+				Debug.Log("savenumber1: "+saveNumber);
+				scoreList[level, i] = writeNumber;
+				playerNames[level, i] = writePlayer;
+				Debug.Log("savenumber2: "+saveNumber);
 
+				writeNumber = saveNumber;
+				writePlayer = savePlayer;
+			}
+
+			if (scoreList[level, i] < score && !isInsert)
+			{
+				Debug.Log("erste if");
+				saveNumber = scoreList[level, i];
+				savePlayer = playerNames[level, i];
 				scoreList[level, i] = score;
 				playerNames[level, i] = playerName;
 
+				writeNumber = saveNumber;
+				writePlayer = savePlayer;
+				isInsert = true;
 			}
 		}
-
 	}
 
 	public void WipeScoreBoard()
@@ -68,7 +82,6 @@ public class ScoreBoard : ScriptableObject
 				scoreList[i, j] = 0;
 				playerNames[i, j] = " ";
 			}
-
 		}
 	}
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 
 
@@ -11,7 +12,8 @@ public class PackageLoader : MonoBehaviour
     
     [SerializeField]
     private Button next;
-    public int levelID;
+    [SerializeField]
+    private RuntimeScore nextLevel;
     [SerializeField]
     private Button previous;
     [SerializeField]
@@ -89,6 +91,7 @@ public class PackageLoader : MonoBehaviour
         if(package.Length > 0 && currentPackageSlot < 8){
            
             if(currentPackageSlot + packageList[currentChoice].slotsNeeded <= 8){
+                loadedPackages[currentPackageSlot].gameObject.SetActive(true);
                 loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
                 loadedPackagesList.Add(packageList[currentChoice]);
                 currentPackageSlot += packageList[currentChoice].slotsNeeded;
@@ -104,6 +107,7 @@ public class PackageLoader : MonoBehaviour
                 currentPackageSlot = 0;
              loadedPackagesList.RemoveAt(loadedPackagesList.Count-1);
              loadedPackages[currentPackageSlot].sprite = null;
+             loadedPackages[currentPackageSlot].gameObject.SetActive(false);
          }
     }
 
@@ -113,6 +117,9 @@ public class PackageLoader : MonoBehaviour
         }
         currentPackageSlot = 0;
         loadedPackagesList.Clear();
+        foreach(Image i in loadedPackages){
+            i.gameObject.SetActive(false);
+        }
     }
 
     public void onClickMenu(){
@@ -123,6 +130,19 @@ public class PackageLoader : MonoBehaviour
         if(loadedPackagesList.Count > 0 ){
             for(int i = 0; i < loadedPackagesList.Count; i++){
                 finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
+            }
+            
+            switch(nextLevel.level){
+                case 0 : SceneManager.LoadScene("Blockout");
+                        break;
+                case 1 : SceneManager.LoadScene("Blockout Level 1");
+                        break;
+                case 2 : SceneManager.LoadScene("Blockout Level 2");
+                        break;
+                case 3 : SceneManager.LoadScene("Blockout Level 3");
+                        break;
+                default: break;
+
             }
         } else {
             Debug.Log("No packages loaded!!!");

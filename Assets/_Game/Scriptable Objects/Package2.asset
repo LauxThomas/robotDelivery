@@ -17,4 +17,5 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 2d7197818f641e24c9a067660c4f17e1, type: 3}
   scoreValue: 50000
   slotsNeeded: 1
-  packageMesh: {fileID: 100000, guid: 10b91db4bac2f934a8f6a5c545d971e3, type: 3}
+  packageMesh: {fileID: 8527457250711210781, guid: 0c7410970f1a0314f98a2d9f66117ba6,
+    type: 3}
