@@ -187,7 +187,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    // Jumping Controll
 
-	    if (_playerInputProvider.JumpPower() > 0 && isGrounded)
+	    if (_playerInputProvider.JumpPower() > 0)
 	    {
 		    isJumping = true;
 		    if(collectedJumpPower < maxjumpMultiplier) collectedJumpPower += 1;
@@ -204,7 +204,13 @@ public class PlayerActor_Script : MonoBehaviour
 			_playerSpringScript.ApplyTension(0);
 			SoundCtrl.ReleaseJump();
 		}
-
+	    else if(isJumping)
+	    {
+		    isJumping = false;
+		    collectedJumpPower = 0;
+		    _playerSpringScript.ApplyTension(0);
+		    SoundCtrl.ReleaseJump();
+	    }
 	}
 
 
@@ -295,17 +301,18 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    packageList.Add(package);
 			    runtimeScore.AddScore(package.scoreValue);
-			    currentScoreDifficulty += package.scoreValue / 100000f;
+			    currentScoreDifficulty += package.scoreValue / 1000000f;
 		    }
 	    }
 	    setHeight(/*(packageList.Count>0?packageList.Count:1)*/packageList.Count);
 
 	    for (int i = 0; i<packageList.Count; i++)
 	    {
+
 		    GameObject packageObjectInstantiate = Instantiate(((Package) packageList[i]).packageMesh, Vector3.zero, new Quaternion());
 		    packageObjectInstantiate.transform.parent = gameObjectPlayer.transform;
 		    packageObjectInstantiate.transform.eulerAngles = new Vector3(-90f, 90f, 0);
-			packageObjectInstantiate.transform.position = gameObjectPlayer.transform.position + new Vector3(0, 1.3f + packageHeight * (0.5f + i) ,0);
+			packageObjectInstantiate.transform.position = gameObjectPlayer.transform.position + new Vector3(0, 1f + packageHeight * (0.5f + i) ,0);
 
 			packageObjectList.Add(packageObjectInstantiate);
 	    }
@@ -316,15 +323,13 @@ public class PlayerActor_Script : MonoBehaviour
     private void setHeight(int newHeight)
     {
 	    height = (newHeight!=0?newHeight:1);
-	    totalHeight = 1.3f + packageHeight * height;
+	    totalHeight = 1f + packageHeight * height;
 
 	    gameObjectUpperPart.transform.localScale = new Vector3(2.75f,0.3f * height * packageHeight,2.75f);
 	    gameObjectHeadPart.transform.localScale = new Vector3(1f/2.75f, 1 / (0.3f * height * packageHeight), 1f/2.75f);
 
 	    Vector3 positionLeft = gameObjectThrusterLeft.transform.localPosition;
 	    Vector3 positionRight = gameObjectThrusterRight.transform.localPosition;
-
-
     }
 
     public GameObject popPackage()
@@ -333,11 +338,11 @@ public class PlayerActor_Script : MonoBehaviour
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
 		    runtimeScore.SubScore(temp.scoreValue);
-		    currentScoreDifficulty -= temp.scoreValue / 100000f;
+		    currentScoreDifficulty -= temp.scoreValue / 1000000f;
 		    packageList.Remove(temp);
 
 				SoundCtrl.LosePackage();
-			}
+		}
 
 	    GameObject result = null;
 	    if (packageObjectList.Count > 0)
