@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 
 
 public class PackageLoader : MonoBehaviour
 {
-
+    
     [SerializeField]
     private Button next;
     [SerializeField]
@@ -32,6 +33,12 @@ public class PackageLoader : MonoBehaviour
     private Image[] loadedPackages;
     [SerializeField]
     private PackageList finalLoadedList;
+     [SerializeField]
+    private AudioSource aSource;
+    [SerializeField]
+    private AudioClip addPackage;
+     [SerializeField]
+    private AudioClip deletePackage;
     // Start is called before the first frame update
     private List<Package> packageList;
     private List<Package> loadedPackagesList;
@@ -89,14 +96,20 @@ public class PackageLoader : MonoBehaviour
 
     public void onClickAdd(){
         if(package.Length > 0 && currentPackageSlot < 8){
-
+           
             if(currentPackageSlot + packageList[currentChoice].slotsNeeded <= 8){
                 loadedPackages[currentPackageSlot].gameObject.SetActive(true);
                 loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
                 loadedPackagesList.Add(packageList[currentChoice]);
                 currentPackageSlot += packageList[currentChoice].slotsNeeded;
+                aSource.clip = addPackage;
+                aSource.Play();
             }
-
+            else {
+                aSource.clip = deletePackage;
+                aSource.Play();
+            }
+            
         }
     }
 
@@ -108,6 +121,11 @@ public class PackageLoader : MonoBehaviour
              loadedPackagesList.RemoveAt(loadedPackagesList.Count-1);
              loadedPackages[currentPackageSlot].sprite = null;
              loadedPackages[currentPackageSlot].gameObject.SetActive(false);
+             aSource.clip = deletePackage;
+            aSource.Play();
+         }else{
+            aSource.clip = deletePackage;
+            aSource.Play();
          }
     }
 
@@ -120,11 +138,12 @@ public class PackageLoader : MonoBehaviour
         foreach(Image i in loadedPackages){
             i.gameObject.SetActive(false);
         }
+        aSource.clip = deletePackage;
+            aSource.Play();
     }
 
-    public void onClickMenu()
-    {
-	    SceneManager.LoadScene("MainMenu");
+    public void onClickMenu(){
+       //Scene wechseln
     }
 
     public void onClickStart(){
@@ -132,7 +151,7 @@ public class PackageLoader : MonoBehaviour
             for(int i = 0; i < loadedPackagesList.Count; i++){
                 finalLoadedList.loadedPackages[i] = loadedPackagesList[i];
             }
-
+            
             switch(nextLevel.level){
                 case 0 : SceneManager.LoadScene("Blockout");
                         break;
@@ -143,7 +162,6 @@ public class PackageLoader : MonoBehaviour
                 case 3 : SceneManager.LoadScene("Blockout Level 3");
                         break;
                 default: break;
-
             }
         } else {
             Debug.Log("No packages loaded!!!");

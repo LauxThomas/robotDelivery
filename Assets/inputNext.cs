@@ -16,4 +16,9 @@ public class inputNext : MonoBehaviour
 		rts.player = inputField.GetComponent<TextMeshProUGUI>().text;
 		SceneManager.LoadScene("Levelselection");
 	}
+
+	public void showMainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
 }
