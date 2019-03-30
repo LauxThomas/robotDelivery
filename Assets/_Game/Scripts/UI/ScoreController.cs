@@ -23,14 +23,14 @@ public class ScoreController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		updateScoreText();
 		timeFloat += Time.deltaTime;
 		timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + timeFloat.ToString("F2");
+		updateScoreText();
 	}
 
 	private void updateScoreText()
 	{
-//		gameObject.GetComponent<TextMeshProUGUI>().text = "Score: " + runtimeScore.score.ToString("F2");
+		gameObject.GetComponent<TextMeshProUGUI>().text = "Score: " + runtimeScore.score;
 	}
 //	public void savePlayerScore(String playerName)
 //	{
