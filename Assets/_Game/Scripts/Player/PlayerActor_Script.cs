@@ -33,6 +33,7 @@ public class PlayerActor_Script : MonoBehaviour
 	private float totalHeight = 1;
 
 	[SerializeField] private float speed = 1;
+	[SerializeField] private float maxSpeed = 1;
 	[SerializeField] private float forceJet = 1;
 	[SerializeField] private float gravityForceTop = 1;
 	[SerializeField] private float gravityForceBottom = 1;
@@ -48,6 +49,7 @@ public class PlayerActor_Script : MonoBehaviour
 	private bool isJumping = false;
 
 	private int collectedJumpPower = 0;
+	private int currentScoreDifficulty = 0;
 
 	private ArrayList packageList = new ArrayList();
 
@@ -110,12 +112,17 @@ public class PlayerActor_Script : MonoBehaviour
 	{
 		Vector3 direction = _playerInputProvider.Direction();
 
-	    // Takes input to change the rigidbody of the wheel and moves it around
-	    if(isGrounded) RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+		// Takes input to change the rigidbody of the wheel and moves it around
+		// if(isGrounded) RigidbodyBottom.MovePosition(RigidbodyBottom.position + Time.fixedDeltaTime * speed * direction);
+		if (isGrounded) RigidbodyBottom.AddForce(Time.fixedDeltaTime * speed * direction, ForceMode.Impulse);
+		if (Mathf.Abs(RigidbodyBottom.velocity.x) >= maxSpeed)
+		{
+			RigidbodyBottom.velocity = RigidbodyBottom.velocity.normalized * maxSpeed;
+		}
 
-	    // If the position of the toppart is the same direction from the BottomPart as the Input
-	    // And if the Angle the character is pointing at is +/- stableAngle
-	    if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
+		// If the position of the toppart is the same direction from the BottomPart as the Input
+		// And if the Angle the character is pointing at is +/- stableAngle
+		if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
 	        && (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360-stableAngle))
 	    {
 		    // Take out the force of the Gravity
@@ -251,13 +258,14 @@ public class PlayerActor_Script : MonoBehaviour
     public void setPackagesFromScriptableObjects()
     {
 	    packageList.Clear();
+	    currentScoreDifficulty = 0;
 	    foreach (Package package in packageObject.loadedPackages)
 	    {
 		    if (package != null)
 		    {
 			    packageList.Add(package);
 			    runtimeScore.AddScore(package.scoreValue);
-
+			    currentScoreDifficulty += package.scoreValue;
 		    }
 	    }
 	    setHeight((packageList.Count>0?packageList.Count:1));
@@ -295,6 +303,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
 		    runtimeScore.SubScore(temp.scoreValue);
+		    currentScoreDifficulty -= temp.scoreValue;
 		    packageList.Remove(temp);
 	    }
 
