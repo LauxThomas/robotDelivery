@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ScorePickUp : MonoBehaviour
 {
 
@@ -10,8 +11,12 @@ public class ScorePickUp : MonoBehaviour
 	private Collider col;
 	private MeshRenderer mr;
 
+	public AudioCueBaseAsset CollectedSFX;
+	private new AudioSource audio;
+
 	private void Awake()
 	{
+		audio = GetComponent<AudioSource>();
 		col  = GetComponent<Collider>();
 		mr = GetComponent<MeshRenderer>();
 	}
@@ -21,6 +26,8 @@ public class ScorePickUp : MonoBehaviour
 		scoreController.AddScore(score);
 		col.enabled = false;
 		mr.enabled = false;
+
+		CollectedSFX.PlayOneShot(audio);
 	}
 
 }
