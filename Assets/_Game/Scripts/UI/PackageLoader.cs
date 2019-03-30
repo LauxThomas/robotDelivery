@@ -91,6 +91,7 @@ public class PackageLoader : MonoBehaviour
         if(package.Length > 0 && currentPackageSlot < 8){
            
             if(currentPackageSlot + packageList[currentChoice].slotsNeeded <= 8){
+                loadedPackages[currentPackageSlot].gameObject.SetActive(true);
                 loadedPackages[currentPackageSlot].sprite = packageList[currentChoice].image;
                 loadedPackagesList.Add(packageList[currentChoice]);
                 currentPackageSlot += packageList[currentChoice].slotsNeeded;
@@ -106,6 +107,7 @@ public class PackageLoader : MonoBehaviour
                 currentPackageSlot = 0;
              loadedPackagesList.RemoveAt(loadedPackagesList.Count-1);
              loadedPackages[currentPackageSlot].sprite = null;
+             loadedPackages[currentPackageSlot].gameObject.SetActive(false);
          }
     }
 
