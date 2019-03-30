@@ -164,8 +164,9 @@ public class PlayerActor_Script : MonoBehaviour
 	    }
 	    else if (isJumping && isGrounded)
 		{
-			RigidbodyBottom.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
-			RigidbodyTop.AddForce(Vector3.up * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			Vector3 vectorBetweenRigids = RigidbodyTop.position - RigidbodyBottom.position;
+			RigidbodyBottom.AddForce(vectorBetweenRigids.normalized * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
+			RigidbodyTop.AddForce(vectorBetweenRigids.normalized * jumpPower * Time.fixedDeltaTime * collectedJumpPower, ForceMode.Impulse);
 			isJumping = false;
 			collectedJumpPower = 0;
 			_playerSpringScript.ApplyTension(0);
@@ -255,6 +256,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    if (package != null)
 		    {
 			    packageList.Add(package);
+			    runtimeScore.AddScore(package.scoreValue);
 
 		    }
 	    }
@@ -292,6 +294,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    if (packageList.Count > 0)
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
+		    runtimeScore.SubScore(temp.scoreValue);
 		    packageList.Remove(temp);
 	    }
 
