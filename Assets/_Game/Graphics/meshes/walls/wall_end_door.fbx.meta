@@ -6,10 +6,22 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
+    2100002: wall_end_door_side_MAT
+    2100004: wall_end_door_mid_MAT
     2300000: //RootNode
     3300000: //RootNode
     4300000: wall_end_door_low
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_end_door_mid_MAT
+    second: {fileID: 2100000, guid: e3d0407e07394d743bd72113a919e298, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_end_door_side_MAT
+    second: {fileID: 2100000, guid: 7ba80134037d36347a3d2cdf32b1f8fb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
