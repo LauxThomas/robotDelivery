@@ -117,6 +117,9 @@ public class PackageLoader : MonoBehaviour
         }
         currentPackageSlot = 0;
         loadedPackagesList.Clear();
+        foreach(Image i in loadedPackages){
+            i.gameObject.SetActive(false);
+        }
     }
 
     public void onClickMenu(){
