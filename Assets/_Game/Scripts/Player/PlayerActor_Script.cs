@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerSoundController))]
 public class PlayerActor_Script : MonoBehaviour
 {
 	[SerializeField] private GameObject gameObjectTop;
@@ -68,8 +69,15 @@ public class PlayerActor_Script : MonoBehaviour
 	private IInputProvider _playerInputProvider;
 	private JumpSpringFX _playerSpringScript;
 
+	private PlayerSoundController SoundCtrl;
+
+	public WheelRotation WheelRotator;
+
+
 	private void Awake()
 	{
+		SoundCtrl = GetComponent<PlayerSoundController>();
+
 		_playerInputProvider = GetComponent<IInputProvider>();
 		_playerSpringScript = gameObjectSpringPart.GetComponent<JumpSpringFX>();
 
@@ -119,6 +127,15 @@ public class PlayerActor_Script : MonoBehaviour
 			RigidbodyBottom.velocity = RigidbodyBottom.velocity.normalized * maxSpeed;
 		}
 
+		if (isGrounded)
+		{
+			WheelRotator.SetTurnRate(RigidbodyBottom.velocity.x / maxSpeed);
+		}
+		else
+		{
+			WheelRotator.SetTurnRate(0.0F);
+		}
+
 		// If the position of the toppart is the same direction from the BottomPart as the Input
 		// And if the Angle the character is pointing at is +/- stableAngle
 		if (((isTopRightOfBody() && direction.normalized.Equals(Vector3.right)) || (!isTopRightOfBody() && direction.normalized.Equals(Vector3.left)))
@@ -143,6 +160,10 @@ public class PlayerActor_Script : MonoBehaviour
 		    else
 		    {
 			    pushingJetToLeft = isTopRightOfBody();
+
+				SoundCtrl.SetThruster(true);
+
+
 			    isJetActive = true;
 			    if (RigidbodyTop.velocity.y < 0f && ((RigidbodyTop.velocity.x > 0f && pushingJetToLeft) || (RigidbodyTop.velocity.x < 0f && !pushingJetToLeft)))
 				    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x, 0, RigidbodyTop.velocity.z);
@@ -152,7 +173,8 @@ public class PlayerActor_Script : MonoBehaviour
 	    else
 	    {
 		    isJetActive = false;
-		    directionalJetVector = Vector3.zero;
+				SoundCtrl.SetThruster(false);
+			directionalJetVector = Vector3.zero;
 		    gameObjectThrusterRight.SetActive(false);
 		    gameObjectThrusterLeft.SetActive(false);
 	    }
@@ -165,7 +187,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    isJumping = true;
 		    if(collectedJumpPower < maxjumpMultiplier) collectedJumpPower += 1;
 		    _playerSpringScript.ApplyTension(collectedJumpPower/maxjumpMultiplier);
-
+				SoundCtrl.BeginJumpCharge();
 	    }
 	    else if (isJumping && isGrounded)
 		{
@@ -175,7 +197,8 @@ public class PlayerActor_Script : MonoBehaviour
 			isJumping = false;
 			collectedJumpPower = 0;
 			_playerSpringScript.ApplyTension(0);
-	    }
+			SoundCtrl.ReleaseJump();
+		}
 
 	}
 
@@ -300,13 +323,17 @@ public class PlayerActor_Script : MonoBehaviour
 
     public GameObject popPackage()
     {
+
+
 	    if (packageList.Count > 0)
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
 		    runtimeScore.SubScore(temp.scoreValue);
 		    currentScoreDifficulty -= temp.scoreValue / 100000f;
 		    packageList.Remove(temp);
-	    }
+
+				SoundCtrl.LosePackage();
+			}
 
 	    GameObject result = null;
 	    if (packageObjectList.Count > 0)
