@@ -20,15 +20,24 @@ public class PlayerSoundController : MonoBehaviour
 	[SerializeField]
 	protected AudioCueBaseAsset Thrusters; // Loops
 
+	private bool JumpGate = false;
 
 	public void BeginJumpCharge()
 	{
-		JumpCharge.PlayOneShot(EffectsSource);
+		if(!JumpGate)
+		{
+			JumpGate = true;
+			JumpCharge.PlayOneShot(EffectsSource);
+		}
 	}
 
 	public void ReleaseJump()
 	{
-		JumpLaunch.PlayOneShot(EffectsSource);
+		if(JumpGate)
+		{
+			JumpLaunch.PlayOneShot(EffectsSource);
+			JumpGate = false;
+		}
 	}
 
 	public void LosePackage()
@@ -38,11 +47,11 @@ public class PlayerSoundController : MonoBehaviour
 
 	public void SetThruster(bool InEnabled)
 	{
-		if (InEnabled)
+		if (InEnabled && !ThrusterSource.isPlaying)
 		{
 			Thrusters.PlayLoop(ThrusterSource);
 		}
-		else
+		else if(!InEnabled && ThrusterSource.isPlaying)
 		{
 			ThrusterSource.Stop();
 		}

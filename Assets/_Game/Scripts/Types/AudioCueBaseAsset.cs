@@ -8,10 +8,13 @@ public class AudioCueBaseAsset : ScriptableObject
 	public AudioClip SoundEffect;
 	public Vector2 Volume = new Vector2(1,1);
 
+	public float Speed = 1F;
+
 	public bool Loops = false;
 
 	public void PlayOneShot(AudioSource source)
 	{
+		source.pitch = Speed;
 		source.PlayOneShot(SoundEffect, Random.Range(Volume.x, Volume.y));
 	}
 
