@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerActor_Script : MonoBehaviour
@@ -24,6 +23,7 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private Material robotHeadFail;
 
 	[SerializeField] private PackageList packageObject;
+	[SerializeField] private RuntimeScore runtimeScore;
 
 	[SerializeField] private float timeInvulnerableToPackageLoss;
 	private float timeSinceLastPackageDropped = 0;
@@ -255,6 +255,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    if (package != null)
 		    {
 			    packageList.Add(package);
+
 		    }
 	    }
 	    setHeight((packageList.Count>0?packageList.Count:1));
