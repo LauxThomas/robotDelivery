@@ -466,10 +466,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  jetPower: 3
   timeInvulnerableToPackageLoss: 2
   speed: 15
   maxSpeed: 15
-  forceJet: 3
   gravityForceTop: 200
   gravityForceBottom: 400
   stableAngle: 45

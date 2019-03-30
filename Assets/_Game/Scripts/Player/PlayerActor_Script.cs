@@ -27,6 +27,8 @@ public class PlayerActor_Script : MonoBehaviour
 	[SerializeField] private PackageList packageObject;
 	[SerializeField] private RuntimeScore runtimeScore;
 	[SerializeField] private AnimationCurve difficultyCurve;
+	[SerializeField] private float jetPower;
+
 
 	[SerializeField] private float timeInvulnerableToPackageLoss;
 	private float timeSinceLastPackageDropped = 0;
@@ -37,7 +39,6 @@ public class PlayerActor_Script : MonoBehaviour
 
 	[SerializeField] private float speed = 1;
 	[SerializeField] private float maxSpeed = 1;
-	[SerializeField] private float forceJet = 1;
 	[SerializeField] private float gravityForceTop = 1;
 	[SerializeField] private float gravityForceBottom = 1;
 	[SerializeField] private float stableAngle = 10;
@@ -156,12 +157,12 @@ public class PlayerActor_Script : MonoBehaviour
 	    {
 		    if (isJetActive)
 		    {
-			    RigidbodyTop.AddForce(directionalJetVector * Time.fixedDeltaTime * forceJet, ForceMode.Impulse);
 
 			    Vector3 bottomPosition = RigidbodyBottom.position;
 			    Vector3 vectorBetweenRigids = RigidbodyTop.position - bottomPosition;
 
 			    directionalJetVector = new Vector3(vectorBetweenRigids.y*(pushingJetToLeft?-1:1), vectorBetweenRigids.x*(pushingJetToLeft?1:-1));
+			    RigidbodyTop.AddForce(directionalJetVector * Time.fixedDeltaTime * jetPower, ForceMode.Impulse);
 		    }
 		    else
 		    {
