@@ -258,6 +258,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449941691837329796, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb, type: 3}
 --- !u!1 &531754298 stripped
@@ -400,6 +410,26 @@ MonoBehaviour:
   PackageLoss: {fileID: 11400000, guid: dd24d52b64605724d964c44049e74393, type: 2}
   ThrusterSource: {fileID: 531754301}
   Thrusters: {fileID: 11400000, guid: e1e7c27bec1e0b345a43557d0a49d29a, type: 2}
+--- !u!1 &531754303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 630843237329406776, guid: 9cbd9fdc21ce8f4448b8382a8cad4ceb,
+    type: 3}
+  m_PrefabInstance: {fileID: 531754297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &531754304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531754303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29af3b56032060546b7643ff3486eb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnSpeed: 360
+  InterpSpeed: 2
 --- !u!1001 &1243521762
 PrefabInstance:
   m_ObjectHideFlags: 0
