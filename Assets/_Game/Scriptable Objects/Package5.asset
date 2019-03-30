@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Coffin of a brave Lemming
   description: A coffin with the corpse of the bravest Lemming.
-  image: {fileID: 0}
-  scoreValue: 0
-  slotsNeeded: 0
-  packageMesh: {fileID: 0}
+  image: {fileID: 21300000, guid: 3b2dac48d96b908409ce38204c781f6b, type: 3}
+  scoreValue: 75000
+  slotsNeeded: 1
+  packageMesh: {fileID: 4296958372071654282, guid: 61eb97589326b244a89fe9001ffff144,
+    type: 3}
