@@ -10,7 +10,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: wall_corner_low
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_corner_mid_MAT
+    second: {fileID: 2100000, guid: 31ace8ac23259b84395abae074d832d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_corner_side_MAT
+    second: {fileID: 2100000, guid: 203a346d874c89a4b8b9bcf52ca23710, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
