@@ -110,12 +110,17 @@ PrefabInstance:
     - target: {fileID: 2463607897120562522, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912933415966723959, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912933415966723959, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5912933415966723953, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
@@ -225,17 +230,27 @@ PrefabInstance:
     - target: {fileID: 5912933417090366264, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -181
+      value: -167
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912933417090366264, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 370
       objectReference: {fileID: 0}
     - target: {fileID: 5912933416921781086, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142590763898268643, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 216
       objectReference: {fileID: 0}
     - target: {fileID: 5912933415505722631, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07, type: 3}
