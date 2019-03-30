@@ -29,7 +29,7 @@ public class CheckOnGround : MonoBehaviour
 	private void FixedUpdate()
 	{
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.4f))
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.4f) || Physics.Raycast(transform.position, transform.TransformDirection((Vector3.down + Vector3.right).normalized), out hit, 0.4f) || Physics.Raycast(transform.position, transform.TransformDirection((Vector3.down + Vector3.left).normalized), out hit, 0.4f))
 		{
 			_playerActorScript.isGrounded = true;
 		}
