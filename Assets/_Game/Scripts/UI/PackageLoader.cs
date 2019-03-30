@@ -153,15 +153,17 @@ public class PackageLoader : MonoBehaviour
             }
             
             switch(nextLevel.level){
-                case 0 : SceneManager.LoadScene("Blockout");
+				case 0 : SceneManager.LoadScene("Blockout Tutorial");
                         break;
-                case 1 : SceneManager.LoadScene("Blockout Level 1");
+                case 1 : SceneManager.LoadScene("Blockout");
                         break;
-                case 2 : SceneManager.LoadScene("Blockout Level 2");
+                case 2 : SceneManager.LoadScene("Blockout Level 1");
                         break;
-                case 3 : SceneManager.LoadScene("Blockout Level 3");
+                case 3 : SceneManager.LoadScene("Blockout Level 2");
                         break;
-                case 4 : SceneManager.LoadScene("EndLevel");
+                case 4 : SceneManager.LoadScene("Blockout Level 3");
+                        break;
+                case 5 : SceneManager.LoadScene("EndLevel");
                         break;
                 default: break;
             }
@@ -174,15 +176,17 @@ public class PackageLoader : MonoBehaviour
 
     public void resetLevel(){
          switch(nextLevel.level){
-                case 0 : SceneManager.LoadScene("Blockout");
+				case 0 : SceneManager.LoadScene("Blockout Tutorial");
                         break;
-                case 1 : SceneManager.LoadScene("Blockout Level 1");
+                case 1 : SceneManager.LoadScene("Blockout");
                         break;
-                case 2 : SceneManager.LoadScene("Blockout Level 2");
+                case 2 : SceneManager.LoadScene("Blockout Level 1");
                         break;
-                case 3 : SceneManager.LoadScene("Blockout Level 3");
+                case 3 : SceneManager.LoadScene("Blockout Level 2");
                         break;
-                case 4 : SceneManager.LoadScene("EndLevel");
+                case 4 : SceneManager.LoadScene("Blockout Level 3");
+                        break;
+                case 5 : SceneManager.LoadScene("EndLevel");
                         break;
                 default: break;
             }
