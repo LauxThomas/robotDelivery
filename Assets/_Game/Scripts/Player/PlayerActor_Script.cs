@@ -25,6 +25,7 @@ public class PlayerActor_Script : MonoBehaviour
 
 	[SerializeField] private PackageList packageObject;
 	[SerializeField] private RuntimeScore runtimeScore;
+	[SerializeField] private AnimationCurve difficultyCurve;
 
 	[SerializeField] private float timeInvulnerableToPackageLoss;
 	private float timeSinceLastPackageDropped = 0;
@@ -49,8 +50,8 @@ public class PlayerActor_Script : MonoBehaviour
 	private bool isJetActive = false;
 	private bool isJumping = false;
 
-	private int collectedJumpPower = 0;
-	private int currentScoreDifficulty = 0;
+	public int collectedJumpPower = 0;
+	public float currentScoreDifficulty = 0;
 
 	private ArrayList packageList = new ArrayList();
 
@@ -68,11 +69,10 @@ public class PlayerActor_Script : MonoBehaviour
 	private IInputProvider _playerInputProvider;
 	private JumpSpringFX _playerSpringScript;
 
-	public AnimationCurve plot = new AnimationCurve();
-
 	private PlayerSoundController SoundCtrl;
 
 	public WheelRotation WheelRotator;
+
 
 	private void Awake()
 	{
@@ -145,7 +145,6 @@ public class PlayerActor_Script : MonoBehaviour
 		    RigidbodyTop.velocity = new Vector3(RigidbodyTop.velocity.x,  0);
 	    }
 
-
 	    // Jet Controll
 	    if (_playerInputProvider.ForceFromJet() > 0)
 	    {
@@ -163,7 +162,7 @@ public class PlayerActor_Script : MonoBehaviour
 			    pushingJetToLeft = isTopRightOfBody();
 
 				SoundCtrl.SetThruster(true);
-					
+
 
 			    isJetActive = true;
 			    if (RigidbodyTop.velocity.y < 0f && ((RigidbodyTop.velocity.x > 0f && pushingJetToLeft) || (RigidbodyTop.velocity.x < 0f && !pushingJetToLeft)))
@@ -223,22 +222,24 @@ public class PlayerActor_Script : MonoBehaviour
 		RigidbodyBottom.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceBottom);
 		if (getAngleOfCharacter() < 360f && getAngleOfCharacter() > 0f)
 		{
-			RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop);
+			RigidbodyTop.AddForce(Vector3.down * Time.fixedDeltaTime * gravityForceTop * difficultyCurve.Evaluate(currentScoreDifficulty));
 		}
     }
 
     void ProcessCharacterAngle()
     {
-	    if (getAngleOfCharacter() <= stableAngle || getAngleOfCharacter() >= 360 - stableAngle)
+	    float currentAngle = getAngleOfCharacter();
+
+	    if (currentAngle <= stableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)) || currentAngle >= 360 - stableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)))
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadNeutral,robotHeadNeutral,robotHeadNeutral};
-	    }else if (getAngleOfCharacter() > stableAngle && getAngleOfCharacter() < unstableAngle)
+	    }else if (currentAngle > stableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)) && currentAngle < unstableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)))
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadLeft,robotHeadLeft,robotHeadLeft};
-	    }else if (getAngleOfCharacter() < 360 - stableAngle && getAngleOfCharacter() > 360 - unstableAngle)
+	    }else if (currentAngle < 360 - stableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)) && currentAngle > 360 - unstableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)))
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadRight,robotHeadRight,robotHeadRight};
-	    }else if (getAngleOfCharacter() >= unstableAngle || getAngleOfCharacter() <= 360 - stableAngle)
+	    }else if (currentAngle >= unstableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)) || currentAngle <= 360 - stableAngle*(1-difficultyCurve.Evaluate(currentScoreDifficulty)))
 	    {
 		    TopSkinnedMeshRenderer.materials = new []{robotHeadFail,robotHeadFail,robotHeadFail};
 		    if (Time.time - timeSinceLastPackageDropped >= timeInvulnerableToPackageLoss)
@@ -287,10 +288,10 @@ public class PlayerActor_Script : MonoBehaviour
 		    {
 			    packageList.Add(package);
 			    runtimeScore.AddScore(package.scoreValue);
-			    currentScoreDifficulty += package.scoreValue;
+			    currentScoreDifficulty += package.scoreValue / 100000f;
 		    }
 	    }
-	    setHeight((packageList.Count>0?packageList.Count:1));
+	    setHeight(/*(packageList.Count>0?packageList.Count:1)*/packageList.Count);
 
 	    for (int i = 0; i<packageList.Count; i++)
 	    {
@@ -309,6 +310,7 @@ public class PlayerActor_Script : MonoBehaviour
     {
 	    height = (newHeight!=0?newHeight:1);
 	    totalHeight = 1.3f + packageHeight * height;
+
 	    gameObjectUpperPart.transform.localScale = new Vector3(2.75f,0.3f * height * packageHeight,2.75f);
 	    gameObjectHeadPart.transform.localScale = new Vector3(1f/2.75f, 1 / (0.3f * height * packageHeight), 1f/2.75f);
 
@@ -322,12 +324,12 @@ public class PlayerActor_Script : MonoBehaviour
     public GameObject popPackage()
     {
 
-		
+
 	    if (packageList.Count > 0)
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
 		    runtimeScore.SubScore(temp.scoreValue);
-		    currentScoreDifficulty -= temp.scoreValue;
+		    currentScoreDifficulty -= temp.scoreValue / 100000f;
 		    packageList.Remove(temp);
 
 				SoundCtrl.LosePackage();
