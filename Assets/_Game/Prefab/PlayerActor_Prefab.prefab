@@ -476,7 +476,7 @@ MonoBehaviour:
   unstableAngle: 90
   packageHeight: 0.3
   jumpPower: 10
-  maxjumpMultiplier: 38
+  maxjumpMultiplier: 40
   isGrounded: 1
   collectedJumpPower: 0
   currentScoreDifficulty: 0
