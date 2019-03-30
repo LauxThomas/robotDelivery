@@ -72,6 +72,8 @@ public class PlayerActor_Script : MonoBehaviour
 
 	private PlayerSoundController SoundCtrl;
 
+	public WheelRotation WheelRotator;
+
 	private void Awake()
 	{
 		SoundCtrl = GetComponent<PlayerSoundController>();
@@ -123,6 +125,15 @@ public class PlayerActor_Script : MonoBehaviour
 		if (Mathf.Abs(RigidbodyBottom.velocity.x) >= maxSpeed)
 		{
 			RigidbodyBottom.velocity = RigidbodyBottom.velocity.normalized * maxSpeed;
+		}
+
+		if (isGrounded)
+		{
+			WheelRotator.SetTurnRate(RigidbodyBottom.velocity.x / maxSpeed);
+		}
+		else
+		{
+			WheelRotator.SetTurnRate(0.0F);
 		}
 
 		// If the position of the toppart is the same direction from the BottomPart as the Input
