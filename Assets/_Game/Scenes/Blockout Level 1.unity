@@ -12062,6 +12062,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8073067990717454698, guid: 56cac5324c6f22b46b22791b1fcc8662,
+        type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 1033207209}
     - target: {fileID: 7791124919916508, guid: 56cac5324c6f22b46b22791b1fcc8662, type: 3}
       propertyPath: m_havePropertiesChanged
       value: 1
@@ -17094,6 +17099,12 @@ PrefabInstance:
 --- !u!224 &1033207208 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5912933415966723953, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
+    type: 3}
+  m_PrefabInstance: {fileID: 1033207207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1033207209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5912933415966723959, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
     type: 3}
   m_PrefabInstance: {fileID: 1033207207}
   m_PrefabAsset: {fileID: 0}

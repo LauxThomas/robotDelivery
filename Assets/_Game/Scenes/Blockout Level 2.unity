@@ -19452,6 +19452,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8073067990717454698, guid: 56cac5324c6f22b46b22791b1fcc8662,
+        type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 1851945603}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56cac5324c6f22b46b22791b1fcc8662, type: 3}
 --- !u!224 &1053129274 stripped
@@ -32781,6 +32786,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7009587171968046400, guid: c26860d7fab78184197625e4a78cccfd,
     type: 3}
   m_PrefabInstance: {fileID: 1847634747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1851945603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5912933415966723959, guid: 4ed948beaf0c81b4ea0bfac8b0a21b07,
+    type: 3}
+  m_PrefabInstance: {fileID: 714946827}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1852343214 stripped
 GameObject:

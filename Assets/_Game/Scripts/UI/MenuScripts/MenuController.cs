@@ -158,6 +158,7 @@ public class MenuController : MonoBehaviour
 	{
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
 		FindObjectOfType<TutorialController>().disableAll();
+		HUD.SetActive(true);
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
 		//enable the scripts again
 	}
@@ -167,6 +168,7 @@ public class MenuController : MonoBehaviour
 
 		enable(null);
 		HUD.GetComponent<HUDScript>().toggleHUD(true);
+		HUD.SetActive(true);
 		Time.timeScale = 1; //oder GameManger.ResumeGame();
 	}
 }
