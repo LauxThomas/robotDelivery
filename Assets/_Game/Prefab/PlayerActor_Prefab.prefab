@@ -226,6 +226,7 @@ MonoBehaviour:
   robotHeadRight: {fileID: 2100000, guid: a4adada138ae1c34c890c8e10d4a7ea9, type: 2}
   robotHeadFail: {fileID: 2100000, guid: faec0320de93bbe4289481f3e792dda7, type: 2}
   packageObject: {fileID: 11400000, guid: 5deba1fb31324e241af2dd3eeca4db02, type: 2}
+  runtimeScore: {fileID: 11400000, guid: 3e13ed7e2e4d68f4987824810fd03505, type: 2}
   timeInvulnerableToPackageLoss: 3
   speed: 7
   forceJet: 3
@@ -639,6 +640,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13700006, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8587fe553fa024e4ab5249ef463d569b, type: 2}
     - target: {fileID: 13700008, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -707,10 +712,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e813b38a2d770ea41ba880c3a8a6ad6e, type: 2}
-    - target: {fileID: 13700006, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8587fe553fa024e4ab5249ef463d569b, type: 2}
     - target: {fileID: 13700004, guid: d4eff80fbdfbb91418fcef1f9e81d1f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

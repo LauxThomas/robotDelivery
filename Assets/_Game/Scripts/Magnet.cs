@@ -8,40 +8,46 @@ public class Magnet : MonoBehaviour
 {
 	[SerializeField] private GameObject waypoint1;
 	[SerializeField] private GameObject waypoint2;
+	[SerializeField] private GameObject Switch;
 	[SerializeField] private float distance;
 	[SerializeField] private float speed;
 	[SerializeField] private float magnetForceTime;
+	[SerializeField] private Boolean active;
 
 	private Boolean direction;
 	private Boolean test;
 	private GameObject package;
-	private Boolean cor;
+	private Boolean cor; //coroutine safety
 
 
 	private void Update()
 	{
-		if (direction)
+		if (active)
 		{
-			transform.position = (Vector3.MoveTowards(transform.position,waypoint1.transform.position, speed));
-			if (Vector3.Distance(transform.position, waypoint1.transform.position) < distance)
+			if (direction)
 			{
-				SwitchDirection();
+				transform.position = (Vector3.MoveTowards(transform.position,waypoint1.transform.position, speed));
+				if (Vector3.Distance(transform.position, waypoint1.transform.position) < distance)
+				{
+					SwitchDirection();
+				}
+
+			}
+			else
+			{
+				transform.position =(Vector3.MoveTowards(transform.position,waypoint2.transform.position, speed));
+				if (Vector3.Distance(transform.position, waypoint2.transform.position) < distance)
+				{
+					SwitchDirection();
+				}
 			}
 
-		}
-		else
-		{
-			transform.position =(Vector3.MoveTowards(transform.position,waypoint2.transform.position, speed));
-			if (Vector3.Distance(transform.position, waypoint2.transform.position) < distance)
+			if (package != null)
 			{
-				SwitchDirection();
+				package.transform.position = Vector3.MoveTowards(package.transform.position, transform.position + Vector3.down, speed );
 			}
 		}
 
-		if (package != null)
-		{
-			package.transform.position = Vector3.MoveTowards(package.transform.position, transform.position + Vector3.down, speed );
-		}
 	}
 
 	public void SwitchDirection()
@@ -51,32 +57,34 @@ public class Magnet : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (other.tag == "Player")
+		if (active)
 		{
-			if (!test)
+			if (other.tag == "Player")
 			{
-				if (!cor)
+				if (!test)
 				{
-					StartCoroutine(testPackage());
+					if (!cor)
+					{
+						StartCoroutine(testPackage());
+					}
+
 				}
+				else
+				{
 
-			}
-			else
-			{
+					package = other.gameObject.transform.parent.gameObject.GetComponent<PlayerActor_Script>().popPackage();
+					StartCoroutine(destroyPackage());
 
-				package = other.gameObject.transform.parent.gameObject.GetComponent<PlayerActor_Script>().popPackage();
-				StartCoroutine(destroyPackage());
-
-				test = false;
+					test = false;
+				}
 			}
 		}
+
 
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-
-
 		test = false;
 	}
 
@@ -92,5 +100,10 @@ public class Magnet : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1);
 		Destroy(package);
+	}
+
+	public void switchActivation()
+	{
+		active = !active;
 	}
 }
