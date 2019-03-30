@@ -15,7 +15,7 @@ public class WheelRotation : MonoBehaviour
 	void Update()
 	{
 		TurnRate = Mathf.Lerp(TurnRate, TargetTurnRate, Time.deltaTime * InterpSpeed);
-		transform.rotation = Quaternion.Euler(TurnRate * TurnSpeed * Time.deltaTime, 0F, 0F) * transform.rotation;
+		transform.localRotation = transform.localRotation * Quaternion.Euler(0F, TurnRate * TurnSpeed * Time.deltaTime, 0F);
 	}
 
 	public void SetTurnRate(float Rate)
