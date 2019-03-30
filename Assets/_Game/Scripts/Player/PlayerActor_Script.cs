@@ -255,6 +255,7 @@ public class PlayerActor_Script : MonoBehaviour
 		    if (package != null)
 		    {
 			    packageList.Add(package);
+			    runtimeScore.AddScore(package.scoreValue);
 
 		    }
 	    }
@@ -292,6 +293,7 @@ public class PlayerActor_Script : MonoBehaviour
 	    if (packageList.Count > 0)
 	    {
 		    Package temp = (Package) packageList[packageList.Count - 1];
+		    runtimeScore.SubScore(temp.scoreValue);
 		    packageList.Remove(temp);
 	    }
 
