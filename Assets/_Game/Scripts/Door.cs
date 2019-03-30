@@ -12,15 +12,24 @@ public class Door : MonoBehaviour
 	[SerializeField] private float heigth;
 
 	private Boolean open = false;
+	private Vector3 destination = Vector3.up;
 
 	public void Unlock()
 	{
 		if (Button1.isActivated() & Button2.isActivated() & Button3.isActivated() & !open)
 		{
+			destination = transform.position + Vector3.up * heigth;
 			open = true;
-			transform.position += Vector3.up * heigth * Time.fixedDeltaTime;
+
 		}
 
 	}
 
+	private void Update()
+	{
+		if (open)
+		{
+			transform.position = Vector3.MoveTowards(transform.position, destination, 2);
+		}
+	}
 }
