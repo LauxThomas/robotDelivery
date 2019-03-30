@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8314599515767994811}
   - component: {fileID: 8314599515764570523}
   - component: {fileID: 8314599515765701467}
+  - component: {fileID: 2070516386136923801}
+  - component: {fileID: 6326663525290035420}
+  - component: {fileID: 7641260473012684066}
   m_Layer: 0
   m_Name: Magnet
   m_TagString: Untagged
@@ -77,3 +80,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2070516386136923801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314599515767956891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.028947415, y: 0.028947424, z: 0.021795027}
+  m_Center: {x: 1.0216641e-10, y: -2.0167061e-10, z: -0.0068562618}
+--- !u!54 &6326663525290035420
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314599515767956891}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7641260473012684066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314599515767956891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d011d01892bc7b349912503ee6dd98db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint1: {fileID: 0}
+  waypoint2: {fileID: 0}
+  Switch: {fileID: 0}
+  distance: 1
+  speed: 0.05
+  magnetForceTime: 0
+  active: 0
