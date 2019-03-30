@@ -215,7 +215,9 @@ public class PlayerActor_Script : MonoBehaviour
 
 	    if (_playerInputProvider.ResetButton() > 0)
 	    {
+		    runtimeScore.score = 0;
 		    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 	    }
 	}
 
