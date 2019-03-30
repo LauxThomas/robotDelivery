@@ -27,6 +27,7 @@ public class RuntimeScore : ScriptableObject
 
 	public void setLevel(int i)
 	{
+		level = level % 3;
 		level = i;
 	}
 
