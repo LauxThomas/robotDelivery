@@ -12,6 +12,8 @@ public class TutorialController : MonoBehaviour
 	public GameObject t1;
 	public GameObject t2;
 	public GameObject t3;
+	public GameObject t4;
+	public GameObject t5;
 
 	//private List<Image> tuts;
 	private List<GameObject> t;
@@ -27,6 +29,8 @@ public class TutorialController : MonoBehaviour
 		t.Add(t1);
 		t.Add(t2);
 		t.Add(t3);
+		t.Add(t4);
+		t.Add(t5);
 		showTut(ptr);
 
 	}
