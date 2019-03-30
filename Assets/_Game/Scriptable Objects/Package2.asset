@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Goldbar
   description: 'Very rare. Pure gold. Perfect for making teeth. '
   image: {fileID: 21300000, guid: 2d7197818f641e24c9a067660c4f17e1, type: 3}
-  scoreValue: 50000
+  scoreValue: 75000
   slotsNeeded: 1
   packageMesh: {fileID: 8527457250711210781, guid: 0c7410970f1a0314f98a2d9f66117ba6,
     type: 3}
