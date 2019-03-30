@@ -228,7 +228,8 @@ MonoBehaviour:
   packageObject: {fileID: 11400000, guid: 5deba1fb31324e241af2dd3eeca4db02, type: 2}
   runtimeScore: {fileID: 11400000, guid: 3e13ed7e2e4d68f4987824810fd03505, type: 2}
   timeInvulnerableToPackageLoss: 3
-  speed: 7
+  speed: 15
+  maxSpeed: 15
   forceJet: 3
   gravityForceTop: 200
   gravityForceBottom: 400
