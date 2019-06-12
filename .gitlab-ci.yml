@@ -18,7 +18,7 @@ variables:
 
 .release_build:
     artifacts:
-        expire_in: 1 week
+        expire_in: 999 years
 
 WebGL [Release]:
     when: on_success
