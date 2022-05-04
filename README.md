@@ -1,5 +1,3 @@
-[Play on fsi.rocks](http://gamedevweek.pages.fsi.rocks/ws-18_19/unity/delivery-robot/)
-
 # Intro
 Find the perfect balance! With blazing speed and a full load of packages, you too will become part of Robot Delivery.
 ![My animated logo](Assets/MainMenu.jpg)
